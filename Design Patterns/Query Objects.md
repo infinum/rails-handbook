@@ -24,7 +24,7 @@ objects.
   ArticlesQuery.new
 
   # this is the same as the example above
-  ArticlesQuer.new(Article.all)
+  ArticlesQuery.new(Article.all)
 
   # queries only published articles
   ArticlesQuery.new(Article.where(published: true))

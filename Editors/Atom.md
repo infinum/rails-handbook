@@ -133,7 +133,3 @@ Finds all TODO, FIXME, CHANGED, XXX, IDEA, HACK, NOTE, REVIEW comments in your p
 ["wakatime"](https://atom.io/packages/wakatime)
 
 Quantify your coding inside GitHub's Atom editor.
-
-["xml-formatter"](https://atom.io/packages/xml-formatter)
-
-![](https://i.github-camo.com/927c214b73dd7a2f9da5cbab4cf8654de2f5ceed/687474703a2f2f7777772e6e6579657374726162656c6c692e636f6d2f6172717569766f732f786d6c2d666f726d6174746572332e676966)

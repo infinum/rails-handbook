@@ -17,3 +17,39 @@ We are using [mailgun](https://mailgun.com) to send mails from our apps.
                 domain:  Rails.application.secrets.mailgun[:domain]
         }
 7. Profit
+
+## Additional steps
+
+### Setup emails at development
+
+Preview email in the default browser instead of sending it. This is great because of two reasons:
+
+1. You don't need to set up email delivery in development environment.
+2. There is no risk of accidentally sending a test email to real user when developing and testing.
+
+We are using [letter_opener](https://github.com/ryanb/letter_opener) for previewing emails in development.
+
+1. Add `letter_opener` gem to gemfile(in development group)
+2. In config/environments/development.rb set delivery method. Example:
+
+      config.action_mailer.delivery_method = :letter_opener
+
+### Setup email interceptor
+
+When staging and production databases are in sync, users and their emails are also in sync.
+Sometimes, we trigger an action which could send emails to real users. To prevent this,
+we should intercept all emails which are sent to real users from staging environment.
+
+We are using [recipient_interceptor](https://github.com/croaky/recipient_interceptor) for emails restriction at staging.
+
+1. Add `recipient_interceptor` gem to gemfile
+2. In config/environments/staging.rb add gem settings. Example:
+
+        Mail.register_interceptor(
+          RecipientInterceptor
+          .new(`test@gmail.com,test2@gmail.com`,
+               subject_prefix: '[STAGING]')
+        )
+3. Emails should be in secrets.yml file.
+
+If everything is configured, all emails will be delivered at specified emails.

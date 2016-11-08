@@ -1,4 +1,4 @@
-# Mailers In production
+# Mailers
 
 We are using [mailgun](https://mailgun.com) to send mails from our apps.
 
@@ -18,6 +18,13 @@ We are using [mailgun](https://mailgun.com) to send mails from our apps.
         }
 7. Profit
 
+The HTTP API has some advantages over SMTP:
+
+1. It’s faster.
+2. Better for large scale sending.
+3. You don’t have to deal with MIME because Mailgun will assemble it on their side.
+4. Request libraries are available for your language of choice.
+
 ## Additional steps
 
 ### Setup emails at development
@@ -33,6 +40,10 @@ We are using [letter_opener](https://github.com/ryanb/letter_opener) for preview
 2. In config/environments/development.rb set delivery method. Example:
 
       config.action_mailer.delivery_method = :letter_opener
+
+Rails also has built in feature for previewing emails.[Previewing emails](http://guides.rubyonrails.org/action_mailer_basics.html#previewing-emails)
+With this approach, it is possible to see how email looks without sending real email.
+
 
 ### Setup email interceptor
 

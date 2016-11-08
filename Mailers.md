@@ -1,8 +1,10 @@
 # Mailers
 
+## Production
+
 We are using [mailgun](https://mailgun.com) to send mails from our apps.
 
-## Setup
+### Mailgun setup
 
 1. Check Last Pass if a client already has a mailgun account.
 2. Create an account if not. Email template is: mailgun+{client}@infinum.hr
@@ -18,6 +20,8 @@ We are using [mailgun](https://mailgun.com) to send mails from our apps.
         }
 7. Profit
 
+### Mailgun HTTP API advantages
+
 The HTTP API has some advantages over SMTP:
 
 1. It’s faster.
@@ -25,27 +29,10 @@ The HTTP API has some advantages over SMTP:
 3. You don’t have to deal with MIME because Mailgun will assemble it on their side.
 4. Request libraries are available for your language of choice.
 
-## Additional steps
 
-### Setup emails at development
+## Staging
 
-Preview email in the default browser instead of sending it. This is great because of two reasons:
-
-1. You don't need to set up email delivery in development environment.
-2. There is no risk of accidentally sending a test email to real user when developing and testing.
-
-We are using [letter_opener](https://github.com/ryanb/letter_opener) for previewing emails in development.
-
-1. Add `letter_opener` gem to gemfile(in development group)
-2. In config/environments/development.rb set delivery method. Example:
-
-      config.action_mailer.delivery_method = :letter_opener
-
-Rails also has built in feature for previewing emails.[Previewing emails](http://guides.rubyonrails.org/action_mailer_basics.html#previewing-emails)
-With this approach, it is possible to see how email looks without sending real email.
-
-
-### Setup email interceptor
+### Email interceptor setup
 
 When staging and production databases are in sync, users and their emails are also in sync.
 Sometimes, we trigger an action which could send emails to real users. To prevent this,
@@ -64,3 +51,24 @@ We are using [recipient_interceptor](https://github.com/croaky/recipient_interce
 3. Emails should be in secrets.yml file.
 
 If everything is configured, all emails will be delivered at specified emails.
+
+## Development
+
+### Letter opener setup
+
+Preview email in the default browser instead of sending it. This is great because of two reasons:
+
+1. You don't need to set up email delivery in development environment.
+2. There is no risk of accidentally sending a test email to real user when developing and testing.
+
+We are using [letter_opener](https://github.com/ryanb/letter_opener) for previewing emails in development.
+
+1. Add `letter_opener` gem to gemfile(in development group)
+2. In config/environments/development.rb set delivery method. Example:
+
+      config.action_mailer.delivery_method = :letter_opener
+
+### Rails built in email previewing
+
+Rails also has built in feature for previewing emails.[Previewing emails](http://guides.rubyonrails.org/action_mailer_basics.html#previewing-emails)
+With this approach, it is possible to see how email looks without sending real email.

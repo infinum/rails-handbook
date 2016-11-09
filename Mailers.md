@@ -57,7 +57,7 @@ If everything is configured, all emails will be delivered at specified emails.
 
 ### Letter opener setup
 
-Preview email in the default browser instead of sending it. This is great because of:
+Preview email in the default browser instead of sending it. This is great for two reasons:
 
 1. You don't need to set up email delivery in development environment.
 2. There is no risk of accidentally sending a test email to real user when developing and testing.

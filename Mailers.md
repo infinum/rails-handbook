@@ -45,10 +45,11 @@ We are using [recipient_interceptor](https://github.com/croaky/recipient_interce
 
         Mail.register_interceptor(
           RecipientInterceptor
-          .new(`test@gmail.com,test2@gmail.com`,
+          .new(Rails.application.secrets.permitted_emails,
                subject_prefix: '[STAGING]')
         )
-3. Emails should be in secrets.yml file.
+3. In secrets.yml add permitted_emails key under the staging section.
+4. If you want to set more then one email, then emails should be separated with comma. (Example: 'test1@infinum.co,test2@infinum.co')
 
 If everything is configured, all emails will be delivered at specified emails.
 
@@ -56,7 +57,7 @@ If everything is configured, all emails will be delivered at specified emails.
 
 ### Letter opener setup
 
-Preview email in the default browser instead of sending it. This is great because of two reasons:
+Preview email in the default browser instead of sending it. This is great because of:
 
 1. You don't need to set up email delivery in development environment.
 2. There is no risk of accidentally sending a test email to real user when developing and testing.

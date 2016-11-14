@@ -31,8 +31,7 @@ The HTTP API has some advantages over SMTP:
 
 ### Mailgun Webhooks setup
 
-With Mailgun it is possible to setup webhooks. For example you can send at your own service
-which emails dropped and which were delivered.
+If you want to track your emails more than 7 days (which is the retainer period for free mailgun) you need to setup webhooks to our mail aggregator service.
 
 ![alt tag](https://s3.amazonaws.com/infinum.productive.production/attachments/files/000/092/933/original/Webhooks_-_Mailgun___2016-11-10_10-41-26.png?1478770924)
 

@@ -9,7 +9,7 @@ I would just point out that you can [pass modifiers](http://edgeguides.rubyonrai
 
 ## Data migrations
 
-Here is where things get more complicated. As your project grows and evolves so does your data. At some point you might realize you forgot to add a default to a field. Or that you want to change an enumeration. Or any kind of manipulation of existing data in your database.
+Here is where things get a bit complicated. As your project grows and evolves so does your data. At some point you might realize you forgot to add a default to a field. Or that you want to change an enumeration. Or do any kind of manipulation on existing data in your database.
 
 There are two way of dealing with those problems:
 1. Write a rake task
@@ -17,7 +17,7 @@ There are two way of dealing with those problems:
 
 Your first instinct would be to write a simple rake task. You have access to all your models, and it is easily testable and runnable. You can even delete the file afterwards. The problem with rake task is that you have to remember to run it. It does not run automatically. Also if you are writing a big feature and you need that change in the middle of your schema migrations then you have a problem.
 
-Writing a data migration is a bit trickier. You start of by writing a schema migration but instead of doing `add_column` or `rename_column` in your `change` method you do a `Model.update_all()`. The problems start to arise when after a month of developing a new feature you introduce some validations that break that migration. Or you remote a method you are using in the migration. Or you remote the model entirely. And you figure out the problem when you try to do the migration on deploy.
+Writing a data migration is a bit trickier. You start of by writing a schema migration but instead of doing `add_column` or `rename_column` in your `change` method you do a `Model.update_all()`. The problems start to arise when after a month of developing a new feature, you introduce some validations that break that migration. Or you remove a method you are using in that migration. Or you remove the model entirely. And you notice the problem when you try to deploy your application to the server.
 
 ## Make your data migrations foolproof
 

@@ -21,13 +21,11 @@ Writing a data migration is a bit trickier. You start of by writing a schema mig
 
 ## Make your data migrations foolproof
 
-1. Add [migration_data](https://github.com/ka8725/migration_data) gem.
-2. Generate migrations as usual but instead of `change` use `data` method.
-3. Write raw sql queries inside of your data migrations.
+__Write raw sql queries inside of your data migrations.__
 
 Example:
 ``` ruby
-def data
+def change
   execute(<<-SQL
     UPDATE users
     SET role =
@@ -41,3 +39,33 @@ end
 ```
 
 To make your life a bit easier I suggest you write the query with ActiveRecord, and just use `to_sql` method on the query.
+
+### Reversible data migration
+
+By default, the example above will throw `ActiveRecord::IrreversibleMigration` if you try to rollback the migration. If you need to be able to do a rollback you will need to write your own `down` method:
+
+``` ruby
+def up
+  execute(<<-SQL
+    UPDATE users
+    SET role =
+      CASE role
+      WHEN '2' THEN 'developer'
+      WHEN '3' THEN 'client'
+      END
+  SQL
+  )
+end
+
+def down
+  execute(<<-SQL
+    UPDATE users
+    SET role =
+      CASE role
+      WHEN 'developer' THEN '2'
+      WHEN 'client' THEN '3'
+      END
+  SQL
+  )
+end
+```

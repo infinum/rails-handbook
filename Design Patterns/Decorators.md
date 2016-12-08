@@ -9,11 +9,10 @@ compared to those two patterns.
 In Rails, the decorator pattern is generally used to format
 view-specific data, as well as handling simple view logic.
 
-# Examples
-## Assignment
+## Examples
 
-We have a User model, which has a ```#first_name```, ```#last_name```,
-```#birthday```, ```#email``` and ```#email_private?``` fields. We need to create
+We have a User model, which has a ```#first_name```, ```#last_name```
+, ```#birthday```, ```#email``` and ```#email_private?``` fields. We need to create
 a user profile page, which will display the user's full name (first name
 and last name), formatted birthday, and the email address if it isn't private.
 
@@ -21,7 +20,7 @@ and last name), formatted birthday, and the email address if it isn't private.
 
 We can do a couple of things here:
 
-### 1. Keep the logic in the view
+**1. Keep the logic in the view**
 
 The simplest solution would be to simply do those things in the view:
 ``` slim
@@ -44,7 +43,7 @@ multiply, so views quickly become an unreadable mess filled with logic all
 around.
 
 
-### 2. Use helper methods
+**2. Use helper methods**
 
 Another possibility is putting the methods in helpers:
 
@@ -88,7 +87,7 @@ This solution has 2 main drawbacks:
      collisions if you, e.g., have another model which has an email field, but
      uses different logic to see if it needs to display the email or not.
 
-### 3. Add the methods to the model
+**3. Add the methods to the model**
 
 Considering the drawbacks of using helper methods, you might decide to define
 the methods in the User model itself:
@@ -134,11 +133,11 @@ and when to display stuff in the view shouldn't be a concern of the User model.
 
 ## Good solutions
 
-### 1. Make a decorator using SimpleDelegator
+**1. Make a decorator using SimpleDelegator**
 
 [SimpleDelegator](http://ruby-doc.org/stdlib-2.2.3/libdoc/delegate/rdoc/SimpleDelegator.html)
 is a Ruby class that provides means to easily delegate all method calls to an object passed
-to the constructor. A simple implementation of a decorator using SimpleDelegator would look 
+to the constructor. A simple implementation of a decorator using SimpleDelegator would look
 something like this:
 
 ``` ruby
@@ -182,9 +181,9 @@ Birthday
 = @user.formatted_birthday
 ```
 
-### 2. Use Draper
+**2. Use Draper**
 
-[Draper](https://github.com/drapergem/draper/) is a gem that simplifies creating 
+[Draper](https://github.com/drapergem/draper/) is a gem that simplifies creating
 decorators and adds some additional sugar on top of the SimpleDelegator decorators.
 
 One of the benefits of using draper is that it provides the view context inside of the
@@ -248,7 +247,7 @@ Birthday:
 Be sure to read the documentation, since Draper offers a lot more than what's
 been shown here.
 
-# Further reading
+## Further reading
 
 * [7 Patterns to Refactor Fat ActiveRecord Models](http://blog.codeclimate.com/blog/2012/10/17/7-ways-to-decompose-fat-activerecord-models/)
 * [Refactoring Fat Models with Patterns by Bryan Helmkamp](https://www.youtube.com/watch?v=5yX6ADjyqyE) - A talk going through all the patterns from the 7 Patterns to Refactor Fat ActiveRecord Models blog post

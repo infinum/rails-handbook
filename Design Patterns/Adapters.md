@@ -85,7 +85,7 @@ Deserializers are stored in /app/adapters/{api_service}/deserializers/ where api
 
 In the following example we instantiate the Deserializer object by sending the API response to the initialize method.
 
-### Example of Deserializer object
+**Example of Deserializer object**
 
 ```ruby
 module Instagram
@@ -124,7 +124,7 @@ module Instagram
 end
 ```
 
-### Using Deserializer in Adapter
+**Using Deserializer in Adapter**
 
 In the above example after we fetched recent user media from Instagram we passed the response to RecentMedia parser which
 is going to parse the response and add some additional methods around the response for example failed? success? etc.
@@ -155,7 +155,7 @@ module Adapters
 end
 ```
 
-### Deserializing Collections
+**Deserializing Collections**
 
 If you want to deserialize a collection you received from the API you can make collection objects. In this case itemize method makes a collection
 of MediaItem objects.

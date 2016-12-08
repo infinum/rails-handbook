@@ -8,23 +8,21 @@ The most used gem based on policy objects is [Pundit](https://github.com/elabs/p
 
 ## Example
 
-### Assignment
-
 We have an Order model that has this fields: `company_id`, `due_date`, `active`, `offers_count`. Field `company_id` tells us which company created the order. An Order can have multiple Offers from **other companies**. The Offer model consist of `order_id`, `company_id`, `amount`.
 
 Let's say that we have an OffersController with basic CRUD actions. Before every action we need to perform authorization checks.
 
 For offer creation, these are the rules:
 
-- A User can give offers only to orders of other companies.
-- Offers can be made only to active orders.
+* A User can give offers only to orders of other companies.
+* Offers can be made only to active orders.
 
 For updating the order, the rules are as follows:
 
-- User cannot edit other companies offers.
-- Offer cannot be updated after order's due date.
+* User cannot edit other companies offers.
+* Offer cannot be updated after order's due date.
 
-### Bad solution
+## Bad solution
 
 We will put authorization logic in controller actions.
 
@@ -74,7 +72,7 @@ class OffersController < ApplicationController
 end
 ```
 
-### Good solution
+## Good solution
 
 We will use Pundit to extract authorization logic into a separate ruby class.
 
@@ -158,7 +156,7 @@ That's it.
 
 ## Questions
 
-### How Pundit's `authorize` method actually works?
+**How Pundit's `authorize` method actually works?**
 
 From Pundit's docs:
 The authorize method automatically infers that Offer class will have a matching OfferPolicy class - it instantiates the OfferPolicy class, passing in the current user and the given record. It then infers from the action name, that it should call update? on this instance of the policy. In this case, you can imagine that authorize would have done something like this:
@@ -169,5 +167,5 @@ raise "not authorized" unless OfferPolicy.new(current_user, @offer).update?
 
 ## Further reading
 
-- [Rails - the Missing Parts - Policies](http://eng.joingrouper.com/blog/2014/03/20/rails-the-missing-parts-policies/)
-- [Straightforward Rails Authorization with Pundit](http://www.sitepoint.com/straightforward-rails-authorization-with-pundit/)
+* [Rails - the Missing Parts - Policies](http://eng.joingrouper.com/blog/2014/03/20/rails-the-missing-parts-policies/)
+* [Straightforward Rails Authorization with Pundit](http://www.sitepoint.com/straightforward-rails-authorization-with-pundit/)

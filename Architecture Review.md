@@ -7,10 +7,10 @@ When we say architecture review, we're mostly thinking about the database design
 
 We are doing architecture planning and review in order to:
 
-- have clear overview of the project before we start coding it
-- to have a clear way of communicating project architecture to the client
-- to prevent scope creep
-- to have better architecture
+* have clear overview of the project before we start coding it
+* to have a clear way of communicating project architecture to the client
+* to prevent scope creep
+* to have better architecture
 
 **Database design is by far the most important part of an web application.**
 

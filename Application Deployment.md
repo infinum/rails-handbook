@@ -7,21 +7,21 @@ This approach includes an automated build service that runs your automated test
 suite, which can usually also deploy the latest changes to the server if the
 build passes.
 
-# Why?
+## Why?
 
 * By having an extensive test suite that runs automatically after pushing to the
   remote repository, you can be certain that your new changes didn't break any
   of the old functionality.
 
 * The build server can deploy the changes automatically if it's set up to do so
-  and the build passess successfully, which removes the need to deploy changes
+  and the build passes successfully, which removes the need to deploy changes
   manually after a push to the remote repository.
 
 * The build server can also send build status notifications to Slack, emails and
   other communication channels. This is useful since all the members of your
   team will be notified if a build or deployment fails
 
-# Mina
+## Mina
 
 [Mina](https://github.com/mina-deploy/mina) is the deploy tool we're currently
 using. It's being maintained by our very own [@d4be4st](https://github.com/d4be4st/), so if you run into any
@@ -31,12 +31,12 @@ Since mina shouldn't be used directly for deployment, this article won't go into
 extreme lengths about it. You can read more about the deployment process with
 Mina in the README.md of the Mina repository.
 
-# Semaphore
+## Semaphore
 
 [Semaphore](http://www.semaphoreci.com) is the build service we're currently
 using. Semaphore supports notifications through instant messaging software,
 emails and other methods. It also supports automated deployments, which need to
-be configured seperately.
+be configured separately.
 
 Semaphore uses mina for deployment in the background, and you can check other
 projects for details on how to set up deployment.
@@ -44,24 +44,23 @@ projects for details on how to set up deployment.
 New projects on Semaphore can only be created by admin users, so if you need to
 create a new project, be sure to contact your team lead for it.
 
-# Git and continous delivery
+## Git and continuous delivery
 
-Using continous delivery for deploying our applications requires some care when
+Using continuous delivery for deploying our applications requires some care when
 handling git branches.
 
 * The master branch is the production branch, while the develop branch is the
   staging branch
-* Changes should never be commited or pushed to the master branch directly -
+* Changes should never be committed or pushed to the master branch directly -
   they should always be merged into master from the develop branch instead
-* All changes should be made in a seperate branch, created from the develop
+* All changes should be made in a separate branch, created from the develop
   branch
 * When the changes are completed and reviewed, they should be merged into the
   develop branch and deployed to the staging server
 * Once the changes have passed any additional checks on the staging server, the
   develop branch can be merged into the master branch and deployed to production.
 
-# Sources
+## Sources
 * [A Ruby on Rails Continuous Integration process using Github, Semaphore,
 CodeClimate and
 HipChat](https://infinum.co/the-capsized-eight/articles/a-ruby-on-rails-continous-integration-process-using-semaphore-github-codeclimate-and-hipchat), by Jan Varljen
-

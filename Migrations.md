@@ -11,7 +11,8 @@ I would just point out that you can [pass modifiers](http://edgeguides.rubyonrai
 
 Here is where things get a bit complicated. As your project grows and evolves so does your data. At some point you might realize you forgot to add a default to a field. Or that you want to change an enumeration. Or do any kind of manipulation on existing data in your database.
 
-There are two way of dealing with those problems:
+There are two way of dealing with those problems:  
+
 1. Write a rake task
 2. Write a data migration
 
@@ -23,7 +24,8 @@ Writing a data migration is a bit trickier. You start of by writing a schema mig
 
 __Write raw sql queries inside of your data migrations.__
 
-Example:
+Example:  
+
 ``` ruby
 def change
   execute(<<-SQL
@@ -40,7 +42,7 @@ end
 
 To make your life a bit easier I suggest you write the query with ActiveRecord, and just use `to_sql` method on the query.
 
-### Reversible data migration
+**Reversible data migration**
 
 By default, the example above will throw `ActiveRecord::IrreversibleMigration` if you try to rollback the migration. If you need to be able to do a rollback you will need to write your own `down` method:
 

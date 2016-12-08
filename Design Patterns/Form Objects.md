@@ -1,44 +1,44 @@
 # Form Objects
 
-Form Objects are used for removing form specific logic away from your ActiveRecord models into a seperate class.
+Form Objects are used for removing form specific logic away from your ActiveRecord models into a separate class.
 
-With Form Objects we can:
-  - Decouple form logic from your ActiveRecord models (i.e. refactor fat models)
-  - Update multiple ActiveRecord models with a single form submission
-  - Respect the single responsibility principle
-  - Easily add additional behaviour to forms (i.e. methods)
-  - Reuse logic between multiple forms
-  - Use with formbuilders like SimpleForm or Formtastic
-  
-# Example
+With Form Objects we can:  
 
-## Assignment
+  * Decouple form logic from your ActiveRecord models (i.e. refactor fat models)
+  * Update multiple ActiveRecord models with a single form submission
+  * Respect the single responsibility principle
+  * Easily add additional behaviour to forms (i.e. methods)
+  * Reuse logic between multiple forms
+  * Use with formbuilders like SimpleForm or Formtastic
 
-We have a registration form where we ask users to give us the following data:
-  - full name
-  - company name
-  - phone number
-  - email
+## Example
 
-`full_name` and `email` are associated with `User` model and `company_name` and `phone_number` are associated with `Company` model and we want to create both models on form submission. Additionaly `User` model has `first_name` and `last_name` columns so we have to split the `full_name` attribute.
+We have a registration form where we ask users to give us the following data:  
 
-# Bad solution
+  * full name
+  * company name
+  * phone number
+  * email
 
-There are couple of bad ways in which we could do this. One bad way is by adding missing attributes to one model, lets say User: 
+`full_name` and `email` are associated with `User` model and `company_name` and `phone_number` are associated with `Company` model and we want to create both models on form submission. Additionally `User` model has `first_name` and `last_name` columns so we have to split the `full_name` attribute.
+
+## Bad solution
+
+There are couple of bad ways in which we could do this. One bad way is by adding missing attributes to one model, lets say User:
 
 ```ruby
 class User < ActiveRecord::Base
   attr_accessor :company_name
   attr_accessor :phone
   attr_accessor :full_name
-  
+
   validates :email, presence: true, email: true
   validates :company_name, presence: true
   validates :full_name, presence: true
 end
 ```
 
-This way we pollute our `User` class with logic that is not directly related to it which breaks the single responsibility principle. But without adding this logic to our `User` class we wouldn't be able to use a formbuilder on an instace of `User` class like we want to:
+This way we pollute our `User` class with logic that is not directly related to it which breaks the single responsibility principle. But without adding this logic to our `User` class we wouldn't be able to use a formbuilder on an instance of `User` class like we want to:
 
 ```ruby
 = simple_form_for(@user, url: registrations_path) do |f|
@@ -73,32 +73,32 @@ class RegistrationsController < ApplicationController
 end
 ```
 
-# Good solution
+## Good solution
 
 We create a Form Object to represent this specific form:
 
 ```ruby
 class RegistrationForm
   include ActiveModel::Model
-  
+
   attr_accessor :full_name
   attr_accessor :company_name
   attr_accessor :phone
   attr_accessor :email
-  
+
   validates :full_name, presence: true
   validates :company_name, presence: true
   validates :email, presence: true, email: true
 
   def save
     return false unless valid?
-    
+
     company = Company.create(name: company_name, phone: phone)
     company.users.create(first_name: user_first_name, user_last_name: last_name, email: email)
   end
-  
+
   private
-  
+
   def user_first_name
     full_name.split(' ').first
   end
@@ -139,13 +139,13 @@ class RegistrationsController < ApplicationController
 end
 ```
 
-If the form is valid we create both models and redirect to success path. On the other hand if there are any validation errors, we rerender the `:new` partial with errors. Everything here behaves like we are using an ActiveRecord model.
+If the form is valid we create both models and redirect to success path. On the other hand if there are any validation errors, we render the `:new` partial with errors. Everything here behaves like we are using an ActiveRecord model.
 
-### Questions
+## Questions
 
-### Can I use I18n with Form Objects?
+**Can I use I18n with Form Objects?**
 
-Sure, the same way you use I18n with ActiveRecord objects. Just use `activemodel` insted of `activerecord` key in your locale files:
+Sure, the same way you use I18n with ActiveRecord objects. Just use `activemodel` instead of `activerecord` key in your locale files:
 
 ```yml
 en:
@@ -158,15 +158,15 @@ en:
         registration_form:
           attributes:
             phone:
-              present: "Phone number can't be blank" 
+              present: "Phone number can't be blank"
 ```
 
-### Where to put the Form Object classes?
+**Where to put the Form Object classes?**
 
 Create a folder `app/forms` and put all your Form Object classes there
 
-### Further reading
-  - [ActiveModel Form Objects](https://robots.thoughtbot.com/activemodel-form-objects)
-  - [Reform](https://github.com/apotonick/reform)
-  - [Active Type](https://github.com/makandra/active_type)
-  - [Virtus](https://github.com/solnic/virtus)
+## Further reading
+  * [ActiveModel Form Objects](https://robots.thoughtbot.com/activemodel-form-objects)
+  * [Reform](https://github.com/apotonick/reform)
+  * [Active Type](https://github.com/makandra/active_type)
+  * [Virtus](https://github.com/solnic/virtus)

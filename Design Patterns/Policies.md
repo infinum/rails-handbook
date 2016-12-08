@@ -14,13 +14,13 @@ Let's say that we have an OffersController with basic CRUD actions. Before every
 
 For offer creation, these are the rules:
 
-- A User can give offers only to orders of other companies.
-- Offers can be made only to active orders.
+* A User can give offers only to orders of other companies.
+* Offers can be made only to active orders.
 
 For updating the order, the rules are as follows:
 
-- User cannot edit other companies offers.
-- Offer cannot be updated after order's due date.
+* User cannot edit other companies offers.
+* Offer cannot be updated after order's due date.
 
 ## Bad solution
 
@@ -167,5 +167,5 @@ raise "not authorized" unless OfferPolicy.new(current_user, @offer).update?
 
 ## Further reading
 
-- [Rails - the Missing Parts - Policies](http://eng.joingrouper.com/blog/2014/03/20/rails-the-missing-parts-policies/)
-- [Straightforward Rails Authorization with Pundit](http://www.sitepoint.com/straightforward-rails-authorization-with-pundit/)
+* [Rails - the Missing Parts - Policies](http://eng.joingrouper.com/blog/2014/03/20/rails-the-missing-parts-policies/)
+* [Straightforward Rails Authorization with Pundit](http://www.sitepoint.com/straightforward-rails-authorization-with-pundit/)

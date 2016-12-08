@@ -34,7 +34,7 @@ We use stuff that goes beyond Ruby & Rails, primarily databases:
 
 ## Reddit & Ruby Flow
 
-Most of the stuff that you'll see in the RubyWeekly is curated from [RubyWeekly](http://www.rubyflow.com/), a community link log by Peter Cooper (the person behind RubyWeekly). That is probably the most resourceful Ruby page you'll see. 
+Most of the stuff that you'll see in the RubyWeekly is curated from [RubyWeekly](http://www.rubyflow.com/), a community link log by Peter Cooper (the person behind RubyWeekly). That is probably the most resourceful Ruby page you'll see.
 
 There's also reddit, with the most resourceful subreddit being [r/ruby](reddit.com/r/ruby). There's also [r/rails](reddit.com/r/rails) but it's not as good as the r/ruby.
 
@@ -43,8 +43,8 @@ There's also reddit, with the most resourceful subreddit being [r/ruby](reddit.c
 
 Good twitter accounts to follow for getting interesting information about Ruby and Rails (with none-to-little tweets that aren't tied to Ruby):
 
-- [Ruby Slovenia](https://twitter.com/RubySlovenia)
-- [Rails Bot](https://twitter.com/rails_bot)
+* [Ruby Slovenia](https://twitter.com/RubySlovenia)
+* [Rails Bot](https://twitter.com/rails_bot)
 
 ## Sharing
 

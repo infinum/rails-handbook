@@ -80,13 +80,13 @@ Birthday:
 
 This solution has 2 main drawbacks:
 
-  1. The methods aren't tied to a specific object, which they should be since
-     they're methods clearly tied to the user model. Also, you need to pass the
-     user as an argument to the methods, instead of simply calling the methods
-     on the relevant object.
-  2. Methods defined in helpers are available to all views, which can cause name
-     collisions if you, e.g., have another model which has an email field, but
-     uses different logic to see if it needs to display the email or not.
+  * The methods aren't tied to a specific object, which they should be since
+    they're methods clearly tied to the user model. Also, you need to pass the
+    user as an argument to the methods, instead of simply calling the methods
+    on the relevant object.
+  * Methods defined in helpers are available to all views, which can cause name
+    collisions if you, e.g., have another model which has an email field, but
+    uses different logic to see if it needs to display the email or not.
 
 **3. Add the methods to the model**
 

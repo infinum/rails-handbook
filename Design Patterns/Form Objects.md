@@ -2,21 +2,23 @@
 
 Form Objects are used for removing form specific logic away from your ActiveRecord models into a seperate class.
 
-With Form Objects we can:
-  - Decouple form logic from your ActiveRecord models (i.e. refactor fat models)
-  - Update multiple ActiveRecord models with a single form submission
-  - Respect the single responsibility principle
-  - Easily add additional behaviour to forms (i.e. methods)
-  - Reuse logic between multiple forms
-  - Use with formbuilders like SimpleForm or Formtastic
+With Form Objects we can:  
+
+  * Decouple form logic from your ActiveRecord models (i.e. refactor fat models)
+  * Update multiple ActiveRecord models with a single form submission
+  * Respect the single responsibility principle
+  * Easily add additional behaviour to forms (i.e. methods)
+  * Reuse logic between multiple forms
+  * Use with formbuilders like SimpleForm or Formtastic
 
 ## Example
 
-We have a registration form where we ask users to give us the following data:
-  - full name
-  - company name
-  - phone number
-  - email
+We have a registration form where we ask users to give us the following data:  
+
+  * full name
+  * company name
+  * phone number
+  * email
 
 `full_name` and `email` are associated with `User` model and `company_name` and `phone_number` are associated with `Company` model and we want to create both models on form submission. Additionaly `User` model has `first_name` and `last_name` columns so we have to split the `full_name` attribute.
 
@@ -164,7 +166,7 @@ en:
 Create a folder `app/forms` and put all your Form Object classes there
 
 ## Further reading
-  - [ActiveModel Form Objects](https://robots.thoughtbot.com/activemodel-form-objects)
-  - [Reform](https://github.com/apotonick/reform)
-  - [Active Type](https://github.com/makandra/active_type)
-  - [Virtus](https://github.com/solnic/virtus)
+  * [ActiveModel Form Objects](https://robots.thoughtbot.com/activemodel-form-objects)
+  * [Reform](https://github.com/apotonick/reform)
+  * [Active Type](https://github.com/makandra/active_type)
+  * [Virtus](https://github.com/solnic/virtus)

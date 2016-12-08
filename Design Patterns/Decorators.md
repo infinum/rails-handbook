@@ -22,7 +22,8 @@ We can do a couple of things here:
 
 **1. Keep the logic in the view**
 
-The simplest solution would be to simply do those things in the view:
+The simplest solution would be to simply do those things in the view:  
+
 ``` slim
 Name:
 = @user.first_name + ' ' @user.last_name

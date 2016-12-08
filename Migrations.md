@@ -40,7 +40,7 @@ end
 
 To make your life a bit easier I suggest you write the query with ActiveRecord, and just use `to_sql` method on the query.
 
-### Reversible data migration
+**Reversible data migration**
 
 By default, the example above will throw `ActiveRecord::IrreversibleMigration` if you try to rollback the migration. If you need to be able to do a rollback you will need to write your own `down` method:
 

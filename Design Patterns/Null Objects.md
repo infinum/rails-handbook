@@ -77,7 +77,8 @@ Then we instantiate it if needed:
 @address = @company.addresses.first || NullAddress.new
 ```
 
-And we can remove the conditional now:
+And we can remove the conditional now:  
+
 ```ruby
 %p= @address.address
 %p= @address.city

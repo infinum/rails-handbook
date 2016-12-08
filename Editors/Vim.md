@@ -8,7 +8,7 @@ editing source code due it's text editing power and flexibility.
 You can read more about setting up Vim on our [Dotfiles wiki](https://github.com/infinum/dotfiles/wiki/Setting-up-Vim).
 
 ## Learning Vim
-### Interactive tutorials
+**Interactive tutorials**
 * Vimtutor  
 A built-in interactive tutorial covering all Vim's features. You can access vimtutor by typing vimtutor into your terminal emulator.
 
@@ -17,12 +17,12 @@ A browser-based game that teaches you how to use Vim. Only the first level is
 free, the others are paid.
 
 * [Getting started with Vim: An Interactive Guide](https://scotch.io/tutorials/getting-started-with-vim-an-interactive-guide)    
-An introduction article that features an interactive, in-browser Vim-like editor through out the article, in which you can try out various stuff the article teaches you. 
+An introduction article that features an interactive, in-browser Vim-like editor through out the article, in which you can try out various stuff the article teaches you.
 
 * [Vim snake](http://www.vimsnake.com/)  
 Another browser-based game, this one focused on mastering hjkl keys for movement and entering and exiting insert mode.
 
-### Books
+**Books**
 * [Practical Vim](https://github.com/doomzhou/vlb/raw/master/Practical-Vim-Edit-Text-at-the-Speed-of-Thought.pdf), by Drew Neil  
 Probably the best Vim book around. An excellent resource for both beginner and
 intermediate users.
@@ -30,7 +30,7 @@ intermediate users.
 * [Learning the Vi and Vim editors](http://pntpm4.ulb.ac.be/pntpm/Files/OReilly.Learning.the.vi.and.Vim.Editors.7th.Edition.Jul.2008.pdf), by Arnold Robbins, Elbert Hannah & Linda Lamb  
 Also a really good resource for learning both Vim and its predecessor, Vi.
 
-### Screencasts
+**Screencasts**
 * [Vim video series](http://derekwyatt.org/vim/tutorials/), by Derek Wyatt  
 An excellent and in-depth video series covering both beginner, intemerdiate and
 advaced topics. Also has some videos that showcase Vim's features and what makes
@@ -45,7 +45,7 @@ author of the Practical Vim book.
 Although not primarly a Vim screencast, some episodes are focused exclusively on
 Vim.
 
-### Articles
+**Articles**
 * [Vim galore](https://github.com/mhinz/vim-galore), by mhinz
 An extensive article hosted on Github covering all the Vim basics and terminology.
 
@@ -81,23 +81,23 @@ saner to use since it's default configurations are pretty bad. The dotfiles also
 install some necessary plugins that you won't be able to live without.
 
 ## Resources
-### Plugins
+**Plugins**
 * [Vim Awesome](http://vimawesome.com/)
 * [Vim Scripts](http://www.vim.org/scripts/)
 * [Google](http://www.google.com/)
 
-### Colorschemes
+**Colorschemes**
 * [Vim Colors](http://vimcolors.com/)
 
-### Cheat sheets
+**Cheat sheets**
 * [Interactive cheat sheet](http://sheet.shiar.nl/vi/)
 
-### Talks
+**Talks**
 * [Write code faster: Expert-level Vim](https://www.youtube.com/watch?v=SkdrYWhh-8s), by Ben Orenstein  
 * [Let Vim do the Typing](https://www.youtube.com/watch?v=SkdrYWhh-8s), by George Brocklehurst  
 Covers registers, built-in text completion and omni-complete.
 
-### Miscellaneous articles
+**Miscellaneous articles**
 * [Effective TDD with Ruby: Tmux setup](http://lucaguidi.com/2015/11/17/effective-tdd-with-ruby-tmux-setup.html), by Luca Guidi
 Talks about using Tmux and Vim to improve your TDD flow
 * [Why Vim](https://www.reddit.com/r/ProgrammerHumor/comments/338tx5/vim/), by LegionSB  

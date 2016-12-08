@@ -39,7 +39,7 @@ gem 'shrine'
 # Only add this gem if you are going to use Amazon S3 as storage
 gem 'aws-sdk', '~> 2.1'
 
-# Only add these gems if you are goint to handle image uploads
+# Only add these gems if you are going to handle image uploads
 gem 'mini_magick'
 gem 'image_processing'
 gem 'fastimage'
@@ -261,4 +261,3 @@ shrine:
 
 * [Shrine for CarrierWave Users](http://shrinerb.com/rdoc/files/doc/carrierwave_md.html)
 * [Shrine for Paperclip Users](http://shrinerb.com/rdoc/files/doc/paperclip_md.html)
-

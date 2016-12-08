@@ -3,14 +3,14 @@
 Query objects store complex SQL queries, data aggregation and filtering methods.
 
 The goal of this pattern is to remove code for querying sets of objects from
-models/controllers and to provide a simple yet powerfult interface for complex
+models/controllers and to provide a simple yet powerful interface for complex
 data aggregation.
 
 ## In practice
 
 Query objects live in the `app/queries` folder.
 
-Their naming convetion is similar to that of controllers.
+Their naming convention is similar to that of controllers.
 Each object should bear the the plural of the name of the model it queries
 suffixed by the word 'Query'. E.g. an object that queries articles should be
 called ArticlesQuery.
@@ -86,7 +86,7 @@ the User model that has the following fields:
 
 ## Bad solution
 
-The usual bad solution is to keep everything eather in a controller or in a
+The usual bad solution is to keep everything either in a controller or in a
 model, thus making them 'fat'.
 
 Controller solution:
@@ -121,7 +121,7 @@ end
 ```
 
 It doesn't matter if we put this code in a controller or in a model, it simply
-doesn't belong there. A model's job isn't to handle quering logic, query
+doesn't belong there. A model's job isn't to handle querying logic, query
 logic in a controller isn't reusable and it makes the controller 'fat'.
 
 ## Good solution

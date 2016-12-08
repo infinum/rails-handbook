@@ -26,7 +26,7 @@ We want to print out first (primary) address.
 
 ## Bad Solution
 
-We get the first addressthis way:
+We get the first address this way:
 
 ```ruby
 @address = @company.addresses.first

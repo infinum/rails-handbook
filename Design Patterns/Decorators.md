@@ -189,7 +189,7 @@ decorators and adds some additional sugar on top of the SimpleDelegator decorato
 
 One of the benefits of using draper is that it provides the view context inside of the
 decorator, so you can easily use view-specific methods in your decorator. This isn't
-something too desireable, so make sure to only use it for simple conditional renders.
+something too desirable, so make sure to only use it for simple conditional renders.
 
 ``` ruby
 class UserDecorator < Draper::Decorator
@@ -198,7 +198,7 @@ class UserDecorator < Draper::Decorator
   decorates_association :comments
 
   # You can delegate either specific methods to the underlying object, or use delegate_all
-  # to delegate all methods sent to the decorator to the underliying object
+  # to delegate all methods sent to the decorator to the underlying object
   delegate :first_name, :last_name, :birthday, :email_private?, :email
 
   def full_name

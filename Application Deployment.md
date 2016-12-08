@@ -14,7 +14,7 @@ build passes.
   of the old functionality.
 
 * The build server can deploy the changes automatically if it's set up to do so
-  and the build passess successfully, which removes the need to deploy changes
+  and the build passes successfully, which removes the need to deploy changes
   manually after a push to the remote repository.
 
 * The build server can also send build status notifications to Slack, emails and
@@ -36,7 +36,7 @@ Mina in the README.md of the Mina repository.
 [Semaphore](http://www.semaphoreci.com) is the build service we're currently
 using. Semaphore supports notifications through instant messaging software,
 emails and other methods. It also supports automated deployments, which need to
-be configured seperately.
+be configured separately.
 
 Semaphore uses mina for deployment in the background, and you can check other
 projects for details on how to set up deployment.
@@ -44,16 +44,16 @@ projects for details on how to set up deployment.
 New projects on Semaphore can only be created by admin users, so if you need to
 create a new project, be sure to contact your team lead for it.
 
-## Git and continous delivery
+## Git and continuous delivery
 
-Using continous delivery for deploying our applications requires some care when
+Using continuous delivery for deploying our applications requires some care when
 handling git branches.
 
 * The master branch is the production branch, while the develop branch is the
   staging branch
-* Changes should never be commited or pushed to the master branch directly -
+* Changes should never be committed or pushed to the master branch directly -
   they should always be merged into master from the develop branch instead
-* All changes should be made in a seperate branch, created from the develop
+* All changes should be made in a separate branch, created from the develop
   branch
 * When the changes are completed and reviewed, they should be merged into the
   develop branch and deployed to the staging server

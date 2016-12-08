@@ -8,7 +8,7 @@
 * Go to https://demo-mojcert.fina.hr/finacms/
 * Click on 'Registriraj Se'
 * Choose tab 'Preuzimanje Soft certifikata' and enter the referent nubmer and PIN number (Autorizacijski kod)
-* Once logged in, just select new certificate and clik on 'izdavanje', where you will be prompted to choose a password
+* Once logged in, just select new certificate and click on 'izdavanje', where you will be prompted to choose a password
 * After choosing a password the Certificate will begin downloading
 
 # Current DEMO certificate

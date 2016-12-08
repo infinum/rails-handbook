@@ -120,7 +120,7 @@ class City < ActiveRecord::Base
 end
 ```
 
-This is not a good solution because our `City` model should not have the responsibility of importing csv files, but rather only handle database persistance.
+This is not a good solution because our `City` model should not have the responsibility of importing csv files, but rather only handle database persistence.
 
 Although this is just one method, our model would become bloated with a more complex example and with more similar tasks.
 

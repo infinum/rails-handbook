@@ -9,8 +9,6 @@ With Null objects we can:
 
 ## Example
 
-### Assignment
-
 We have an address model where we store all the address information like city, zipcode, country, etc...
 
 ```ruby
@@ -26,7 +24,7 @@ Also we have a company model which can have multiple addresses but it can also h
 
 We want to print out first (primary) address.
 
-### Bad Solution
+## Bad Solution
 
 We get the first addressthis way:
 
@@ -49,7 +47,7 @@ Now `@address` can be `nil` so we have to check if address is present before we 
   %p= '< no country entered >'
 ```
 
-### Good Solution
+## Good Solution
 
 We create a NullAddress class with it's default behaviours:
 
@@ -58,15 +56,15 @@ class NullAddress
   def address
     '< no address entered >'
   end
-  
+
   def city
     '< no city entered >'
   end
-  
+
   def zipcode
     '< no zipcode entered >'
   end
-  
+
   def country
     '< no country entered >'
   end
@@ -87,13 +85,13 @@ And we can remove the conditional now:
 %p= @address.country
 ```
 
-### Questions
+## Questions
 
-### Where to put my Null objects classes
+**Where to put my Null objects classes**
 
 Create a folder `app/nulls` and put all your Null object classes there
 
-### Further reading
+## Further reading
 
 - [Handling Associations on Null Objects](https://robots.thoughtbot.com/handling-associations-on-null-objects)
 - [Rails Refactoring Example: Introduce Null Object](https://robots.thoughtbot.com/rails-refactoring-example-introduce-null-object)

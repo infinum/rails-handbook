@@ -68,8 +68,6 @@ end
 
 ## Examples
 
-### Assignment
-
 We have an Article model that has the following fields:
 
 * author_id
@@ -86,7 +84,7 @@ the User model that has the following fields:
 * first_name
 * last_name
 
-### Bad solution
+## Bad solution
 
 The usual bad solution is to keep everything eather in a controller or in a
 model, thus making them 'fat'.
@@ -126,7 +124,7 @@ It doesn't matter if we put this code in a controller or in a model, it simply
 doesn't belong there. A model's job isn't to handle quering logic, query
 logic in a controller isn't reusable and it makes the controller 'fat'.
 
-### Good solution
+## Good solution
 
 Create a query object in the `app/queries` directory.
 It's implementation should resemble the following:

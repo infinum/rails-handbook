@@ -342,5 +342,5 @@ returns prepared responses. This calls a in memory adapter and it’s a very use
 
 ## More info
 
-- [Arkency ruby rails adapters](http://blog.arkency.com/2014/08/ruby-rails-adapters/)
-- [Adapter design pattern in rails application](http://rustamagasanov.com/blog/2014/11/16/adapter-design-pattern-usage-in-rails-application-on-examples/)
+* [Arkency ruby rails adapters](http://blog.arkency.com/2014/08/ruby-rails-adapters/)
+* [Adapter design pattern in rails application](http://rustamagasanov.com/blog/2014/11/16/adapter-design-pattern-usage-in-rails-application-on-examples/)

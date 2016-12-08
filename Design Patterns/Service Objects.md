@@ -17,11 +17,9 @@ The file `app/services/order/creator.rb` will define `Order::Creator`
 
 ## Example
 
-### Assignment
-
 You have a model Parking Place and you need to merge two records into one record
 
-### Bad Solution
+## Bad Solution
 
 Do everything in a controller
 
@@ -124,7 +122,7 @@ class ParkingPlaceMergerer
 end
 ```
 
-### Further reading
+## Further reading
 
 [Keeping your rails controllers dry with services](https://blog.engineyard.com/2014/keeping-your-rails-controllers-dry-with-services)
 

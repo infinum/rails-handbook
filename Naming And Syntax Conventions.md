@@ -21,9 +21,10 @@ instead of
 developers = ['Lucas', 'John', 'Tommy']
 ```
 
-We find it OK to write string arrays in the second manner for 2 reasons:
-- we never remember to write them with the percentage notation in the first place so we always have to change them afterwards.
-- the percentage notation looks odd when you have multiple words in one string:
+We find it OK to write string arrays in the second manner for 2 reasons:  
+
+* we never remember to write them with the percentage notation in the first place so we always have to change them afterwards.
+* the percentage notation looks odd when you have multiple words in one string:
 
 ```
 developers = %w(Lucas John Tommy Herman\ Zvonimir)

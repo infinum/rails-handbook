@@ -9,10 +9,8 @@ With Form Objects we can:
   - Easily add additional behaviour to forms (i.e. methods)
   - Reuse logic between multiple forms
   - Use with formbuilders like SimpleForm or Formtastic
-  
-# Example
 
-## Assignment
+## Example
 
 We have a registration form where we ask users to give us the following data:
   - full name
@@ -22,16 +20,16 @@ We have a registration form where we ask users to give us the following data:
 
 `full_name` and `email` are associated with `User` model and `company_name` and `phone_number` are associated with `Company` model and we want to create both models on form submission. Additionaly `User` model has `first_name` and `last_name` columns so we have to split the `full_name` attribute.
 
-# Bad solution
+## Bad solution
 
-There are couple of bad ways in which we could do this. One bad way is by adding missing attributes to one model, lets say User: 
+There are couple of bad ways in which we could do this. One bad way is by adding missing attributes to one model, lets say User:
 
 ```ruby
 class User < ActiveRecord::Base
   attr_accessor :company_name
   attr_accessor :phone
   attr_accessor :full_name
-  
+
   validates :email, presence: true, email: true
   validates :company_name, presence: true
   validates :full_name, presence: true
@@ -73,32 +71,32 @@ class RegistrationsController < ApplicationController
 end
 ```
 
-# Good solution
+## Good solution
 
 We create a Form Object to represent this specific form:
 
 ```ruby
 class RegistrationForm
   include ActiveModel::Model
-  
+
   attr_accessor :full_name
   attr_accessor :company_name
   attr_accessor :phone
   attr_accessor :email
-  
+
   validates :full_name, presence: true
   validates :company_name, presence: true
   validates :email, presence: true, email: true
 
   def save
     return false unless valid?
-    
+
     company = Company.create(name: company_name, phone: phone)
     company.users.create(first_name: user_first_name, user_last_name: last_name, email: email)
   end
-  
+
   private
-  
+
   def user_first_name
     full_name.split(' ').first
   end
@@ -141,9 +139,9 @@ end
 
 If the form is valid we create both models and redirect to success path. On the other hand if there are any validation errors, we rerender the `:new` partial with errors. Everything here behaves like we are using an ActiveRecord model.
 
-### Questions
+## Questions
 
-### Can I use I18n with Form Objects?
+**Can I use I18n with Form Objects?**
 
 Sure, the same way you use I18n with ActiveRecord objects. Just use `activemodel` insted of `activerecord` key in your locale files:
 
@@ -158,14 +156,14 @@ en:
         registration_form:
           attributes:
             phone:
-              present: "Phone number can't be blank" 
+              present: "Phone number can't be blank"
 ```
 
-### Where to put the Form Object classes?
+**Where to put the Form Object classes?**
 
 Create a folder `app/forms` and put all your Form Object classes there
 
-### Further reading
+## Further reading
   - [ActiveModel Form Objects](https://robots.thoughtbot.com/activemodel-form-objects)
   - [Reform](https://github.com/apotonick/reform)
   - [Active Type](https://github.com/makandra/active_type)

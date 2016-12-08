@@ -2,10 +2,11 @@
 
 Data objects are used for encapsulating (complex) data-structures into objects rather than into primitives such as arrays or hashes.
 
-Data objects give us:
-  - Better introspect into what our data structure holds
-  - Flexibility to manipulate data in a uniform place
-  - Convenience of adding additional behavior (i.e. methods)
+Data objects give us:  
+
+  * Better introspect into what our data structure holds
+  * Flexibility to manipulate data in a uniform place
+  * Convenience of adding additional behavior (i.e. methods).
 
 ## Example
 
@@ -19,10 +20,11 @@ US, LA, los angeles
 US, SF, san francisco
 ```
 
-The CSV is not exactly in the format that we want:
-  - we need all of the words in a cities name to be capitalized
-  - the codes aren't in a way we need them - we want to store them concatenated - `USNYC` instead of `US` & `NYC`
-  - the CSV is malformed and some of the cities came without a name - we have to ignore those.
+The CSV is not exactly in the format that we want:  
+
+  * we need all of the words in a cities name to be capitalized
+  * the codes aren't in a way we need them - we want to store them concatenated - `USNYC` instead of `US` & `NYC`
+  * the CSV is malformed and some of the cities came without a name - we have to ignore those.
 
 ## Bad Solution
 
@@ -54,7 +56,6 @@ end
 ```
 
 1. Can you tell what the #import method does **without looking** at our CSV structure? The #import method is unreadable. And note, **this is an oversimplified version of the real world example.**
-
 2. What would happen if we reorganized the order of our columns? We would have to calculate column position multiple times and possibly at multiple places.
 
 ## Good Solution
@@ -125,10 +126,11 @@ Although this is just one method, our model would become bloated with a more com
 
 **Where to put the `CSVCity` and `CityImporter` class?**
 
-There are multiple places where you could put this kind of code, a good place could be:
-  - create a folder `app/csv_importers`, add the `CityImporter` there, and the `CSVCity` inside the same class.
-  - if you're using this in something like a rake task, you can write that content in the rake task file itself.
+There are multiple places where you could put this kind of code, a good place could be:  
+
+  * create a folder `app/csv_importers`, add the `CityImporter` there, and the `CSVCity` inside the same class.
+  * if you're using this in something like a rake task, you can write that content in the rake task file itself.
 
 ##Further reading
 
-  - [Be nice to each other, use data objects](http://brewhouse.io/2015/07/31/be-nice-to-others-and-your-future-self-use-data-objects.html)
+  * [Be nice to each other, use data objects](http://brewhouse.io/2015/07/31/be-nice-to-others-and-your-future-self-use-data-objects.html)

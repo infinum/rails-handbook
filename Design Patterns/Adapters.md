@@ -65,7 +65,7 @@ class InstagramAdapter
 end
 ```
 
-In this case there is a single instagram_adapter.rb class located in /app/adapters/instagram/, if the single class starts to get to large we can separate the concerns based on api calls. For example lets say we have a github adapter, we can have two adapters one for commits and one for repos. So the structure would be as follows app/adapters/github/commits_adapter.rb and app/adapters/github/repos_adapter.rb and we would have a base class for connecting to api located in app/adapters/github/base_adapter.rb. Except for multiple files there is not much difference from the example above.
+In this case there is a single ```instagram_adapter.rb``` class located in ```/app/adapters/instagram/```, if the single class starts to get to large we can separate the concerns based on api calls. For example lets say we have a github adapter, we can have two adapters one for commits and one for repos. So the structure would be as follows ```app/adapters/github/commits_adapter.rb``` and ```app/adapters/github/repos_adapter.rb``` and we would have a base class for connecting to api located in ```app/adapters/github/base_adapter.rb```. Except for multiple files there is not much difference from the example above.
 
 ## Going Beyond simple Adapters
 If we are going to build a complete wrapper around third party api (i.e. Dolcela, PTV etc.) or if we need options on manipulating requests and responses from the api (i.e. Github, Instagram, Facebook) just using adapters won't be sufficient.
@@ -81,7 +81,7 @@ Deserializers - used for parsing responses from the external API.
 Deserializers are used if we want to parse the response we received from the external API. This is a very frequent case where
 the response format from the API is not quite adequate to our application needs.
 
-Deserializers are stored in /app/adapters/{api_service}/deserializers/ where api_service is the external api i.e. InstagramDolcela, PTV etc.
+Deserializers are stored in ```/app/adapters/{api_service}/deserializers/``` where ```api_service``` is the external api i.e. InstagramDolcela, PTV etc.
 
 In the following example we instantiate the Deserializer object by sending the API response to the initialize method.
 

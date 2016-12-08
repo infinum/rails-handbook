@@ -9,8 +9,6 @@ Data objects give us:
 
 ## Example
 
-### Assignment
-
 We got a list of cities in a CSV format and we have to store them in our database.
 
 Each city comes with the following three informations: country code, city code and a name:
@@ -26,7 +24,7 @@ The CSV is not exactly in the format that we want:
   - the codes aren't in a way we need them - we want to store them concatenated - `USNYC` instead of `US` & `NYC`
   - the CSV is malformed and some of the cities came without a name - we have to ignore those.
 
-### Bad Solution
+## Bad Solution
 
 We want to retrieve the cities from the CSV in Ruby - natively they would come as an array of arrays:
 
@@ -59,7 +57,7 @@ end
 
 2. What would happen if we reorganized the order of our columns? We would have to calculate column position multiple times and possibly at multiple places.
 
-### Good Solution
+## Good Solution
 
 We could ditch our unreadable arrays and create an object that plays nicely with our CSV data:
 
@@ -102,9 +100,9 @@ class LocationImporter
 end
 ```
 
-### Questions
+## Questions
 
-#### Couldn't this go into a model?
+**Couldn't this go into a model?**
 
 A possible solution **(but a really bad one)** would be to create a "factory" class method called `from_csv` in our `City` model:
 
@@ -125,12 +123,12 @@ This is not a good solution because our `City` model should not have the respons
 
 Although this is just one method, our model would become bloated with a more complex example and with more similar tasks.
 
-### Where to put the `CSVCity` and `CityImporter` class?
+**Where to put the `CSVCity` and `CityImporter` class?**
 
 There are multiple places where you could put this kind of code, a good place could be:
   - create a folder `app/csv_importers`, add the `CityImporter` there, and the `CSVCity` inside the same class.
   - if you're using this in something like a rake task, you can write that content in the rake task file itself.
 
-### Further reading
+##Further reading
 
   - [Be nice to each other, use data objects](http://brewhouse.io/2015/07/31/be-nice-to-others-and-your-future-self-use-data-objects.html)

@@ -3,9 +3,9 @@
 The intent of a Null Object is to encapsulate the absence of an object by providing a substitutable alternative that offers suitable default behavior.
 
 With Null objects we can:
-  - Encapsulate the absence of an object by providing a substitutable alternative
-  - Remove conditionals from our code (try, nil?, &&..)
-  - Keep all Null objects structured in one place
+  * Encapsulate the absence of an object by providing a substitutable alternative
+  * Remove conditionals from our code (try, nil?, &&..)
+  * Keep all Null objects structured in one place
 
 ## Example
 
@@ -94,5 +94,5 @@ Create a folder `app/nulls` and put all your Null object classes there
 
 ## Further reading
 
-- [Handling Associations on Null Objects](https://robots.thoughtbot.com/handling-associations-on-null-objects)
-- [Rails Refactoring Example: Introduce Null Object](https://robots.thoughtbot.com/rails-refactoring-example-introduce-null-object)
+* [Handling Associations on Null Objects](https://robots.thoughtbot.com/handling-associations-on-null-objects)
+* [Rails Refactoring Example: Introduce Null Object](https://robots.thoughtbot.com/rails-refactoring-example-introduce-null-object)

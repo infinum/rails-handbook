@@ -23,7 +23,8 @@ Writing a data migration is a bit trickier. You start of by writing a schema mig
 
 __Write raw sql queries inside of your data migrations.__
 
-Example:
+Example:  
+
 ``` ruby
 def change
   execute(<<-SQL

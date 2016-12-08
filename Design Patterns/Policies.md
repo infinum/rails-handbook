@@ -8,8 +8,6 @@ The most used gem based on policy objects is [Pundit](https://github.com/elabs/p
 
 ## Example
 
-### Assignment
-
 We have an Order model that has this fields: `company_id`, `due_date`, `active`, `offers_count`. Field `company_id` tells us which company created the order. An Order can have multiple Offers from **other companies**. The Offer model consist of `order_id`, `company_id`, `amount`.
 
 Let's say that we have an OffersController with basic CRUD actions. Before every action we need to perform authorization checks.
@@ -24,7 +22,7 @@ For updating the order, the rules are as follows:
 - User cannot edit other companies offers.
 - Offer cannot be updated after order's due date.
 
-### Bad solution
+## Bad solution
 
 We will put authorization logic in controller actions.
 
@@ -74,7 +72,7 @@ class OffersController < ApplicationController
 end
 ```
 
-### Good solution
+## Good solution
 
 We will use Pundit to extract authorization logic into a separate ruby class.
 
@@ -158,7 +156,7 @@ That's it.
 
 ## Questions
 
-### How Pundit's `authorize` method actually works?
+**How Pundit's `authorize` method actually works?**
 
 From Pundit's docs:
 The authorize method automatically infers that Offer class will have a matching OfferPolicy class - it instantiates the OfferPolicy class, passing in the current user and the given record. It then infers from the action name, that it should call update? on this instance of the policy. In this case, you can imagine that authorize would have done something like this:

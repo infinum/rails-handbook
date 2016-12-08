@@ -7,7 +7,7 @@ This approach includes an automated build service that runs your automated test
 suite, which can usually also deploy the latest changes to the server if the
 build passes.
 
-# Why?
+## Why?
 
 * By having an extensive test suite that runs automatically after pushing to the
   remote repository, you can be certain that your new changes didn't break any
@@ -21,7 +21,7 @@ build passes.
   other communication channels. This is useful since all the members of your
   team will be notified if a build or deployment fails
 
-# Mina
+## Mina
 
 [Mina](https://github.com/mina-deploy/mina) is the deploy tool we're currently
 using. It's being maintained by our very own [@d4be4st](https://github.com/d4be4st/), so if you run into any
@@ -31,7 +31,7 @@ Since mina shouldn't be used directly for deployment, this article won't go into
 extreme lengths about it. You can read more about the deployment process with
 Mina in the README.md of the Mina repository.
 
-# Semaphore
+## Semaphore
 
 [Semaphore](http://www.semaphoreci.com) is the build service we're currently
 using. Semaphore supports notifications through instant messaging software,
@@ -44,7 +44,7 @@ projects for details on how to set up deployment.
 New projects on Semaphore can only be created by admin users, so if you need to
 create a new project, be sure to contact your team lead for it.
 
-# Git and continous delivery
+## Git and continous delivery
 
 Using continous delivery for deploying our applications requires some care when
 handling git branches.
@@ -60,8 +60,7 @@ handling git branches.
 * Once the changes have passed any additional checks on the staging server, the
   develop branch can be merged into the master branch and deployed to production.
 
-# Sources
+## Sources
 * [A Ruby on Rails Continuous Integration process using Github, Semaphore,
 CodeClimate and
 HipChat](https://infinum.co/the-capsized-eight/articles/a-ruby-on-rails-continous-integration-process-using-semaphore-github-codeclimate-and-hipchat), by Jan Varljen
-

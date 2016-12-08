@@ -11,7 +11,8 @@ I would just point out that you can [pass modifiers](http://edgeguides.rubyonrai
 
 Here is where things get a bit complicated. As your project grows and evolves so does your data. At some point you might realize you forgot to add a default to a field. Or that you want to change an enumeration. Or do any kind of manipulation on existing data in your database.
 
-There are two way of dealing with those problems:
+There are two way of dealing with those problems:  
+
 1. Write a rake task
 2. Write a data migration
 

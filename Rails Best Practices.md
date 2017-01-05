@@ -1,5 +1,3 @@
-# Rails Best Practices
-
 * [Check the return value of "save", otherwise use "save!"](http://rails-bestpractices.com/posts/2012/11/02/check-the-return-value-of-save-otherwise-use-save) Same goes for create & update.
 * Never use `has_and_belongs_to_many` - rather use `has_many :through`. The first one has unexpected hidden behaviors and requires a fair amount of work converting it to the second macro if you find out that you need an extra column in the intermediate table.
 * [Never rescue the Exception class](http://rails-bestpractices.com/posts/2012/11/01/don-t-rescue-exception-rescue-standarderror/)

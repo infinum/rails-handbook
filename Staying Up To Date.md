@@ -1,5 +1,3 @@
-# Staying up to date
-
 We continuously try to upgrade our internal processes and one of the key things about them is staying up to date with the technologies we use.
 
 Browsing the web for tech news can be cumbersome and a fairly easier way is to subscribe to various newsletters that handout interesting content once in a while to our inbox.

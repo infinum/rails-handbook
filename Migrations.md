@@ -1,5 +1,3 @@
-# Writing migrations
-
 ## Schema migrations
 
 The [rails migrations guide](http://edgeguides.rubyonrails.org/active_record_migrations.html) does a very good job of

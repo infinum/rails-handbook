@@ -1,4 +1,4 @@
-# PreCreation Checkup (Team Lead)
+## PreCreation Checkup (Team Lead)
 
 Before a developer creates a new application, a couple of 3rd party services need to be setup.
 

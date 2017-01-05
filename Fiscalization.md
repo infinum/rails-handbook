@@ -11,6 +11,6 @@
 * Once logged in, just select new certificate and click on 'izdavanje', where you will be prompted to choose a password
 * After choosing a password the Certificate will begin downloading
 
-# Current DEMO certificate
+## Current DEMO certificate
 
 * Current certificate and password are located on GDrive/Infinum Everyone/Rails Team/Fiskalizacijski DEMO cert

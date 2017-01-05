@@ -1,5 +1,3 @@
-# Adapters
-
 Adapters are objects with the purpose of wrapping third party api calls. The idea behind adapter objects is to introduce an abstraction layer
 over our external API calls, this makes all the requests going from our application to outside third party API-s centralized in one place.
 Also, if for some reason we want to replace the existing gem for the API calls we can easily do so without the need to search the entire codebase

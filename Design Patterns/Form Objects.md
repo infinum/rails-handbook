@@ -1,5 +1,3 @@
-# Form Objects
-
 Form Objects are used for removing form specific logic away from your ActiveRecord models into a separate class.
 
 With Form Objects we can:  

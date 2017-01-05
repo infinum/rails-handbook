@@ -1,5 +1,3 @@
-# Policies
-
 Policy objects are plain old ruby ruby classes that encapsulates complex read operations. One definition says that policy objects are similar to Service objects, but the difference is that Service objects are used for write operations and Policy objects for reads. Also, they are different from Query objects as query objects focus on SQL reads and Policy objects operate on data already loaded in memory.
 
 Most common case to use Policy objects is for authorization when you need to check combination of rules before allowing user to execute some action. Sometimes those rules are complex and it is better to extract this logic in it's own class, rather than putting it in controllers.

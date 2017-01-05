@@ -1,5 +1,3 @@
-# Git process
-
 Our git process is a mix of [Gitflow](https://www.atlassian.com/git/tutorials/comparing-workflows/gitflow-workflow) & [Github Flow](https://guides.github.com/introduction/flow/).
 
 
@@ -11,7 +9,7 @@ We use **feature branches** for adding new features - names of feature branches 
 
 Feature branches are always merged first into develop and then into master if they are ready for production.
 
-We use pull requests for adding new features - pull requests initiate discussion about your commits. Because they're tightly integrated with the underlying Git repository, anyone can see exactly what changes would be merged if they accept your request. Pull requests are done for feature branched when they need to be merged to develop. The pull request workflow is defined for each project separately. 
+We use pull requests for adding new features - pull requests initiate discussion about your commits. Because they're tightly integrated with the underlying Git repository, anyone can see exactly what changes would be merged if they accept your request. Pull requests are done for feature branched when they need to be merged to develop. The pull request workflow is defined for each project separately.
 
 We use **bugfix branches** to quickly patch production releases. This is the only branch that should fork directly off of master. As soon as the fix is complete, it should be merged into both master and develop. Prefix bugfix branches with `bugfix/`.
 

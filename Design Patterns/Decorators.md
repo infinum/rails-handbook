@@ -1,5 +1,3 @@
-# Decorator pattern
-
 The [decorator pattern](https://en.wikipedia.org/wiki/Decorator_pattern) is
 used to wrap an object and extend its functionality without modifying the
 object itself. It's similar to the presenter and adapter patterns, which also

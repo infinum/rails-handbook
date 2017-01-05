@@ -1,5 +1,3 @@
-# Query objects
-
 Query objects store complex SQL queries, data aggregation and filtering methods.
 
 The goal of this pattern is to remove code for querying sets of objects from

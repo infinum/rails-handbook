@@ -1,5 +1,3 @@
-# Mailers
-
 ## Production
 
 We are using [mailgun](https://mailgun.com) to send mails from our apps.

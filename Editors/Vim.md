@@ -1,4 +1,3 @@
-# Vim
 [Vim](https://en.wikipedia.org/wiki/Vim_%28text_editor%29) is a ~~cleaning
 product~~ (primarily) terminal-based, modal text editor first released in 1991.
 Despite it's old age, it is still one of [the most popular text editors](http://www.askr.me/ruby#ember1447) for

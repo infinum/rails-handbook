@@ -1,4 +1,4 @@
-# Web application checklist
+## Web application checklist
 
 Before you release a Rails application to production, you **must** go through this checklist.
 

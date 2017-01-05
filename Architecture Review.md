@@ -1,5 +1,3 @@
-# Architecture Planning And Review
-
 ## The reason behind it
 
 Before you start programming, your application should go through an architecture review.

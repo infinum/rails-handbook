@@ -1,5 +1,3 @@
-# Writing Quality Code
-
 We strive to write code that conforms to the 4 rules for developers by [Sandi Metz](http://www.sandimetz.com/):
 
 1. Classes can be no longer than one hundred lines of code.

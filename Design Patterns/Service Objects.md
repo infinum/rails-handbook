@@ -1,6 +1,3 @@
-# Service Objects
-
-
 ## What is a service object?
 
 *Service Object implements the user’s interactions with the application*.

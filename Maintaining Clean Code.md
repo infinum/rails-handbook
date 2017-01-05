@@ -1,5 +1,3 @@
-# Maintaining Clean code
-
 Once in a while you'll face a challenge of adding a feature to a legacy project. Please follow these rules:
 
 * Follow the Boy Scout Rule - always leave the code behind in a better state than you found it. If you're working with a legacy codebase, try to leave the code you're touching in a better state by not doing hacks, but rather adapting the code to conform to new feature requirements. Thinking you'll do the refactoring later is wrong since that never happens.

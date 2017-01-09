@@ -14,3 +14,16 @@
 ## Current DEMO certificate
 
 * Current certificate and password are located on GDrive/Infinum Everyone/Rails Team/Fiskalizacijski DEMO cert
+
+## Using DEMO certificate with fiscalizer gem
+
+Be sure to use `> 1.0.0` version of [fiscalizer gem](https://github.com/infinum/fiscalizer/).
+You need to set the following secrets:
+
+```
+fiscalization_certificate_p12_path: cert/development/FISKAL_1.p12
+fiscalization_certificate_path: cert/development/fina_ca.pem
+fiscalization_password: neki_pass
+fiscalization_url: https://cistest.apis-it.hr:8449/FiskalizacijaServiceTest
+fiscalization_certificate_issued_by: 'OU=DEMO,O=FINA,C=HR'
+```

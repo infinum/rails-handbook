@@ -72,7 +72,7 @@ Move the logic to service object.
 # app/controllers/parking_place_controller.rb
 class ParkingPlaceController < ApplicationController
   def merge
-    MergeParkingPlaces.new(
+    ParkingPlaceMergerer.new(
       params[:primary_parking_place_id],
       params[:secondary_parking_place_id]
     ).call

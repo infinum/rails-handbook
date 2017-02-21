@@ -42,12 +42,14 @@ To use Graylog in a Rails project you need to do the following:
   * Example
 
     ```Ruby
-      SemanticLogger.add_appender(
-        appender:    :graylog,
-        url:         "udp://#{Rails.application.config.graylog_host}.infinum.co:12201",
-        application: "application_name-#{Rails.env}",
-        level:       :info
-      )
+      if Rails.application.config.graylog_host.present?
+        SemanticLogger.add_appender(
+          appender:    :graylog,
+          url:         "udp://#{Rails.application.config.graylog_host}.infinum.co:12201",
+          application: "application_name-#{Rails.env}",
+          level:       :info
+        )
+      end
     ```
 
 * Customize payload

@@ -54,7 +54,7 @@ To use Graylog in a Rails project you need to do the following:
 
 * Customize payload
 
-  * Example
+  * Add following code in the controllers which requests you want to track.
 
     ```Ruby
       def append_info_to_payload(payload)
@@ -63,3 +63,4 @@ To use Graylog in a Rails project you need to do the following:
         payload[:user] = current_user.username if current_user.present?
       end
     ```
+  * If there is more then one controller which requests you want to track, create `Loggable.rb` concern and include it in all controllers.

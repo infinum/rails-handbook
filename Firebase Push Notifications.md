@@ -58,6 +58,10 @@ There are three approaches for using Firebase:
   * CONS
     * We need to maintain user device_ids(create, delete).
 
+  * Examples
+    * [Push notifications service example](https://gist.github.com/fkuster/9cc5e19a59dc5bf11a35acc383ada01e)
+    * [API endpoints for login and logout](https://gist.github.com/fkuster/3654620f0f5b40fea2834cd21238f6ac)
+
 3. Approach based on topics
 
   * Topic is a named group of one or more device_ids stored in Firebase. Topic name can be anything that matches this regular expression: `[a-zA-Z0-9-_.~%]+`
@@ -80,6 +84,8 @@ There are three approaches for using Firebase:
 
     * CONS:
       * It doesn't seems that Firebase has limits on topics, but maybe in future they will restrict this like Amazon SNS does.
+  * Examples
+    * [Push notifications service example](https://gist.github.com/fkuster/9cc5e19a59dc5bf11a35acc383ada01e)
 
 ## Choosing right development approach
 Even though every application is different, our recommendation is a topic based approach.

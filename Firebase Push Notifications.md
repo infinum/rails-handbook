@@ -39,6 +39,7 @@ There are three approaches for using Firebase:
 2. Approach based on multiple device ids per user
 
   * A new table to store user device_ids needs to be implemented.
+  * Index on device_id is mandatory
 
   * PROS
     * User can get push notifications at multiple devices.
@@ -101,21 +102,28 @@ There are three approaches for using Firebase:
 
           def create
             # login logic goes here
-            current_user.devices.create(device_id: params[:device_id])
+            add_user_device
             expose current_user
           end
 
           def destroy
             # logout logic goes here
-            device = load_device
-            device.destroy
+            device.destroy if device.present?
             expose current_user
           end
 
           private
 
-          def load_device
-            current_user.devices.find_by(device_id: params[:device_id])
+          def add_user_device
+            if device.exists?
+              device.update(user: current_user)
+            else
+              current_user.devices.create(device_id: params[:device_id])
+            end
+          end
+
+          def device
+            @device ||= Device.find_by(device_id: params[:device_id])
           end
         end
       end

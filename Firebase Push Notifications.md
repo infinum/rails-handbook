@@ -1,15 +1,15 @@
 # Firebase push notifications
 
-We used to send push notifications directly to APNS or GCM from our code. We were maintaining device_ids, OS types, GCM/APNS certificates and sometimes this was really tricky.
+We used to send push notifications directly to APNS or GCM from our code. We were maintaining device_ids, OS types and GCM/APNS certificates. This approach was complicated and hard to maintain.
 
-We knew that an easier solution exist and then we discovered the Firebase. Firebase is a service which does all hard work for us. There is no certificates at server side and we don't need to maintain OS types, because the Firebase knows which notification goes to the APNS and which to the GCM. Basically, Firebase handles the routing and delivery of push notifications to targeted devices. Firebase also has a dashboard with the statistics and mobile developers can use this dashboard for testing purposes.
+We knew that an easier solution exist and then we discovered Firebase.
 
-There are many services which provide us with push notifications, but we are using Firebase because of its simplicity and reliability.
+Firebase is a service which does all the hard work for us. There is no need to store certificates on the server side because Firebase handles them for us. Furthermore, we don't need to maintain OS types, because Firebase knows which notification goes to the APNS and which to the GCM. Basically, Firebase handles the routing and delivery of push notifications to targeted devices. Firebase also has a dashboard with the statistics and mobile developers can use this dashboard for testing purposes.
+
+There are many push notification services (like Amazon SNS) which provide us with push notifications, but we are using Firebase because of its simplicity and reliability.
 
 ## General
 In this chapter we will explain a few approaches for push notifications implementations and theirs PROS and CONS.
-
-It is possible to send push notification to only one device, group of devices or to topics.
 
 Before development, read chapters about [Firebase Cloud Messaging](https://firebase.google.com/docs/cloud-messaging/), and [app server development](https://firebase.google.com/docs/cloud-messaging/server).
 
@@ -33,8 +33,9 @@ There are three approaches for using Firebase:
 
  * CONS
     * User can get notification only on last logged in device.
+    * Mobile developers need to be reminded to do a proper logout API call when user logs out. They are known to forget to do this.
 
- * This approach is not recommended because it is normal that users have multiple devices.
+ * Usually a user has multiple devices, so this approach is not recommended.
 
 2. Approach based on multiple device ids per user
 

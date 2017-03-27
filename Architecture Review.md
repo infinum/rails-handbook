@@ -10,7 +10,7 @@ We are doing architecture planning and review in order to:
 * to prevent scope creep
 * to have better architecture
 
-**Database design is by far the most important part of an web application.**
+**Database design is by far the most important part of a web application.**
 
 ## Architecture Review timeline
 

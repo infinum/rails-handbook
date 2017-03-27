@@ -1,5 +1,3 @@
-# Data Objects
-
 Data objects are used for encapsulating (complex) data-structures into objects rather than into primitives such as arrays or hashes.
 
 Data objects give us:  

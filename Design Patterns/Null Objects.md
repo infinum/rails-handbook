@@ -1,5 +1,3 @@
-# Null Objects
-
 The intent of a Null Object is to encapsulate the absence of an object by providing a substitutable alternative that offers suitable default behavior.
 
 With Null objects we can:

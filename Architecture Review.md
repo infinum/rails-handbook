@@ -1,5 +1,3 @@
-# Architecture Planning And Review
-
 ## The reason behind it
 
 Before you start programming, your application should go through an architecture review.
@@ -12,7 +10,7 @@ We are doing architecture planning and review in order to:
 * to prevent scope creep
 * to have better architecture
 
-**Database design is by far the most important part of an web application.**
+**Database design is by far the most important part of a web application.**
 
 ## Architecture Review timeline
 

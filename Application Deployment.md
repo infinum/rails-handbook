@@ -1,5 +1,3 @@
-# Application Deployment
-
 For deploying new versions of our websites, we use the [continuous delivery](https://en.wikipedia.org/wiki/Continuous_delivery)
 approach, sometimes also called [continuous integration](https://en.wikipedia.org/wiki/Continuous_integration).
 

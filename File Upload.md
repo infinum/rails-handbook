@@ -1,5 +1,3 @@
-# File upload
-
 There are a few file upload gems out there but out of all of them we use
 [Shrine](https://github.com/janko-m/shrine) because of it's flexibility and
 easy-to-extend nature.

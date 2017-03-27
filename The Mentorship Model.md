@@ -1,5 +1,3 @@
-# The Mentorship Model
-
 Every new team member (mentee) gets assigned a Mentor - a colleague that has more experience. Some of the responsibilities a mentor has are:
 
 * **Help with onboarding** - New colleague will have a lot of questions about team processes, tools and non-programming related stuff. Mentor is the first person who should help him and lead him to right direction.

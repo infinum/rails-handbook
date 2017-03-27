@@ -1,5 +1,3 @@
-# Code Reviews
-
 Every single project is different and you can always learn something new and useful. We found a way for developers to share their knowledge with each other.
 
 Every few weeks we generate pairs for weekly code reviews. They usually last between 1 and 1.5 hours and we use that time to review each other's code from that week.

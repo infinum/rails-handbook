@@ -97,7 +97,7 @@ install some necessary plugins that you won't be able to live without.
 Covers registers, built-in text completion and omni-complete.
 
 **Miscellaneous articles**
-* [Effective TDD with Ruby: Tmux setup](http://lucaguidi.com/2015/11/17/effective-tdd-with-ruby-tmux-setup.html), by Luca Guidi
+* [Effective TDD with Ruby: Tmux setup](http://lucaguidi.com/2015/11/17/effective-tdd-with-ruby-tmux-setup/), by Luca Guidi
 Talks about using Tmux and Vim to improve your TDD flow
 * [Why Vim](https://www.reddit.com/r/ProgrammerHumor/comments/338tx5/vim/), by LegionSB  
 A reddit post talking about the everlasting topic of why to use Vim. A pretty funny, kinda correct and in-depth post, definitely worth a read.

@@ -28,13 +28,13 @@ We use stuff that goes beyond Ruby & Rails, primarily databases:
 
 [Signal v Noise](https://m.signalvnoise.com/) - Basecamps strong opinions and shared thoughts on design, business, and tech. Not so tied to Rails development, more of a tech philosophy blog.
 
-[Arkency blog](blog.arkency.com) - Arkency is a Rails consultancy based in Poland and releases a fair amount of good blogposts.
+[Arkency blog](http://blog.arkency.com/) - Arkency is a Rails consultancy based in Poland and releases a fair amount of good blogposts.
 
 ## Reddit & Ruby Flow
 
 Most of the stuff that you'll see in the RubyWeekly is curated from [RubyWeekly](http://www.rubyflow.com/), a community link log by Peter Cooper (the person behind RubyWeekly). That is probably the most resourceful Ruby page you'll see.
 
-There's also reddit, with the most resourceful subreddit being [r/ruby](reddit.com/r/ruby). There's also [r/rails](reddit.com/r/rails) but it's not as good as the r/ruby.
+There's also reddit, with the most resourceful subreddit being [r/ruby](http://reddit.com/r/ruby). There's also [r/rails](http://reddit.com/r/rails) but it's not as good as the r/ruby.
 
 
 ## Twitter

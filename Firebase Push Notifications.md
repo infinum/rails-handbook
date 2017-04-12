@@ -14,17 +14,17 @@ In this chapter we will explain a few approaches for push notifications implemen
 Before development, read chapters about [Firebase Cloud Messaging](https://firebase.google.com/docs/cloud-messaging/), and [app server development](https://firebase.google.com/docs/cloud-messaging/server).
 
 ## Development Approaches
-There are three approaches for using Firebase:
+There are few approaches for using Firebase which we know of:
 
-  * storing one device id per user
-  * storing multiple device ids per user
-  * topics
+  1. storing one device id per user
+  2. storing multiple device ids per user
+  3. topics
     * With persisted topics
     * With non persisted topics
-  * device group messaging
+  4. device group messaging
 
 
-1. Approach based on one device id per user
+### Approach based on one device id per user
  * Using this approach means adding a new column `device_id` directly to a User model.
  * On each login this column will be overwritten.
  * On each logout this column should be deleted.
@@ -38,7 +38,7 @@ There are three approaches for using Firebase:
 
  * Usually a user has multiple devices, so this approach is not recommended.
 
-2. Approach based on multiple device ids per user
+### Approach based on multiple device ids per user
 
   * A new table to store user device_ids needs to be implemented.
   * Index on device_id is mandatory
@@ -49,51 +49,7 @@ There are three approaches for using Firebase:
   * CONS
     * We need to maintain user device_ids(create, delete).
 
-  * Sender service example
-    ```ruby
-    module FirebaseCloudMessaging
-      class UserNotificationSender
-
-        attr_reader :message, :user_device_ids
-
-        # Firebase works with up to 1000 device_ids per call
-        MAX_USER_IDS_PER_CALL = 1000
-
-        def initialize(user_device_ids, message)
-          @user_device_ids = user_device_ids
-          @message = message
-        end
-
-        def call
-          user_device_ids.each_slice(MAX_USER_IDS_PER_CALL) do |device_ids|
-            fcm_client.send(device_ids, options)
-          end
-        end
-
-        private
-
-        def options
-          {
-            priority: 'high',
-            data: {
-              message: message
-            },
-            notification: {
-              body: message,
-              sound: 'default'
-            }
-          }
-        end
-
-        def fcm_client
-          @fcm_client ||= FCM.new(Rails.application.secrets.fcm['server_api_key'])
-        end
-      end
-    end
-    ```
-
-  * API sessions controller example
-
+    #### API sessions controller example
     ```ruby
       class SessionsController < ApiController
 
@@ -125,15 +81,57 @@ There are three approaches for using Firebase:
       end
     ```
 
-3. Approach based on topics
+  #### Sender service example
+  * This example works for both approaches which are using device_ids.
+  ```ruby
+  module FirebaseCloudMessaging
+    class UserNotificationSender
+
+      attr_reader :message, :user_device_ids
+
+      # Firebase works with up to 1000 device_ids per call
+      MAX_USER_IDS_PER_CALL = 1000
+
+      def initialize(user_device_ids, message)
+        @user_device_ids = user_device_ids
+        @message = message
+      end
+
+      def call
+        user_device_ids.each_slice(MAX_USER_IDS_PER_CALL) do |device_ids|
+          fcm_client.send(device_ids, options)
+        end
+      end
+
+      private
+
+      def options
+        {
+          priority: 'high',
+          data: {
+            message: message
+          },
+          notification: {
+            body: message,
+            sound: 'default'
+          }
+        }
+      end
+
+      def fcm_client
+        @fcm_client ||= FCM.new(Rails.application.secrets.fcm['server_api_key'])
+      end
+    end
+  end
+  ```
+
+### Approach based on topics
+
+  * Topic messaging is best suited for content which is often sent to a group of users. E.g. all users subscribed to weather information or some subreddits etc...
 
   * Based on the publish/subscribe model, FCM topic messaging allows you to send a message to multiple devices that have opted in to a particular topic. You compose topic messages as needed, and FCM handles routing and delivering the message reliably to the right devices.
 
   * Topic messaging supports unlimited topics and subscriptions for each app.
-
-  * Topic messages are optimized for throughput rather than latency. For fast, secure delivery to single devices or small groups of devices, target messages to registration tokens, not topics.
-
-  * Topic is a named group of one or more device_ids stored in Firebase. Topic name can be anything that matches this regular expression: `[a-zA-Z0-9-_.~%]+`
 
   * Persisted topics
     * In this approach we need a way to create topic names and expose them through the API.
@@ -152,6 +150,7 @@ There are three approaches for using Firebase:
 
     * CONS:
       * It doesn't seems that Firebase has limits on topics, but maybe in future they will restrict this like Amazon SNS does.
+
   * Sender service example
     ```ruby
     module FirebaseCloudMessaging
@@ -189,13 +188,11 @@ There are three approaches for using Firebase:
     end
     ```
 
-  * We haven't used topics in our apps so there might exist other approaches.
-
   * Firebase recently added [support](https://firebase.google.com/docs/cloud-messaging/admin/manage-topic-subscriptions)
   for managing topic subscriptions through server. With this feature, we can have full control over subscriptions at the server if this is required.
 
 
-4. Approach based on device groups
+### Approach based on device groups
   * With device group messaging, you can send a single message to multiple instances of an app running on devices belonging to a group. Typically, "group" refers a set of different devices that belong to a single user. All devices in a group share a common notification key, which is the token that FCM uses to fan out messages to all devices in the group.
 
   * If you need to send messages to multiple devices per user, consider device group messaging for those use cases.
@@ -204,7 +201,7 @@ There are three approaches for using Firebase:
   * We haven't used device groups, but you can read more about this [approach]((https://firebase.google.com/docs/cloud-messaging/android/device-group)).
 
 ## Choosing right development approach
-Even though every application is different, our recommendation is a topic based approach.
+Since we are rather new at using Firebase please consult with somebody from the team before choosing a development approach.
 
 ## Setup
 1. DevOps has to create new Firebase project.

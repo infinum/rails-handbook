@@ -21,6 +21,7 @@ There are three approaches for using Firebase:
   * topics
     * With persisted topics
     * With non persisted topics
+  * device group messaging
 
 
 1. Approach based on one device id per user
@@ -94,44 +95,43 @@ There are three approaches for using Firebase:
   * API sessions controller example
 
     ```ruby
-    module Api
-      module V1
-        class SessionsController < AuthorizedController
-          skip_before_action :authenticate_user!, only: [:create]
+      class SessionsController < ApiController
 
-          version 1
+        def create
+          # login logic goes here
+          add_user_device
+          # render user
+        end
 
-          def create
-            # login logic goes here
-            add_user_device
-            expose current_user
-          end
+        def destroy
+          # logout logic goes here
+          device.destroy if device.present?
+          # render user
+        end
 
-          def destroy
-            # logout logic goes here
-            device.destroy if device.present?
-            expose current_user
-          end
+        private
 
-          private
-
-          def add_user_device
-            if device.exists?
-              device.update(user: current_user)
-            else
-              current_user.devices.create(device_id: params[:device_id])
-            end
-          end
-
-          def device
-            @device ||= Device.find_by(device_id: params[:device_id])
+        def add_user_device
+          if device.exists?
+            device.update(user: current_user)
+          else
+            current_user.devices.create(device_id: params[:device_id])
           end
         end
+
+        def device
+          @device ||= Device.find_by(device_id: params[:device_id])
+        end
       end
-    end
     ```
 
 3. Approach based on topics
+
+  * Based on the publish/subscribe model, FCM topic messaging allows you to send a message to multiple devices that have opted in to a particular topic. You compose topic messages as needed, and FCM handles routing and delivering the message reliably to the right devices.
+
+  * Topic messaging supports unlimited topics and subscriptions for each app.
+
+  * Topic messages are optimized for throughput rather than latency. For fast, secure delivery to single devices or small groups of devices, target messages to registration tokens, not topics.
 
   * Topic is a named group of one or more device_ids stored in Firebase. Topic name can be anything that matches this regular expression: `[a-zA-Z0-9-_.~%]+`
 
@@ -188,6 +188,20 @@ There are three approaches for using Firebase:
       end
     end
     ```
+
+  * We haven't used topics in our apps so there might exist other approaches.
+
+  * Firebase recently added [support](https://firebase.google.com/docs/cloud-messaging/admin/manage-topic-subscriptions)
+  for managing topic subscriptions through server. With this feature, we can have full control over subscriptions at the server if this is required.
+
+
+4. Approach based on device groups
+  * With device group messaging, you can send a single message to multiple instances of an app running on devices belonging to a group. Typically, "group" refers a set of different devices that belong to a single user. All devices in a group share a common notification key, which is the token that FCM uses to fan out messages to all devices in the group.
+
+  * If you need to send messages to multiple devices per user, consider device group messaging for those use cases.
+
+  * The maximum number of members allowed for a notification key is 20.
+  * We haven't used device groups, but you can read more about this [approach]((https://firebase.google.com/docs/cloud-messaging/android/device-group)).
 
 ## Choosing right development approach
 Even though every application is different, our recommendation is a topic based approach.

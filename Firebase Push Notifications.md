@@ -14,17 +14,17 @@ In this chapter we will explain a few approaches for push notifications implemen
 Before development, read chapters about [Firebase Cloud Messaging](https://firebase.google.com/docs/cloud-messaging/), and [app server development](https://firebase.google.com/docs/cloud-messaging/server).
 
 ## Development Approaches
-There are few approaches for using Firebase which we know of:
+There are few approaches for sending push notifications using Firebase which we know of:
+  1. sending directly to device_ids
+    * storing one device id per user
+    * storing multiple device ids per user
+  2. sending to topics
+    * with persisted topics
+    * with non persisted topics
+  3. sending to device groups
 
-  1. storing one device id per user
-  2. storing multiple device ids per user
-  3. topics
-    * With persisted topics
-    * With non persisted topics
-  4. device group messaging
-
-
-### Approach based on one device id per user
+### Approach based on sending notifications directly to device_ids
+  #### Storing one device id per user
  * Using this approach means adding a new column `device_id` directly to a User model.
  * On each login this column will be overwritten.
  * On each logout this column should be deleted.
@@ -38,7 +38,7 @@ There are few approaches for using Firebase which we know of:
 
  * Usually a user has multiple devices, so this approach is not recommended.
 
-### Approach based on multiple device ids per user
+#### Storing multiple device ids per user
 
   * A new table to store user device_ids needs to be implemented.
   * Index on device_id is mandatory
@@ -125,7 +125,7 @@ There are few approaches for using Firebase which we know of:
   end
   ```
 
-### Approach based on topics
+### Approach based on sending notifications to topics
 
   * Topic messaging is best suited for content which is often sent to a group of users. E.g. all users subscribed to weather information or some subreddits etc...
 
@@ -191,8 +191,7 @@ There are few approaches for using Firebase which we know of:
   * Firebase recently added [support](https://firebase.google.com/docs/cloud-messaging/admin/manage-topic-subscriptions)
   for managing topic subscriptions through server. With this feature, we can have full control over subscriptions at the server if this is required.
 
-
-### Approach based on device groups
+### Approach based on sending notifications to device groups
   * With device group messaging, you can send a single message to multiple instances of an app running on devices belonging to a group. Typically, "group" refers a set of different devices that belong to a single user. All devices in a group share a common notification key, which is the token that FCM uses to fan out messages to all devices in the group.
 
   * If you need to send messages to multiple devices per user, consider device group messaging for those use cases.

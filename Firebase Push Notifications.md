@@ -24,7 +24,7 @@ There are few approaches for sending push notifications using Firebase which we 
   3. sending to device groups
 
 ### Approach based on sending notifications directly to device_ids
-  #### Storing one device id per user
+  #### Having one device id per user
  * Using this approach means adding a new column `device_id` directly to a User model.
  * On each login this column will be overwritten.
  * On each logout this column should be deleted.
@@ -38,7 +38,7 @@ There are few approaches for sending push notifications using Firebase which we 
 
  * Usually a user has multiple devices, so this approach is not recommended.
 
-#### Storing multiple device ids per user
+#### Having multiple device ids per user
 
   * A new table to store user device_ids needs to be implemented.
   * Index on device_id is mandatory

@@ -12,7 +12,7 @@ In your project management app (e.g. Productive, Trello...) create a task _Produ
 
 * Are you uploading all files to S3 and not to the local (public/system) filesystem?
 * Check that the app doesn't have any security issues on Code Climate. If it isn't on Code Climate, why isn't it? If there is a explicit reason why it isn't, check the security of your application with [Brakeman](https://github.com/presidentbeef/brakeman)
-* Add bugsnag.
+* Check if Bugsnag is included.
 * Gzip the content with [Rack Deflater](http://robots.thoughtbot.com/content-compression-with-rack-deflater/)
 * Check if indices are all setup - if you have the postgres `pg_stat_statements` extension enabled, check what are some of the slow queries and consult with the team how to decrease their execution time. Also checkout [lol_dba](https://github.com/plentz/lol_dba) - a static checker for indices based on foreign keys.
 * Check if models have dependent actions on their associations

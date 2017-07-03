@@ -19,16 +19,11 @@ To use Graylog in a Rails project you need to do the following:
   * The [rails_semantic_logger gem](https://github.com/rocketjob/rails_semantic_logger) replaces the default Rails logger with Semantic Logger. It also reduces Rails logging output in production to almost a single line for every Controller-Action call. Basically, it is full fledged logging framework with [numerous options](http://rocketjob.github.io/semantic_logger/rails).
 
 * Add `graylog_host` in config for all environments.
-  * staging.rb
-
-    ```Ruby
-      config.graylog_host = 'udp://luscic.infinum.co:12201'
-    ```
-
-  * production.rb
+  * production.rb and staging.rb
 
     ```Ruby
       config.graylog_host = 'udp://dreznik.infinum.co:12201'
+      config.rails_semantic_logger.add_file_appender = false  # if you want to disable logging to files
     ```
 
   * development.rb and test.rb

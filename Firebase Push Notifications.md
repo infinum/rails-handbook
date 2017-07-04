@@ -13,17 +13,17 @@ Before starting development, read chapters about [Firebase Cloud Messaging](http
 
 ## Development Approaches
 There are a few approaches for sending push notifications using Firebase:
-* sending directly to device_ids
-  * storing one device id per user
-  * storing multiple device ids per user
-* sending to topics
-  * with persisted topics
-  * with non-persisted topics
-* sending to device groups
+  * sending directly to device_ids
+    * storing one device id per user
+    * storing multiple device ids per user
+  * sending to topics
+    * with persisted topics
+    * with non-persisted topics
+  * sending to device groups
 
 ### Approach based on sending notifications directly to device_ids
 #### Having one device id per user
- * Using this approach means adding a new column `device_id` directly to a User model.
+* Using this approach means adding a new column `device_id` directly to a User model.
  * On each login, this column will be overwritten.
  * On each logout, this column should be deleted.
 
@@ -79,8 +79,7 @@ There are a few approaches for sending push notifications using Firebase:
     end
   ```
 
-#### Sender service example
-* This example works for both approaches using device_ids.
+#### Sender service example (works for both approaches using device_ids)
   ```ruby
     module FirebaseCloudMessaging
       class UserNotificationSender
@@ -149,42 +148,42 @@ There are a few approaches for sending push notifications using Firebase:
     * CONS:
       * Currently, it doesn't seem that Firebase has any limits on topics, but they might restrict this in the future just like Amazon SNS.
 
-  * Sender service example
-    ```ruby
-      module FirebaseCloudMessaging
-        class UserNotificationSender
-          attr_reader :message, :topic
+#### Sender service example
+  ```ruby
+    module FirebaseCloudMessaging
+      class UserNotificationSender
+        attr_reader :message, :topic
 
-          def initialize(topic, message)
-            @topic = topic
-            @message = message
-          end
+        def initialize(topic, message)
+          @topic = topic
+          @message = message
+        end
 
-          def call
-            fcm_client.send_to_topic(topic, options)
-          end
+        def call
+          fcm_client.send_to_topic(topic, options)
+        end
 
-          private
+        private
 
-          def options
-            {
-              priority: 'high',
-              data: {
-                message: message
-              },
-              notification: {
-                body: message,
-                sound: 'default'
-              }
+        def options
+          {
+            priority: 'high',
+            data: {
+              message: message
+            },
+            notification: {
+              body: message,
+              sound: 'default'
             }
-          end
+          }
+        end
 
-          def fcm_client
-            @fcm_client ||= FCM.new(Rails.application.secrets.fcm['server_api_key'])
-          end
+        def fcm_client
+          @fcm_client ||= FCM.new(Rails.application.secrets.fcm['server_api_key'])
         end
       end
-    ```
+    end
+  ```
 
   * Firebase recently added [support](https://firebase.google.com/docs/cloud-messaging/admin/manage-topic-subscriptions)
   for managing topic subscriptions via a server. With this feature, we can have full control over subscriptions if necessary.

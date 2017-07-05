@@ -58,3 +58,6 @@ To use Graylog in a Rails project you need to do the following:
         payload[:user] = current_user.username if current_user.present?
       end
     ```
+* Consult with PM, and define time range for keeping historical data.
+
+* Notify our devops before turning logging on because they should handle streams, permissions, backup options etc...

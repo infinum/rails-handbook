@@ -9,7 +9,7 @@ data aggregation.
 Query objects live in the `app/queries` folder.
 
 Their naming convention is similar to that of controllers.
-Each object should bear the the plural of the name of the model it queries
+Each object should bear the plural of the name of the model it queries
 suffixed by the word 'Query'. E.g. an object that queries articles should be
 called ArticlesQuery.
 

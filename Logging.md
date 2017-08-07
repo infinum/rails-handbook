@@ -22,7 +22,7 @@ To use Graylog in a Rails project you need to do the following:
   * production.rb and staging.rb
 
     ```Ruby
-      config.graylog_host = 'udp://dreznik.infinum.co:12201'
+      config.graylog_host = Rails.application.secrets.graylog_host
       config.rails_semantic_logger.add_file_appender = false  # if you want to disable logging to files
     ```
 

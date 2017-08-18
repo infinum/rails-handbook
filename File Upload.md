@@ -107,6 +107,7 @@ Shrine.plugin :activerecord
 
 * Require the image processing libraries in your `application.rb` file by
 prepending the following line
+
 ```Ruby
 require 'image_processing/mini_magick'
 ```

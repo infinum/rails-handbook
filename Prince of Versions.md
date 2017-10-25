@@ -1,10 +1,9 @@
 ## General
-Our APIs always have an endpoint for mobile clients to check what the latest and minimum version of their SDK is.
+[Prince of Versions](https://github.com/infinum/Android-Prince-of-Versions) is a library used by mobile API clients to determine the available application versions. It can see if there is an update available or if the client has an outdated application still running on their device.
 
-They are using a library called [Prince of Versions](https://github.com/infinum/Android-Prince-of-Versions) to achieve
-that, and if the current version is deprecated the library will notify the user to update their app.
+Prince of Versions contains the minimum and the latest version of the application that is suitable to use with the current API server. It is useful for mobile clients when mandatory updates are required due to security purposes or API incompatibilities.
 
-This file is only used in production, since we keep our staging builds on [Infinum Labs](https://labs.infinum.co/).
+The library contacts the server requesting the file with the version information. It is used only in production, since we keep our staging builds on [Infinum Labs](https://labs.infinum.co/).
 
 ## Name
 Our current convention for naming that file is `mobile-versions.json`

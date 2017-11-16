@@ -42,10 +42,17 @@ To use Graylog in a Rails project you need to do the following:
           appender:    :graylog,
           url:         Rails.application.config.graylog_host,
           application: "#{application_name}-#{Rails.env}",
-          level:       :info
+          level:       :info,
+          gelf_options: {
+            tls: {
+              cert: '/etc/ssl/private/graylog/graylog.crt',
+              key: '/etc/ssl/private/graylog/graylog.key'
+            }
+          }
         )
       end
     ```
+  * With these settings, you need to use TCP, keep that in mind when defining the URL (ask the DevOps team)
 
 * Customize payload
 

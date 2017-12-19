@@ -6,4 +6,4 @@ It is highly useful if you want to speed up the uploading process and to improve
 # The Workflow
 
 [This documentation](https://www.ironin.it/blog/store-your-files-on-s3-using-the-ruby-shrine-gem-part-2.html)
-covers all the code and configuration files you need for efficient direct upload to S3.
+covers all the code and configuration files needed for supporting direct upload to S3.

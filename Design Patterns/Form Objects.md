@@ -56,7 +56,7 @@ class RegistrationsController < ApplicationController
   end
 
   def create
-    @user = User.new(params[:user])
+    @user = User.new(user_params)
     if @user.valid?
       @user.first_name = @user.full_name.split(' ').first
       @user.last_name = @user.full_name.split(' ')[1..-1].to_a.join(' ')
@@ -78,6 +78,7 @@ We create a Form Object to represent this specific form:
 ```ruby
 class RegistrationForm
   include ActiveModel::Model
+  include ActiveModel::Validations
 
   attr_accessor :full_name
   attr_accessor :company_name

@@ -20,7 +20,7 @@ Please follow this timeline:
 2. You should never go alone as the only Rails developer in the meeting - always take another team member with you.
 3. There are no stupid questions in these meetings. It's better to understand everything at this point than making assumptions two weeks later.
 4. Ask the project manager to hand you out the project specification.
-5. Once you've done the initial project meeting and got the specification, sit down with the member of your team that was in the meeting with you and do the database design. You can do this on a whiteboard, on a piece of paper or in a tool such as [Gliffy](https://www.gliffy.com/) or [MySQL Workbench](https://dev.mysql.com/downloads/workbench/).
+5. Once you've done the initial project meeting and got the specification, sit down with the member of your team that was in the meeting with you and do the database design. You can do this on a whiteboard, on a piece of paper or in a tool such as [Gliffy](https://www.gliffy.com/) or [MySQL Workbench](https://dev.mysql.com/downloads/workbench/). If you need to draw a sequence diagram, use [Web Sequence Diagram](https://www.websequencediagrams.com/).
 6. Prompt the project manager at will and add new discoveries to the specification if you find something missing.
 7. Don't hesitate to involve other team members since this is the most important part of the app.
 8. Once you've done the database design, it has to be approved by someone from the management. First person to ping is Matej.

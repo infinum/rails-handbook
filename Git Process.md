@@ -1,14 +1,14 @@
 Our git process is a upgraded version of [Github Flow](https://guides.github.com/introduction/flow/).
 
-![](https://ftp.infinum.co/stjepan_hadjic/gitflow1.jpg)
+![](https://ftp.infinum.co/stjepan_hadjic/git-flow-2.jpg)
 
 Instead of a single `master` branch, we use two branches to record the history of the project. The `master` branch stores code that's currently in production. The `staging` branch serves as an integration branch for features and fixes. It holds data that reflects what's currently on staging.
 
 **The master branch is always deployable.**
 
-As we use [productive](https://productive.io) to manage our tasks we use **task branches** for fixes and new features. Names of branches are always prefixed with `task/` together with a task number, so a branch for adding authentication would be named `task/#243-authentication`.
+As we use [productive](https://productive.io) to manage our tasks we use **feature branches** for fixes and new features. Names of branches are always prefixed with `feature/` together with a feature name, so a branch for adding authentication would be named `feature/authentication`.
 
-Task branches are **always** branched out of `master`. They are also merged first into `staging` and then into `master` if they are ready for production.
+Feature branches are **always** branched out of `master`. They are also merged first into `staging` and then into `master` if they are ready for production.
 
 **Never branch out of `staging` branch and never merge `staging` into `master`**
 

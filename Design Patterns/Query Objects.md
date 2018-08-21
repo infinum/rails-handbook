@@ -28,7 +28,8 @@ objects.
   ArticlesQuery.new(Article.where(published: true))
 ```
 
-Query objects can be used in model scopes and relation conditions.
+Query objects should return *ActiveRecord::Relation*, not *Array*, and they can be used in
+model scopes and relation conditions.
 They should be accessible and useable from any location in your codebase.
 
 ```Ruby
@@ -48,8 +49,9 @@ Each query object implementation should resemble the following example.
 class ArticlesQuery
   attr_reader :relation
 
-  def initialize(relation = Article.all)
+  def initialize(relation = Article.all, params = {})
     @relation = relation
+    @params = params
   end
 
   def published
@@ -128,29 +130,58 @@ Create a query object in the `app/queries` directory.
 It's implementation should resemble the following:
 
 ```Ruby
-class ArticlesQuery
-  attr_reader :relation
+class PublishedQuery
+  attr_reader :relation, :params
 
-  def initialize(relation = Article.all)
+  def initialize(relation = Article.all, params: {})
     @relation = relation
+    @params = params
   end
 
-  def published
+  def all
     relation.where(published: true)
   end
+end
 
-  def minimal_view_count(view_count)
-    return relation unless view_count.present?
+class MinViewCountQuery
+  attr_reader :relation, :params
+
+  def initialize(relation = Article.all, params: {})
+    @relation = relation
+    @params = params
+  end
+
+  def all
+    return relation if view_count.blank?
     relation.where('view_count > ?', view_count)
   end
 
-  def author_first_name_like(first_name)
-    return relation unless first_name.present?
+  private
+
+  def view_count
+    params.fetch(:view_count, nil)
+  end
+end
+
+class ByAuthorFirstNameQuery
+  attr_reader :relation, :params
+
+  def initialize(relation = Article.all, params: {})
+    @relation = relation
+    @params = params
+  end
+
+  def all
+    return relation if first_name.blank?
     with_authors
       .where('users.first_name LIKE ?', "#{first_name}%")
   end
 
   private
+
+  def first_name
+    params.fetch(:first_name, nil)
+  end
 
   def with_authors
     relation.joins('LEFT OUTER JOIN users ON users.id = articles.author_id')
@@ -163,23 +194,25 @@ Then you would use it like this
 ```Ruby
 class ArticlesController < ApplicationController
   def index
-    @articles = articles_scope
+    @articles = ByAuthorFirstNameQuery.new(relation = articles_by_min_view_count,
+                                           params: params).all
   end
 
   private
 
-  def articles_scope
-    published_articles = ArticlesQuery.new.published
-    articles_with_view_count = ArticlesQuery.new(published_articles)
-                                .minimal_view_count(params[:view_count])
-    ArticlesQuery.new(articles_with_view_count)
-                  .author_first_name_like(params[:author_name])
+  def published_articles
+    PublishedQuery.new.all
+  end
+
+  def articles_by_min_view_count
+    MinViewCountQuery.new(relation = published_articles, params: params).all
   end
 end
 ```
 
 ## Further reading
 
+* [Query Object in Ruby on Rails](https://medium.flatstack.com/query-object-in-ruby-on-rails-56ea434365f0)
 * [Delegating to Query Objects through ActiveRecord scopes](http://craftingruby.com/posts/2015/06/29/query-objects-through-scopes.html)
 * [7 Patterns to Refactor Fat ActiveRecord Models](http://blog.codeclimate.com/blog/2012/10/17/7-ways-to-decompose-fat-activerecord-models/)
 * [ActiveRecord Eager Loading with Query Objects and Decorators](https://robots.thoughtbot.com/active-record-eager-loading-with-query-objects-and-decorators)

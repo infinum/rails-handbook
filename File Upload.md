@@ -9,7 +9,7 @@ Table of contents:
 3. [Plugins](#plugins)
 4. [Migrating from other uploaders](#migrating-from-other-uploaders)
 
-## General
+## <a name="general"></a>General
 
 Shrine is a general purpose file uploader gem. As it has no direct dependency
 __it can be used in both Rails and non-Rails projects.__ Shrine features a rich
@@ -24,7 +24,7 @@ If you wish to read more about Shrine's design you can do so
 
 Additionally there exists [a demo application](https://github.com/erikdahlstrand/shrine-rails-example). It's not recommended to reference it as it's fairly simplistic and hides many configuration options.
 
-## Setup
+## <a name="setup"></a>Setup
 
 To use shrine in a Rails project you need to do the following:
 
@@ -208,7 +208,7 @@ Then you can use it in your views as follows:
       = f.input :avatar, as: :shrine_file
 ```
 
-## Plugins
+## <a name="plugins"></a>Plugins
 
 Shrine features quite a few useful plugins out-of-the-box.
 
@@ -253,7 +253,7 @@ You can read more about it [here](https://github.com/janko-m/shrine#metadata).
 Shrine supports background image processing and deletion. You can read
 [here](https://github.com/janko-m/shrine#background-jobs) how to set it up.
 
-## Migrating from other uploaders
+## <a name="migrating-from-other-uploaders"></a>Migrating from other uploaders
 
 Here are a few articles which explain how to migrate from other uploaders to
 shrine:

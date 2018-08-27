@@ -109,10 +109,9 @@ A possible solution **(but a really bad one)** would be to create a "factory" cl
 class City < ActiveRecord::Base
   def self.from_csv(csv_file)
     CSV.read(csv_file_path).each do |csv_row|
-      if csv_row[2].present?
-        City.create(name: csv_row[2].titleize,
-                    code: "#{csv_row[0].upcase}#{csv_row[1].upcase}")
-      end
+      next unless csv_row[2]
+      City.create(name: csv_row[2].titleize,
+                  code: "#{csv_row[0].upcase}#{csv_row[1].upcase}")
     end
   end
 end

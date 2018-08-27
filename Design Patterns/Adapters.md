@@ -171,7 +171,7 @@ module Instagram
     end
 
     def feed
-      @feed ||= instagram_recent_media.map { item| Deserializer::MediaItem.new(item) }
+      @feed ||= instagram_recent_media.map { |item| Deserializer::MediaItem.new(item) }
     end
 
     def items_with_location_present

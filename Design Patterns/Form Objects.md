@@ -78,7 +78,6 @@ We create a Form Object to represent this specific form:
 ```ruby
 class RegistrationForm
   include ActiveModel::Model
-  include ActiveModel::Validations
 
   attr_accessor :full_name
   attr_accessor :company_name
@@ -136,7 +135,7 @@ class RegistrationsController < ApplicationController
   end
   private
   def registration_params
-    params.require(:regisration_form).permit(:full_name, :company_name, :phone, :email)
+    params.require(:registration_form).permit(:full_name, :company_name, :phone, :email)
 end
 ```
 

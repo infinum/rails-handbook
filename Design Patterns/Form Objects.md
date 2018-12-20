@@ -68,6 +68,10 @@ class RegistrationsController < ApplicationController
       render :new
     end
   end
+  
+  def user_params
+    params.require(:user).permit(:full_name, :company_name, :phone, :email)
+  end
 end
 ```
 
@@ -133,9 +137,12 @@ class RegistrationsController < ApplicationController
       render :new
     end
   end
+
   private
+
   def registration_params
     params.require(:registration_form).permit(:full_name, :company_name, :phone, :email)
+  end
 end
 ```
 

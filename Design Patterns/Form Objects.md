@@ -92,7 +92,7 @@ class RegistrationForm
     return false unless valid?
 
     company = Company.create(name: company_name, phone: phone)
-    company.users.create(first_name: user_first_name, user_last_name: last_name, email: email)
+    company.users.create(first_name: user_first_name, last_name: user_last_name, email: email)
   end
 
   private

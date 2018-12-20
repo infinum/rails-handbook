@@ -1,6 +1,6 @@
 Form Objects are used for removing form specific logic away from your ActiveRecord models into a separate class.
 
-With Form Objects we can:  
+With Form Objects we can:
 
   * Decouple form logic from your ActiveRecord models (i.e. refactor fat models)
   * Update multiple ActiveRecord models with a single form submission
@@ -11,7 +11,7 @@ With Form Objects we can:
 
 ## Example
 
-We have a registration form where we ask users to give us the following data:  
+We have a registration form where we ask users to give us the following data:
 
   * full name
   * company name
@@ -56,7 +56,7 @@ class RegistrationsController < ApplicationController
   end
 
   def create
-    @user = User.new(params[:user])
+    @user = User.new(user_params)
     if @user.valid?
       @user.first_name = @user.full_name.split(' ').first
       @user.last_name = @user.full_name.split(' ')[1..-1].to_a.join(' ')
@@ -67,6 +67,10 @@ class RegistrationsController < ApplicationController
     else
       render :new
     end
+  end
+  
+  def user_params
+    params.require(:user).permit(:full_name, :company_name, :phone, :email)
   end
 end
 ```
@@ -90,7 +94,6 @@ class RegistrationForm
 
   def save
     return false unless valid?
-
     company = Company.create(name: company_name, phone: phone)
     company.users.create(first_name: user_first_name, last_name: user_last_name, email: email)
   end
@@ -127,12 +130,18 @@ class RegistrationsController < ApplicationController
   end
 
   def create
-    @form = RegistrationForm.new(params[:registration])
+    @form = RegistrationForm.new(registration_params)
     if @form.save
       redirect_to root_path
     else
       render :new
     end
+  end
+
+  private
+
+  def registration_params
+    params.require(:registration_form).permit(:full_name, :company_name, :phone, :email)
   end
 end
 ```

@@ -1,33 +1,30 @@
 # Summary
 
-This is the flow we are using to generate and host our documentation:
+This is the flow we use to generate and host our documentation:
 
 - Write tests using rspec and annotate them using [dox](https://github.com/infinum/dox)
 - Once tests on [semaphore](https://semaphoreci.com) pass we move to deploy
 - In the deploy phase we do the following:
   * deploy the application using [mina](https://github.com/mina-deploy/mina)
-  * run only dox tests to generate the documentation
+  * run only dox tagged specs (request specs) to generate the documentation
   * copy the generated documentation to the application server inside `public` folder
 
 # Why
 
-We settled on serving our documentation for the application server because it is convenient, easiest
-and free.
-
-Solutions like apiary.io require us to have one project for each environemnt, can't easily set
+Hosting the API documentation directly from the application server is convenient and does not cost extra.
+Solutions like apiary.io require having one project for each environment, can't easily set
 a desired domain and can't easily hide behind some kind of authentication (like Basic Authentication).
 
-Copying after a successful deploy we assure that the documentation is always up to date.
+To ensure that the documentation is always up to date it is copied only after a successful deploy
 
-Serving from the `public` folder we are not going through the rails stack but we let nginx serve
-the static file.
+By using the `public` folder nginx takes care of serving the static file and the requests don't go through the whole Rails stack.
 
 # How
 
 ## Dox generating task
 
-Here is the advanced example of a rake task that generates the documentation:
-It has the feature to write ERB code inside your acompanying .md files.
+Here is an advanced example of a rake task that generates the documentation:
+It has the feature to write ERB code inside your accompanying .md files.
 
 ```ruby
 namespace :dox do
@@ -90,8 +87,7 @@ The above example can be simplified if some of the features are not needed.
 
 ## Deploy script
 
-We are using [mina-dox](https://github.com/infinum/mina-dox) to get `dox:publish` mina task.
-It runs `rake dox:html` and scps the generated documentation.
+The mina-dox plugin includes the `dox:publish` task, which runs `rake dox:html` and copies the generated documentation to the server.
 
 ```sh
 echo "=========== bundle install ==========="

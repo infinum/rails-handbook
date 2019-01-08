@@ -22,7 +22,7 @@ fiscalization_ca_cert_path: ''
 ```
 
 
-+ ##### Development & Staging environment
++ ##### Development & staging environment
 
 Requires 2 certificates - both application and server certificate. The application certificate (`FISCAL_1.p12`) contains the public and private key. The server certificate (most often `fina_ca.pem`) contains the required CA certificates.
 
@@ -33,7 +33,7 @@ fiscalization_app_cert_path: 'cert/development/FISKAL_1.p12'
 fiscalization_ca_cert_path: 'cert/development/fina_ca.pem'
 ```
 
-#### Application Certificate unpacking
+#### Application certificate unpacking
 
 To view the content of the application certificate locally, you need to unpack it with this command:
 

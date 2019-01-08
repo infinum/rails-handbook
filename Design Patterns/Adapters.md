@@ -79,7 +79,7 @@ Deserializers - used for parsing responses from the external API.
 Deserializers are used if we want to parse the response we received from the external API. This is a very frequent case where
 the response format from the API is not quite adequate to our application needs.
 
-Deserializers are stored in ```/app/adapters/{api_service}/deserializers/``` where ```api_service``` is the external api i.e. InstagramDolcela, PTV etc.
+Deserializers are stored in ```/app/adapters/{api_service}/deserializers/``` where ```api_service``` is the external api i.e. Instagram, Dolcela, PTV etc.
 
 In the following example we instantiate the Deserializer object by sending the API response to the initialize method.
 

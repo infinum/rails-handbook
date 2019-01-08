@@ -8,7 +8,7 @@ After downloading Cyberduck, follow these steps to connect to your S3 bucket.
 
 ![New bookmark](/images/cyberduck_bookmark.jpg)
 
-2. Fill out the info with information from your S3 secrets.
+2. Fill out the fields with information from your S3 secrets.
 
 ![Bucket info](/images/cyberduck_bucket_info.jpg)
 

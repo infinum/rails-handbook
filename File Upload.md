@@ -1,5 +1,5 @@
-There are a few file upload gems out there but out of all of them we use
-[Shrine](https://github.com/janko-m/shrine) because of it's flexibility and
+There are several file upload gems out there. We use
+[Shrine](https://github.com/janko-m/shrine) because of its flexibility and
 easy-to-extend nature.
 
 Table of contents:
@@ -11,24 +11,24 @@ Table of contents:
 
 ## General
 
-Shrine is a general purpose file uploader gem. As it has no direct dependency
+Shrine is a general-purpose file uploader gem. As it has no direct dependency,
 __it can be used in both Rails and non-Rails projects.__ Shrine features a rich
-plugin system which makes it incredibly easy to change it's behavior to suit
+plugin system which makes it incredibly easy to change its behavior to suit
 your needs. All this power is packaged in an easy-to-use form factor.
 
-It is the youngest of all the popular file uploaders, but maintains an issue
-count of 0 and has fixed all the issues that the other gems have.
+It is the youngest of all popular file uploaders, but it maintains an issue
+count of 0 and has fixed all the issues that other gems have.
 
-If you wish to read more about Shrine's design you can do so
-[here.](http://twin.github.io/introducing-shrine/)
+If you wish to read more about Shrine's design, you can do so
+[here](http://twin.github.io/introducing-shrine/).
 
-Additionally there exists [a demo application](https://github.com/erikdahlstrand/shrine-rails-example). It's not recommended to reference it as it's fairly simplistic and hides many configuration options.
+There is also [a demo application](https://github.com/erikdahlstrand/shrine-rails-example). It's not recommended to reference it as it's fairly simplistic and hides many configuration options.
 
 ## Setup
 
-To use shrine in a Rails project you need to do the following:
+To use Shrine in a Rails project, you need to do the following:
 
-* Add it to your `Gemfile` along with it's image processing and cloud storage
+* Add it to your `Gemfile` together with its image processing and cloud storage
 libraries
 
 ```Ruby
@@ -105,7 +105,7 @@ Shrine.plugin :activerecord
 # Shrine.plugin :sequel # if you are using Sequel
 ```
 
-* Require the image processing libraries in your `application.rb` file by
+* Require image processing libraries in your `application.rb` file by
 prepending the following line
 
 ```Ruby
@@ -124,8 +124,7 @@ end
 * Mount the uploader in your model
 
 Shrine's uploaders are mounted on a model using the `include` keyword.
-You can specify to which  attribute the uploader will get mounted by using the
-square brackets method on the uploader class.
+You can use the square brackets method on the uploader class to specify the attribute the uploader will be mounted to.
 
 ```Ruby
 class User < ActiveRecord::Base
@@ -135,13 +134,13 @@ class User < ActiveRecord::Base
 end
 ```
 
-* Create the appropriate column on your model's table.
+* Create the appropriate column in your model's table.
 
 Shrine assumes that it should use a column bearing the name of the attribute it
-was mounted on suffixed with `_data`. E.g. if you mount an uploader on the
-`avatar` attribute of the `User` model. Shrine will store information about the
-uploaded file to the `avatar_data` column of the `users` table. The column's
-type should either be `text`, `json` or `jsonb`.
+was mounted on suffixed with `_data`. For example, if you mount an uploader on the
+`avatar` attribute of the `User` model, Shrine will store information about the
+uploaded file in the `avatar_data` column of the `users` table. The column's
+type should be `text`, `json`, or `jsonb`.
 
 ```BASH
 rails g migration add_avatar_data_to_users avatar_data:jsonb
@@ -157,7 +156,7 @@ rails g migration add_avatar_data_to_users avatar_data:jsonb
       = f.input :avatar, as: :file
 ```
 
-If you use simple_form then add the following file to your `app/inputs` folder
+If you use simple_form, add the following file to your `app/inputs` folder
 
 ```Ruby
 # app/inputs/shrine_file_input.rb
@@ -210,12 +209,12 @@ Then you can use it in your views as follows:
 
 ## Plugins
 
-Shrine features quite a few useful plugins out-of-the-box.
+Shrine features quite a few useful out-of-the-box plugins.
 
 * Versions
 
-The versions plugin allows you to create different versions of an uploaded
-image. E.g. a small, medium and large version. Read more about it
+The Versions plugin allows you to create different versions of an uploaded
+image, for example, a small, medium, and large version. Read more about it
 [here](https://github.com/janko-m/shrine#versions).
 
 Here is an example of how to use it:
@@ -240,7 +239,7 @@ end
 
 * Validations
 
-This plugin allows you to check dimensions and file type of uploaded images.
+This plugin allows you to check the dimensions and file type of uploaded images.
 Check it out [here](https://github.com/janko-m/shrine#validations).
 
 * Metadata
@@ -250,13 +249,13 @@ You can read more about it [here](https://github.com/janko-m/shrine#metadata).
 
 * Background jobs
 
-Shrine supports background image processing and deletion. You can read
-[here](https://github.com/janko-m/shrine#background-jobs) how to set it up.
+Shrine supports background image processing and deletion. You can read how to set it up 
+[here](https://github.com/janko-m/shrine#background-jobs).
 
 ## Migrating from other uploaders
 
-Here are a few articles which explain how to migrate from other uploaders to
-shrine:
+Here are two articles that explain how to migrate to
+Shrine from other uploaders:
 
 * [Shrine for CarrierWave Users](http://shrinerb.com/rdoc/files/doc/carrierwave_md.html)
 * [Shrine for Paperclip Users](http://shrinerb.com/rdoc/files/doc/paperclip_md.html)

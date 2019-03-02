@@ -1,6 +1,6 @@
 ## Cyberduck
 
-We are using [Cyberduck](https://cyberduck.io/) for accessing files on S3.
+We use [Cyberduck](https://cyberduck.io/) to access files on S3.
 
 After downloading Cyberduck, follow these steps to connect to your S3 bucket.
 
@@ -8,10 +8,10 @@ After downloading Cyberduck, follow these steps to connect to your S3 bucket.
 
 ![New bookmark](/images/cyberduck_bookmark.jpg)
 
-2. Fill out the fields with information from your S3 secrets.
+2. Fill in the information from your S3 secrets.
 
 ![Bucket info](/images/cyberduck_bucket_info.jpg)
 
-3. Double click your bookmark and fill out the Secret Access Key.
+3. Double click your bookmark and fill in the Secret Access Key.
 
 ![Connection](/images/cyberduck_connection.jpg)

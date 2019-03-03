@@ -1,28 +1,28 @@
-Form Objects are used for removing form specific logic away from your ActiveRecord models into a separate class.
+Form Objects are used to remove form-specific logic away from your ActiveRecord models into a separate class.
 
 With Form Objects we can:
 
-  * Decouple form logic from your ActiveRecord models (i.e. refactor fat models)
+  * Decouple the form logic from your ActiveRecord models (i.e., refactor fat models)
   * Update multiple ActiveRecord models with a single form submission
-  * Respect the single responsibility principle
-  * Easily add additional behaviour to forms (i.e. methods)
+  * Respect the Single Responsibility Principle
+  * Easily add additional behavior to forms (i.e., methods)
   * Reuse logic between multiple forms
-  * Use with formbuilders like SimpleForm or Formtastic
+  * Use with form builders, such as SimpleForm or Formtastic
 
 ## Example
 
-We have a registration form where we ask users to give us the following data:
+We have a registration form in which we ask the users to provide the following data:
 
   * full name
   * company name
   * phone number
   * email
 
-`full_name` and `email` are associated with `User` model and `company_name` and `phone_number` are associated with `Company` model and we want to create both models on form submission. Additionally `User` model has `first_name` and `last_name` columns so we have to split the `full_name` attribute.
+`full_name` and `email` are associated with the `User` model, and `company_name` and `phone_number` are associated with the `Company` model, and we want to create both models on the form submission. Additionally, the `User` model has the `first_name` and `last_name` columns, so we have to split the `full_name` attribute.
 
 ## Bad solution
 
-There are couple of bad ways in which we could do this. One bad way is by adding missing attributes to one model, lets say User:
+There are a couple of bad ways to do this. One is by adding missing attributes to one model, let's say the User:
 
 ```ruby
 class User < ActiveRecord::Base
@@ -36,7 +36,7 @@ class User < ActiveRecord::Base
 end
 ```
 
-This way we pollute our `User` class with logic that is not directly related to it which breaks the single responsibility principle. But without adding this logic to our `User` class we wouldn't be able to use a formbuilder on an instance of `User` class like we want to:
+In this way, we pollute our `User` class with logic that is not directly related to it, which breaks the Single Responsibility Principle. However, without adding this logic to our `User` class, we wouldn't be able to use a form builder on an instance of the `User` class like we want to:
 
 ```ruby
 = simple_form_for(@user, url: registrations_path) do |f|
@@ -47,7 +47,7 @@ This way we pollute our `User` class with logic that is not directly related to 
   = f.button :submit, 'Start your 60 day trial', class: 'btn btn-green'
 ```
 
-Also a lot of form logic has to be in our controller class:
+Also, a lot of form logic has to be in our controller class:
 
 ```ruby
 class RegistrationsController < ApplicationController
@@ -110,7 +110,7 @@ class RegistrationForm
 end
 ```
 
-Including `ActiveModel::Model` gives us access to model name introspections, conversions, translations and validations (e.g. we can call the method `valid?` to check validations).
+Including `ActiveModel::Model` gives us access to model name introspections, conversions, translations, and validations (e.g., we can call the method `valid?` to check validations).
 
 Now we use this Form Object in our view and controller:
 
@@ -146,13 +146,13 @@ class RegistrationsController < ApplicationController
 end
 ```
 
-If the form is valid we create both models and redirect to success path. On the other hand if there are any validation errors, we render the `:new` partial with errors. Everything here behaves like we are using an ActiveRecord model.
+If the form is valid, we create both models and redirect to success path. On the other hand, if there are any validation errors, we render the `:new` partial with errors. Everything here behaves like we are using an ActiveRecord model.
 
 ## Questions
 
 **Can I use I18n with Form Objects?**
 
-Sure, the same way you use I18n with ActiveRecord objects. Just use `activemodel` instead of `activerecord` key in your locale files:
+Sure, the same way you use I18n with ActiveRecord objects. Just use `activemodel` instead of the `activerecord` key in your locale files:
 
 ```yml
 en:
@@ -170,7 +170,7 @@ en:
 
 **Where to put the Form Object classes?**
 
-Create a folder `app/forms` and put all your Form Object classes there
+Create an `app/forms` folder and put all your Form Object classes there.
 
 ## Further reading
   * [ActiveModel Form Objects](https://robots.thoughtbot.com/activemodel-form-objects)

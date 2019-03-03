@@ -1,7 +1,7 @@
-Query objects store complex SQL queries, data aggregation and filtering methods.
+Query Objects store complex SQL queries, data aggregation, and filtering methods.
 
 The goal of this pattern is to remove code for querying sets of objects from
-models/controllers and to provide a simple yet powerful interface for complex
+models/controllers and provide a simple yet powerful interface for complex
 data aggregation.
 
 ## In practice
@@ -10,12 +10,12 @@ Query objects live in the `app/queries` folder.
 
 Their naming convention is similar to that of controllers.
 Each object should bear the plural of the name of the model it queries
-suffixed by the word 'Query'. E.g. an object that queries articles should be
+suffixed by the word 'Query'. For example, an object that queries articles should be
 called ArticlesQuery.
 
-Each object should be passed a relation as an optional argument that it queries
-the data from. If no relation has been passed it defaults to querying all
-objects.
+Each object should be passed a relation as an optional argument from which it queries
+the data. If no relation has been passed, it queries all
+objects by default.
 
 ```Ruby
   # queries all articles
@@ -28,7 +28,7 @@ objects.
   ArticlesQuery.new(Article.where(published: true))
 ```
 
-Query objects can be used in model scopes and relation conditions.
+Query Objects can be used in model scopes and relation conditions.
 They should be accessible and useable from any location in your codebase.
 
 ```Ruby
@@ -42,7 +42,7 @@ end
 
 ## Implementation
 
-Each query object implementation should resemble the following example.
+Each Query Object implementation should resemble the following example:
 
 ```Ruby
 class ArticlesQuery
@@ -66,7 +66,7 @@ end
 
 ## Examples
 
-We have an Article model that has the following fields:
+We have an Article model with the following fields:
 
 * author_id
 * title
@@ -77,7 +77,7 @@ We have an Article model that has the following fields:
 * updated_at
 
 It also implements a belongs_to relation 'author' that returns an instance of
-the User model that has the following fields:
+the User model with the following fields:
 
 * first_name
 * last_name
@@ -124,7 +124,7 @@ logic in a controller isn't reusable and it makes the controller 'fat'.
 
 ## Good solution
 
-Create a query object in the `app/queries` directory.
+Create a Query Object in the `app/queries` directory.
 It's implementation should resemble the following:
 
 ```Ruby
@@ -158,7 +158,7 @@ class ArticlesQuery
 end
 ```
 
-Then you would use it like this
+Then you would use it like this:
 
 ```Ruby
 class ArticlesController < ApplicationController

@@ -1,6 +1,6 @@
 We continuously try to upgrade our internal processes. One of the most important things is staying up-to-date with the technologies we use.
 
-Browsing the web for tech news can be cumbersome. It is fairly easier to subscribe to various newsletters that send interesting content once in a while to our inbox.
+Browsing the web for tech news can be cumbersome. It is somewhat easier to subscribe to various newsletters that send interesting content once in a while to our inbox.
 
 ## Ruby newsletters
 
@@ -39,7 +39,7 @@ There's also reddit, with the [r/ruby](http://reddit.com/r/ruby) subreddit as th
 
 ## Twitter
 
-Good twitter accounts to follow for learning interesting information about Ruby and Rails (with none to little tweets that aren't tied to Ruby):
+Good Twitter accounts to follow for learning interesting information about Ruby and Rails (with none to little tweets that aren't tied to Ruby):
 
 * [Ruby Slovenia](https://twitter.com/RubySlovenia)
 * [Rails Bot](https://twitter.com/rails_bot)

@@ -9,11 +9,11 @@ You can read more about setting up Vim in our [Dotfiles wiki](https://github.com
 ## Learning Vim
 **Interactive tutorials**
 * Vimtutor  
-A built-in interactive tutorial covering all Vim's features. You can access vimtutor by typing vimtutor into your terminal emulator.
+A built-in interactive tutorial covering all of Vim's features. You can access vimtutor by typing vimtutor into your terminal emulator.
 
 * [Vim Adventures](http://vim-adventures.com/)  
 A browser-based game that teaches you how to use Vim. Only the first level is
-free, the others are paid.
+free, you have to pay for the others.
 
 * [Getting Started with Vim: An Interactive Guide](https://scotch.io/tutorials/getting-started-with-vim-an-interactive-guide)    
 An introduction article that features an interactive, in-browser Vim-like editor throughout the article, in which you can try out various stuff the article teaches you.
@@ -31,8 +31,8 @@ Another really good resource for learning both Vim and, its predecessor, Vi.
 
 **Screencasts**
 * [Vim video series](http://derekwyatt.org/vim/tutorials/), by Derek Wyatt  
-An excellent in-depth video series covering both beginner, intermediate and
-advanced topics. Also has some videos that showcase Vim's features and what makes
+An excellent in-depth video series covering both beginner, intermediate, and
+advanced topics. There are also some videos that showcase Vim's features and what makes
 it so powerful.
 
 * [Vimcasts](http://vimcasts.org/), by Drew Neil  

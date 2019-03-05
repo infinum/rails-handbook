@@ -135,7 +135,7 @@ and when to display stuff in the view.
 
 [SimpleDelegator](http://ruby-doc.org/stdlib-2.2.3/libdoc/delegate/rdoc/SimpleDelegator.html)
 is a Ruby class that provides a means to easily delegate all method calls to an object passed
-to the constructor. A simple implementation of a decorator using SimpleDelegator looks
+to the constructor. Simple implementation of a decorator using SimpleDelegator looks
 something like this:
 
 ``` ruby

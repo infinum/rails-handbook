@@ -1,9 +1,9 @@
-The purpose of a Null Object is to encapsulate the absence of an object by providing a substitutable alternative that offers suitable default behavior.
+The purpose of a null object is to encapsulate the absence of an object by providing a substitutable alternative that offers suitable default behavior.
 
-With Null Objects we can:
+With null objects we can:
   * Encapsulate the absence of an object by providing a substitutable alternative
   * Remove conditionals from our code (try, nil?, &&...)
-  * Keep all Null Objects structured in one place
+  * Keep all null objects structured in one place
 
 ## Example
 
@@ -86,9 +86,9 @@ And we can remove the conditional now:
 
 ## Questions
 
-**Where to put my Null Objects classes**
+**Where should I put my null objects classes?**
 
-Create an `app/nulls` folder and put all your Null Object classes there
+Create an `app/nulls` folder and put all your null object classes there.
 
 ## Further reading
 

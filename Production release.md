@@ -4,9 +4,9 @@ Before you release a Rails application to production, you **must** go through th
 
 Not all checklist items are necessary in every app.
 
-If you're not sure whether you should add some feature (e.g. Google Analytics) to the web app you're releasing, consult with the project manager and/or your team leader.
+If you're not sure whether you should add some feature (e.g., Google Analytics) to the web app you're releasing, consult with the project manager and/or your team leader.
 
-In your project management app (e.g. Productive, Trello...), create a _Production Checklist_ task and link to this handbook chapter. Finish it prior to production release.
+In your project management app (e.g., Productive, Trello...), create a _Production Checklist_ task and link to this handbook chapter. Finish it prior to production release.
 
 ## Checklist items:
 
@@ -14,7 +14,7 @@ In your project management app (e.g. Productive, Trello...), create a _Productio
 * Check that the app doesn't have any security issues on Code Climate. If it isn't on Code Climate, why isn't it? If there is a specific reason for not using Code Climate, check the security of your application with [Brakeman](https://github.com/presidentbeef/brakeman).
 * Check that Bugsnag is included.
 * Gzip the content with [Rack Deflater](http://robots.thoughtbot.com/content-compression-with-rack-deflater/).
-* Check that indices are all set up—if you have the postgres `pg_stat_statements` extension enabled, check what are some of the slow queries and consult with the team on ways to decrease their execution time. Also, check out [lol_dba](https://github.com/plentz/lol_dba)—a static checker for indices based on foreign keys.
+* Check that indices are all set up—if you have the Postgres `pg_stat_statements` extension enabled, check what are some of the slow queries and consult with the team on ways to decrease their execution time. Also, check out [lol_dba](https://github.com/plentz/lol_dba)—a static checker for indices based on foreign keys.
 * Check if models have actions dependent on their associations.
 
 **HTML apps only:**

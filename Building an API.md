@@ -51,12 +51,12 @@ an API since we can use tests to generate documentation.
 
 You can generate documentation from your controller or request specs. It's very
 important that you cover all the possible cases and return codes, e.g., a valid response,
-response when there are errors, and any other outcome of the action. Also document pagination, enumerations, filtering parameters, sorting parameters, and anything else that may be used to refine the results of the API call.
+response when there are errors, and any other outcome of the action. Also, document pagination, enumerations, filtering parameters, sorting parameters, and anything else that may be used to refine the results of the API call.
 
 Take special care to document crucial parts of your API, such as authentication and session management.
 
-Generating documentation should be a part of the Continuous Integration process, so that you can be sure your documentation is always up-to-date. You can use a service like
-[apiary](https://apiary.io/) to host the documentation.
+Generating documentation should be a part of the Continuous Integration process so that you can be sure your documentation is always up-to-date. You can use a service like
+[Apiary](https://apiary.io/) to host the documentation.
 
 ## Versioning
 
@@ -72,7 +72,7 @@ Pagination is required for every index action, and should be described in the do
 
 ## HTTP headers and status codes
 
-In case the JSON API standard is used, clients have to set the `content-type` to `application/vnd.api+json` in their request headers. In other cases, when using the JSON format, `application/json` will suffice.
+If the JSON API standard is used, clients have to set the `content-type` to `application/vnd.api+json` in their request headers. In other cases, when using the JSON format, `application/json` will suffice.
 
 Some of the more commonly used HTTP status codes are:
 #### Success codes

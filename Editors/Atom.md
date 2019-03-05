@@ -100,7 +100,7 @@ This package provides commands to open a file depending on the file which is bei
 
 ["ruby-syntax-replacer"](https://atom.io/packages/ruby-syntax-replacer)
 
-When you run it (by pressing `cmd-alt-x`), it will replace all old Ruby hash syntax in the current file with new one.
+When you run it (by pressing `cmd-alt-x`), it will replace all old Ruby hash syntax in the current file with a new one.
 
 ["set-syntax"](https://atom.io/packages/set-syntax)
 

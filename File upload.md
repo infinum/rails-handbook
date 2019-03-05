@@ -244,7 +244,7 @@ Check it out [here](https://github.com/janko-m/shrine#validations).
 
 * Metadata
 
-The Metadata plugin is used to store information about uploaded images.
+The Metadata plugin is used to store information on uploaded images.
 You can read more about it [here](https://github.com/janko-m/shrine#metadata).
 
 * Background jobs

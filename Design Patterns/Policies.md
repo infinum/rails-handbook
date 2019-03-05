@@ -1,12 +1,12 @@
-Policy Objects are plain old Ruby classes that encapsulate complex read operations. One definition says that Policy Objects are similar to Service Objects, but the difference is that Service Objects are used for write operations and Policy Objects for reads. Also, they are different from Query Objects because Query Objects focus on SQL reads, while Policy Objects operate on data already loaded in memory.
+Policy objects are plain old Ruby classes that encapsulate complex read operations. One definition says that policy objects are similar to service objects, but the difference is that service objects are used for write operations and policy objects for reads. Also, they are different from query objects because query objects focus on SQL reads, while policy objects operate on data already loaded in memory.
 
-The most common case of using Policy Objects is for authorization when you need to check a combination of rules before allowing the user to execute some action. Sometimes those rules are complex, and it is better to extract this logic in its own class, rather than put it in controllers.
+The most common case of using policy objects is for authorization when you need to check a combination of rules before allowing the user to execute some action. Sometimes those rules are complex, and it is better to extract this logic in its own class, rather than put it in controllers.
 
-[Pundit](https://github.com/elabs/pundit) is the most commonly used gem based on Policy Objects. We'll focus on this gem in our examples because it shows a very good way of using Policy Objects for authorization.
+[Pundit](https://github.com/elabs/pundit) is the most commonly used gem based on policy objects. We'll focus on this gem in our examples because it shows a very good way of using policy objects for authorization.
 
 ## Example
 
-We have an Order model with these fields: `company_id`, `due_date`, `active`, and `offers_count`. The `company_id` field tells us which company created the order. An Order can have multiple Offers from **other companies**. The Offer model consist of `order_id`, `company_id`, and `amount`.
+We have an order model with these fields: `company_id`, `due_date`, `active`, and `offers_count`. The `company_id` field tells us which company created the Order. An Order can have multiple Offers from **other companies**. The Offer model consist of `order_id`, `company_id`, and `amount`.
 
 Let's say that we have an OffersController with basic CRUD actions. We need to carry out authorization checks before every action.
 

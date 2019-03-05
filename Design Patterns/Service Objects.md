@@ -1,22 +1,22 @@
-## What is a service object?
+## What is a Service Object?
 
-*Service Object implements the user’s interactions with the application*.
+*A Service Object implements the user’s interactions with the application*.
 Inspecting the services folder of an application should tell the programmer what the application really does, which is not always obvious when looking at controllers or models.
-Using services has the benefit of concentrating the core logic of the application in a separate object, instead of scattering it around controllers and models.
+The benefit of using services is concentrating the core logic of the application in a separate object, instead of scattering it around controllers and models.
 
 ## Conventions
 
 * Services go under the app/services directory. Use subdirectories for business logic-heavy domains. For instance:
-The file `app/services/order/creator.rb` will define `Order::Creator`
-* Services ends with an actor (and do not end with Service): `TransactionApprover`, `TestNewsletterSender`, `UsersImporter`
-* A service object should have only *one* public method
-* Services should in most cases respond to a `call` method - using another verb makes it a bit redundant: `TransactionApprover.approve`
+the `app/services/order/creator.rb` file will define `Order::Creator`
+* Services end with an actor (and do not end with Service): `TransactionApprover`, `TestNewsletterSender`, `UsersImporter`
+* A Service Object should have only *one* public method
+* Services should, in most cases, respond to a `call` method—using another verb makes it a bit redundant: `TransactionApprover.approve`
 
 ## Example
 
-You have a model Parking Place and you need to merge two records into one record.
+You have a Parking Place model, and you need to merge two records into one record.
 
-## Bad Solution
+## Bad solution
 
 Do everything in a controller.
 
@@ -37,7 +37,7 @@ class ParkingPlaceController < ApplicationController
 end
 ```
 
-## Still Bad solution
+## Still bad solution
 
 Move the business logic in the model.
 
@@ -66,7 +66,7 @@ end
 
 ## Good solution
 
-Move the logic to service object.
+Move the logic to a Service Object.
 
 ```ruby
 # app/controllers/parking_place_controller.rb
@@ -121,8 +121,8 @@ end
 
 ## Further reading
 
-[Keeping your rails controllers dry with services](https://blog.engineyard.com/2014/keeping-your-rails-controllers-dry-with-services)
+[Keeping your Rails controllers dry with services](https://blog.engineyard.com/2014/keeping-your-rails-controllers-dry-with-services)
 
-[Gourmet service objects](http://brewhouse.io/blog/2014/04/30/gourmet-service-objects.html)
+[Gourmet Service Objects](http://brewhouse.io/blog/2014/04/30/gourmet-service-objects.html)
 
-[Railscast service objects](http://railscasts.com/episodes/398-service-objects)
+[Railscast Service Objects](http://railscasts.com/episodes/398-service-objects)

@@ -1,9 +1,9 @@
 ## Schema migrations
 
 The [Rails Migrations Guide](http://edgeguides.rubyonrails.org/active_record_migrations.html) does a very good job at
-explaining how schema migrations work in rails.
+explaining how schema migrations work in Rails.
 
-I would just like to point out that you can [pass modifiers](http://edgeguides.rubyonrails.org/active_record_migrations.html#passing-modifiers) when you are generating migrations from the command line. Not many people know of this.
+I would just like to point out that you can [pass modifiers](http://edgeguides.rubyonrails.org/active_record_migrations.html#passing-modifiers) when you are generating migrations from the command line. Not many people know this.
 
 ## Data migrations
 

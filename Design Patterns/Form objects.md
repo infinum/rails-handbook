@@ -1,6 +1,6 @@
-Form Objects are used to remove form-specific logic away from your ActiveRecord models into a separate class.
+Form objects are used to remove form-specific logic away from your ActiveRecord models into a separate class.
 
-With Form Objects we can:
+With form objects we can:
 
   * Decouple the form logic from your ActiveRecord models (i.e., refactor fat models)
   * Update multiple ActiveRecord models with a single form submission
@@ -77,7 +77,7 @@ end
 
 ## Good solution
 
-We create a Form Object to represent this specific form:
+We create a form object to represent this specific form:
 
 ```ruby
 class RegistrationForm
@@ -112,7 +112,7 @@ end
 
 Including `ActiveModel::Model` gives us access to model name introspections, conversions, translations, and validations (e.g., we can call the method `valid?` to check validations).
 
-Now we use this Form Object in our view and controller:
+Now we use this form object in our view and controller:
 
 ```ruby
 = simple_form_for(@form, url: registrations_path) do |f|
@@ -146,11 +146,11 @@ class RegistrationsController < ApplicationController
 end
 ```
 
-If the form is valid, we create both models and redirect to success path. On the other hand, if there are any validation errors, we render the `:new` partial with errors. Everything here behaves like we are using an ActiveRecord model.
+If the form is valid, we create both models and redirect to the success path. On the other hand, if there are any validation errors, we render the `:new` partial with errors. Everything here behaves like we are using an ActiveRecord model.
 
 ## Questions
 
-**Can I use I18n with Form Objects?**
+**Can I use I18n with form objects?**
 
 Sure, the same way you use I18n with ActiveRecord objects. Just use `activemodel` instead of the `activerecord` key in your locale files:
 
@@ -168,9 +168,9 @@ en:
               present: "Phone number can't be blank"
 ```
 
-**Where to put the Form Object classes?**
+**Where to put the form object classes?**
 
-Create an `app/forms` folder and put all your Form Object classes there.
+Create an `app/forms` folder and put all your formoObject classes there.
 
 ## Further reading
   * [ActiveModel Form Objects](https://robots.thoughtbot.com/activemodel-form-objects)

@@ -12,7 +12,7 @@ Feature branches are **always** branched out of `master`. They are also merged f
 
 **Never branch out of the `staging` branch and never merge `staging` into `master`**
 
-We use pull requests to add new features—pull requests initiate discussion about your commits. As they're tightly integrated with the underlying Git repository, everyone can see exactly what changes would be merged if they accept your request. When making a pull request, **always** make one for `staging` and one for `master`. The pull request workflow is defined separately for each project.
+We use pull requests to add new features—pull requests initiate discussion about your commits. As they're tightly integrated with the underlying Git repository, everyone can see exactly what changes will be merged if they accept your request. When making a pull request, **always** make one for `staging` and one for `master`. The pull request workflow is defined separately for each project.
 
 ### Why do you need the `staging` branch and why you should never merge it into `master`
 

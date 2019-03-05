@@ -2,7 +2,7 @@ We used to send push notifications directly to APNS or GCM from our code. We wer
 
 We knew that an easier solution must exist. And then we discovered Firebase.
 
-Firebase is a service that does all the hard work for us. There is no need to store certificates on the server because Firebase handles them for us. Furthermore, we don't need to maintain OS types because Firebase knows which notification goes to APNS and which to GCM. Basically, Firebase handles the routing and delivery of push notifications to targeted devices. Firebase also has a dashboard with statistics which mobile developers can use for testing purposes.
+Firebase is a service that does all the hard work for us. There is no need to store certificates on the server because Firebase handles them. Furthermore, we don't need to maintain OS types because Firebase knows which notification goes to APNS and which to GCM. Basically, Firebase handles the routing and delivery of push notifications to targeted devices. Firebase also has a dashboard with statistics that mobile developers can use for testing purposes.
 
 There are many services (such as Amazon SNS) that provide push notifications, but we use Firebase because of its simplicity and reliability.
 

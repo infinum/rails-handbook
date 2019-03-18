@@ -1,15 +1,15 @@
-Adapters are objects with the purpose of wrapping third party api calls. The idea behind adapter objects is to introduce an abstraction layer
-over our external API calls, this makes all the requests going from our application to outside third party API-s centralized in one place.
-Also, if for some reason we want to replace the existing gem for the API calls we can easily do so without the need to search the entire codebase
+Adapters are objects whose purpose is to wrap third-party API calls. The idea behind adapter objects is to introduce an abstraction layer
+over our external API calls. This makes all the requests going from our application to outside third-party APIs centralized in one place.
+Also, if we want to replace the existing gem for API calls for some reason, we can easily do so without the need to search the entire codebase
 and replace each method.
 
-Adapter objects are placed inside /app/adapters/ folder
+Adapter objects are placed inside the /app/adapters/ folder.
 
-## Bad Solution
+## Bad solution
 
-Having API calls in controller or service object. We are instantiating Instagram client from the controller and keeping the token as
-a constant in the controller. If we have similar code scattered on other places as well it will be difficult to perform changes if we want to replace the
-gem or if the api of the gem itself is changed.
+Having API calls in controller or service objects. We are instantiating an Instagram client from the controller and keeping the token as
+a constant in the controller. If we have similar code scattered around as well, it will be difficult to carry out changes if we want to replace the
+gem, or if the API of the gem itself is changed.
 
 ```ruby
 class PhotosController < ApplicationController
@@ -24,14 +24,14 @@ class PhotosController < ApplicationController
 end
 ```
 
-## Better Solution
+## Better solution
 
-We extracted all the external api calls to a single, InstagramAdapter. Also all the data that is needed to instantiate
-the client is moved to the adapter class. This way it is easy to swap the gem with some other. Also we are not breaking
-the single responsibility principle, since InstagramAdapter class is concerned with handling calls to Instagram API.
+We extract all external API calls to a single, InstagramAdapter. Also, all data that is necessary to instantiate
+the client is moved to the adapter class. In this way, it is easy to swap the gem for some other. Also, we are not breaking
+the Single Responsibility Principle, since the InstagramAdapter class handles calls to the Instagram API.
 
-If we are making a couple of calls to Facebook, Instagram, Github etc. this solution is going to be sufficient especially
-if we are already rely on existing gem (i.e. in this case we are using instagram gem and InstagramAdapter is just a wrapper).
+If we are making a couple of calls to Facebook, Instagram, GitHub, etc., this solution is going to be sufficient; especially
+if we already rely on an existing gem (i.e., in this case, we are using the Instagram gem, and InstagramAdapter is just a wrapper).
 
 ```ruby
 class PhotosController < ApplicationController
@@ -63,27 +63,27 @@ class InstagramAdapter
 end
 ```
 
-In this case there is a single ```instagram_adapter.rb``` class located in ```/app/adapters/instagram/```, if the single class starts to get to large we can separate the concerns based on api calls. For example lets say we have a github adapter, we can have two adapters one for commits and one for repos. So the structure would be as follows ```app/adapters/github/commits_adapter.rb``` and ```app/adapters/github/repos_adapter.rb``` and we would have a base class for connecting to api located in ```app/adapters/github/base_adapter.rb```. Except for multiple files there is not much difference from the example above.
+In this case, there is a single ```instagram_adapter.rb``` class located in ```/app/adapters/instagram/```. If the single class starts to get too large, we can separate the concerns based on API calls. For example, let's say we have a GitHub adapter. We can have two adapters—one for commits, and one for repos. So the structure would be as follows ```app/adapters/github/commits_adapter.rb``` and ```app/adapters/github/repos_adapter.rb```, and we would have a base class for connecting to the API located in ```app/adapters/github/base_adapter.rb```. Except for multiple files, there is not much difference from the example above.
 
-## Going Beyond simple Adapters
-If we are going to build a complete wrapper around third party api (i.e. Dolcela, PTV etc.) or if we need options on manipulating requests and responses from the api (i.e. Github, Instagram, Facebook) just using adapters won't be sufficient.
+## Going beyond simple adapters
+If we are going to build a complete wrapper around a third-party API (i.e., Dolcela, PTV, etc.), or if we need options for manipulating requests and responses from the API (i.e., GitHub, Instagram, Facebook), using only adapters won't be sufficient.
 
-This is especially the case if the external api is using XML and we are using JSON in our responses. Also if we don't have a complete gem we can rely on so we need to develop our own custom solution.
+This is especially the case if the external API is using XML and we are using JSON in our responses, or if we don't have a complete gem we can rely on and need to develop our own custom solution.
 
-So to tackle this kind of problems we are going to add Serializers and Deserializers objects.
-Serializers - used for preparing the request before it goes to external API.
-Deserializers - used for parsing responses from the external API.
+So, to tackle these kinds of problems, we are going to add serializer and deserializer objects.
+Serializers—used for preparing the request before it goes to external API.
+Deserializers—used for parsing responses from the external API.
 
-## Deserializers objects
+## Deserializer objects
 
-Deserializers are used if we want to parse the response we received from the external API. This is a very frequent case where
-the response format from the API is not quite adequate to our application needs.
+Deserializers are used when we want to parse the response we received from the external API. This is very frequent when
+the response format from the API does not quite meet our application's needs.
 
-Deserializers are stored in ```/app/adapters/{api_service}/deserializers/``` where ```api_service``` is the external api i.e. InstagramDolcela, PTV etc.
+Deserializers are stored in ```/app/adapters/{api_service}/deserializers/```, where ```api_service``` is the external API, e.g., Instagram, Dolcela, PTV, etc.
 
-In the following example we instantiate the Deserializer object by sending the API response to the initialize method.
+In the following example, we instantiate the deserializer object by sending the API response to the initialize method.
 
-**Example of Deserializer object**
+**Example of a deserializer object**
 
 ```ruby
 module Instagram
@@ -122,10 +122,10 @@ module Instagram
 end
 ```
 
-**Using Deserializer in Adapter**
+**Using a deserializer in an adapter**
 
-In the above example after we fetched recent user media from Instagram we passed the response to RecentMedia parser which
-is going to parse the response and add some additional methods around the response for example failed? success? etc.
+In the above example, after we'd fetched recent user media from Instagram, we passed the response to the RecentMedia parser which
+is going to parse the response and add some additional methods around the response, for example failed?, success?, etc.
 
 ```ruby
 module Adapters
@@ -153,9 +153,9 @@ module Adapters
 end
 ```
 
-**Deserializing Collections**
+**Deserializing collections**
 
-If you want to deserialize a collection you received from the API you can make collection objects. In this case itemize method makes a collection
+If you want to deserialize a collection you received from the API, you can make collection objects. In this case, the itemize method makes a collection
 of MediaItem objects.
 
 ```ruby
@@ -171,7 +171,7 @@ module Instagram
     end
 
     def feed
-      @feed ||= instagram_recent_media.map { item| Deserializer::MediaItem.new(item) }
+      @feed ||= instagram_recent_media.map { |item| Deserializer::MediaItem.new(item) }
     end
 
     def items_with_location_present
@@ -225,7 +225,7 @@ end
 
 ## Serializer objects
 
-Serializers are used for preparing the request before we send it to the server. This is especially useful if we need to make a xml request.
+Serializers are used to prepare the request before we send it to the server. This is especially useful if we need to make an XML request.
 
 ```ruby
 module Dolcela
@@ -283,7 +283,7 @@ module Dolcela
 end
 ```
 
-We are going to use serializers in the adapter objects. for example:
+We are going to use serializers in the adapter objects, for example:
 
 ```ruby
 module Coolinarika
@@ -304,7 +304,7 @@ module Coolinarika
 end
 ```
 
-Here is an example of how the BaseAdapter class looks like. It is a base class for all adapters and it contains
+Here is an example of what the BaseAdapter class looks like. It is a base class for all adapters and it contains the
 execute_request method for making requests to the API.
 
 ```ruby
@@ -329,16 +329,16 @@ end
 ## Benefits
 
 Creating an adapter object allows you to provide a layer of abstraction around your external libraries. Since you decide what interface your
-adapter is going to expose, it’s easy to use another library doing the same job. In such case you need to only change adapter’s code.
+adapter is going to expose, it’s easy to use another library that does the same job. In such cases, you only have to change the adapter’s code.
 
-If you have code which can’t be changed by you and it has a dependency which you provide, you can use an adapter to easily exchange this dependency
-with something else. This is especially useful if you have code which uses some legacy gem and you want to get rid of it, providing a new gem with
+If you have a code that you cannot change, and it has a dependency which you provide, you can use an adapter to easily exchange this dependency
+for something else. This is especially useful if you have code which uses a legacy gem, and you want to get rid of it and provide a new gem with
 the same functionality (but different API).
 
-Adapters can be also useful for testing - you can easily exchange a real integration with an external service (like Facebook) with an object which
-returns prepared responses. This calls a in memory adapter and it’s a very useful technique to make your tests running faster.
+Adapters can also be useful for testing—you can easily exchange a real integration with an external service (like Facebook) for an object which
+returns prepared responses. This calls an in-memory adapter, and it’s a very useful technique to make your tests run faster.
 
 ## More info
 
-* [Arkency ruby rails adapters](http://blog.arkency.com/2014/08/ruby-rails-adapters/)
-* [Adapter design pattern in rails application](http://rustamagasanov.com/blog/2014/11/16/adapter-design-pattern-usage-in-rails-application-on-examples/)
+* [Arkency Ruby Rails adapters](http://blog.arkency.com/2014/08/ruby-rails-adapters/)
+* [Adapter Design Pattern in Rails Application](http://rustamagasanov.com/blog/2014/11/16/adapter-design-pattern-usage-in-rails-application-on-examples/)

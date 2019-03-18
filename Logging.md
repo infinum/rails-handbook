@@ -1,11 +1,11 @@
 ## Logging
 
-Infinum Rails Team uses the [Graylog](https://www.graylog.org/) for logging all requests which are processed by our apps.
+The Infinum Rails Team uses [Graylog](https://www.graylog.org/) for logging all requests that are processed by our apps.
 
 ### Setup
-To use Graylog in a Rails project you need to do the following:
+To use Graylog in a Rails project, you need to do the following:
 
-* Append your `Gemfile` with following gems:
+* Append your `Gemfile` with the following gems:
 
   * Example
 
@@ -14,9 +14,9 @@ To use Graylog in a Rails project you need to do the following:
       gem 'rails_semantic_logger'
     ```
 
-  * [Gelf gem](https://github.com/Graylog2/gelf-rb) allows you to send GELF messages to Graylog server instances.
+  * [Gelf gem](https://github.com/Graylog2/gelf-rb) allows you to send GELF messages to the Graylog server instances.
 
-  * The [rails_semantic_logger gem](https://github.com/rocketjob/rails_semantic_logger) replaces the default Rails logger with Semantic Logger. It also reduces Rails logging output in production to almost a single line for every Controller-Action call. Basically, it is full fledged logging framework with [numerous options](http://rocketjob.github.io/semantic_logger/rails).
+  * The [rails_semantic_logger gem](https://github.com/rocketjob/rails_semantic_logger) replaces the default Rails logger with Semantic Logger. It also reduces the Rails logging output in production to almost a single line for every Controller-Action call. Basically, it is a full-fledged logging framework with [numerous options](http://rocketjob.github.io/semantic_logger/rails).
 
 * Add `graylog_host` in config for all environments.
   * production.rb and staging.rb
@@ -32,7 +32,7 @@ To use Graylog in a Rails project you need to do the following:
       config.graylog_host = nil
     ```
 
-* Add `semantic_logger.rb` in initializers folder.
+* Add `semantic_logger.rb` in the initializers folder.
 
   * Example
 
@@ -52,11 +52,11 @@ To use Graylog in a Rails project you need to do the following:
         )
       end
     ```
-  * With these settings, you need to use TCP, keep that in mind when defining the URL (ask the DevOps team)
+  * With these settings, you need to use TCP. Keep that in mind when defining the URL (ask the DevOps team).
 
 * Customize payload
 
-  * Add following code in the controllers which logs you wish to alter.
+  * Add the following code in the controllers whose logs you wish to alter.
 
     ```Ruby
       def append_info_to_payload(payload)
@@ -65,6 +65,6 @@ To use Graylog in a Rails project you need to do the following:
         payload[:user] = current_user.username if current_user.present?
       end
     ```
-* Consult with PM, and define time range for keeping historical data.
+* Consult with your PM and define the time range for keeping historical data.
 
-* Notify our devops before turning logging on because they should handle streams, permissions, backup options etc...
+* Notify our devops before turning logging on because they should handle streams, permissions, backup options, etc.

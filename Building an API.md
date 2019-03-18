@@ -17,28 +17,43 @@ We write our APIs using the JSON format, more specifically we use the [JSON API 
 This allows those who consume our APIs to know what to expect regarding the
 document structure and they can use libraries which enable them to build their clients faster and easier.
 
+## Example app
+
+Check out this [example API application](https://github.com/infinum/rails-infinum-jsonapi_example_app) that uses a combination of gems used for simplifying our APIs.
+
+
 ## Gems
 
-We use a few gems that make our lives easier when writing APIs:
+We use a few gems that make our lives easier when writing APIs.
 
-[json_api_responders](https://github.com/infinum/json_api_responders)
-* Simplifies the code in controllers, e.g.
-```
+
+### Controller responses
+
+[json\_api\_responders](https://github.com/infinum/json_api_responders) simplifies the code in controllers.
+
+Responding with a status `200` (_OK_) if the object is valid and with `422` (_Unprocessable Entity_) would usually look like this:
+
+```Ruby
   if resource.valid?
     render json: resource, status: 200
   else
     render error: errors, status: 422
   end
 ```
-becomes
-```
+
+`json_api_responders`'s method `respond_with` enables you to simplify the code:
+
+```Ruby
   respond_with resource
 ```
 
-[jsonapi-rails](https://github.com/jsonapi-rb/jsonapi-rails)
- * Takes care of serialization/deserialization of Ruby objects into/out of JSON
-objects, all according to the JSON API standard, so you don't have to think about
-those details.
+### Data serialization/deserialization
+
+So far we've used the [jsonapi-rails](https://github.com/jsonapi-rb/jsonapi-rails), which takes care of serialization/deserialization of Ruby objects into/out of JSON objects, all according to the JSON API standard, so you don't have to think about those details.
+
+Another alternative is [fast_jsonapi](https://github.com/Netflix/fast_jsonapi). Netflix's gem proved it can do serialization faster. You can check out the [benchmark specs](https://github.com/Netflix/fast_jsonapi/blob/master/spec/lib/object_serializer_performance_spec.rb) if you're interested.
+
+### Testing & Documentation
 
 [rspec](https://github.com/rspec/rspec-rails)
  * Testing is always important when building software, but doubly so when writing

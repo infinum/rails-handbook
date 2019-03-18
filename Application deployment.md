@@ -9,14 +9,14 @@ build passes.
 
 * By having an extensive test suite that runs automatically after pushing to the
   remote repository, you can be certain that your new changes didn't break any
-  of the old functionality.
+  old functionality.
 
 * The build server can deploy the changes automatically if it's set up to do so
   and the build passes successfully, which removes the need to deploy changes
   manually after a push to the remote repository.
 
 * The build server can also send build status notifications to Slack, emails, and
-  other communication channels. This is useful since all the members of your
+  other communication channels. This is useful since all members of your
   team will be notified if a build or deployment fails.
 
 ## Mina
@@ -33,7 +33,7 @@ Mina in the README.md of the Mina repository.
 
 [Semaphore](http://www.semaphoreci.com) is the build service we're currently
 using. Semaphore supports notifications through instant messaging software,
-emails, and other methods. It also supports automated deployments, which need to
+emails, and other methods. It also supports automated deployments, which have to
 be configured separately.
 
 Semaphore uses Mina for deployment in the background, and you can check other

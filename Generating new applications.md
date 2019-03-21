@@ -16,7 +16,7 @@ Before a developer creates a new application, a couple of third-party services n
 
 ## Generating new Rails application
 
-99% of our work is based on the Rails framework. We have some standard configurations and gems that are basically in every Rails application. To make our lives easier, we made a [default template](https://github.com/infinum/default_rails_template/) to generate new Rails applications that meet those standards.
+99% of our work is based on the Rails framework. We have some standard configurations and gems that are basically in every Rails application. To make our lives easier, we've made a [default template](https://github.com/infinum/default_rails_template/) to generate new Rails applications that meet those standards.
 
 ## First deploy
 

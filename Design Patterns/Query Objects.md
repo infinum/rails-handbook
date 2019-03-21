@@ -1,4 +1,4 @@
-Query Objects store complex SQL queries, data aggregation, and filtering methods.
+Query objects store complex SQL queries, data aggregation, and filtering methods.
 
 The goal of this pattern is to remove code for querying sets of objects from
 models/controllers and provide a simple yet powerful interface for complex

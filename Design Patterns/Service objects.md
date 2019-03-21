@@ -1,15 +1,15 @@
-## What is a Service Object?
+## What is a service object?
 
-*A Service Object implements the user’s interactions with the application*.
+*A service object implements the user’s interactions with the application*.
 Inspecting the services folder of an application should tell the programmer what the application really does, which is not always obvious when looking at controllers or models.
 The benefit of using services is concentrating the core logic of the application in a separate object, instead of scattering it around controllers and models.
 
 ## Conventions
 
-* Services go under the app/services directory. Use subdirectories for business logic-heavy domains. For instance:
+* Services go under the app/services directory. Use subdirectories for business logic-heavy domains. For instance,
 the `app/services/order/creator.rb` file will define `Order::Creator`
 * Services end with an actor (and do not end with Service): `TransactionApprover`, `TestNewsletterSender`, `UsersImporter`
-* A Service Object should have only *one* public method
+* A service object should have only *one* public method
 * Services should, in most cases, respond to a `call` method—using another verb makes it a bit redundant: `TransactionApprover.approve`
 
 ## Example
@@ -66,7 +66,7 @@ end
 
 ## Good solution
 
-Move the logic to a Service Object.
+Move the logic to a service object.
 
 ```ruby
 # app/controllers/parking_place_controller.rb

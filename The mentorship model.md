@@ -8,6 +8,6 @@ We assign a mentor—a colleague who has more experience—to every new team mem
 
 * **Pull requests**—the mentee should send a pull request for every new feature and assign the mentor to review it. Pull requests should be short and include only one feature. Multiple features should not be mixed in one pull request. The mentor should take some time to review every pull request that they receive and give advice on how to make the code better. The mentor should not write the code instead of the colleague, but only show them how to write quality stuff. Each advice should include an explanation and some info on how it improves the code.
 
-* **Give feedback**—from time to time, the mentor should give feedback to the mentee on their progress. The mentor should tell them the things they do well and what can be improved. Feedback is very important for every team member.
+* **Give feedback**—from time to time, the mentor should give feedback to the mentee on their progress. The mentor should tell them what they do well and what can be improved. Feedback is very important for every team member.
 
 * **Report to team leader and management**—the mentor should periodically report on the colleague's progress to the management. The mentor should know best how their new colleague is getting along and they should communicate that to the team leader and management.

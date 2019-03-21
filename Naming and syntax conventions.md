@@ -1,4 +1,4 @@
-The Infinum Rails Team uses the [community guidelines](https://github.com/bbatsov/ruby-style-guide#naming) for naming and syntax conventions. Please read it.
+The Infinum Rails Team uses the [community guidelines](https://github.com/bbatsov/ruby-style-guide#naming) for naming and syntax conventions. Please read them.
 
 We use a Ruby style-checking analyzer called [Rubocop](https://github.com/bbatsov/rubocop) to preserve syntax consistency in our applications—it's packaged as a Ruby gem and comes with a CLI to check style consistency. Although that's nice, we prefer to use it as a plugin for our favorite editors to get real time in-editor warnings just as we're writing code. Whether you're using Vim, Atom or Sublime, please check that it's properly installed after you've run our installation scripts.
 

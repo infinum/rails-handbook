@@ -54,7 +54,7 @@ We use [recipient_interceptor](https://github.com/croaky/recipient_interceptor) 
 3. Add the permitted_emails key in secrets.yml under the staging section.
 4. If you want to set more then one email address, then they should be separated with a comma. (Example: 'test1@infinum.co,test2@infinum.co')
 
-If everything is configured, all emails will be delivered to specified email addresses.
+If everything is configured, all emails will be delivered to the specified email addresses.
 
 ## Development
 
@@ -65,9 +65,9 @@ Preview an email in the default browser instead of sending it. This is great for
 1. You don't need to set up email delivery in the development environment.
 2. There is no risk of accidentally sending a test email to a real user when developing and testing.
 
-We are using [letter_opener](https://github.com/ryanb/letter_opener) for previewing emails in development.
+We use [letter_opener](https://github.com/ryanb/letter_opener) to preview emails in development.
 
-1. Add the `letter_opener` gem to the gemfile(in the development group)
+1. Add the `letter_opener` gem to the gemfile (in the development group)
 2. Set the delivery method in config/environments/development.rb. Example:
 
       config.action_mailer.delivery_method = :letter_opener
@@ -75,4 +75,4 @@ We are using [letter_opener](https://github.com/ryanb/letter_opener) for preview
 ### Rails built-in email previewing
 
 Rails also has a built-in feature for [previewing emails](http://guides.rubyonrails.org/action_mailer_basics.html#previewing-emails).
-Using it allows you to see how the email looks without sending a real email.
+Using it allows you to see what the email looks like without sending a real email.

@@ -124,7 +124,7 @@ Although this is just one method, our model would become bloated with a more com
 
 **Where to put the `CSVCity` and `CityImporter` class?**
 
-There are multiple places where you can put this kind of code, a good place may be:  
+There are multiple places where you can put this kind of code. A good place may be:  
 
   * create a folder `app/csv_importers`, add the `CityImporter` there and `CSVCity` inside the same class.
   * if you're using this in something like a rake task, you can write that content in the rake task file itself.

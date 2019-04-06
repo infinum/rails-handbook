@@ -1,18 +1,18 @@
-We used to send push notifications directly to APNS or GCM from our code. We were maintaining device_ids, OS types and GCM/APNS certificates. This approach was complicated and hard to maintain.
+We used to send push notifications directly to APNS or GCM from our code. We were maintaining device_ids, OS types, and GCM/APNS certificates. This approach was complicated and hard to maintain.
 
-We knew that an easier solution must exist and then we discovered Firebase.
+We knew that an easier solution must exist. And then we discovered Firebase.
 
-Firebase is a service which does all the hard work for us. There is no need to store certificates on the server because Firebase handles them for us. Furthermore, we don't need to maintain OS types, because Firebase knows which notification goes to APNS and which to GCM. Basically, Firebase handles the routing and delivery of push notifications to targeted devices. Firebase also has a dashboard with statistics which mobile developers can use for testing purposes.
+Firebase is a service that does all the hard work for us. There is no need to store certificates on the server because Firebase handles them. Furthermore, we don't need to maintain OS types because Firebase knows which notification goes to APNS and which to GCM. Basically, Firebase handles the routing and delivery of push notifications to targeted devices. Firebase also has a dashboard with statistics that mobile developers can use for testing purposes.
 
-There are many services (like Amazon SNS) which provide push notifications, but we use Firebase because of its simplicity and reliability.
+There are many services (such as Amazon SNS) that provide push notifications, but we use Firebase because of its simplicity and reliability.
 
 ## General
-In this chapter, we will explain a few approaches for implementing push notifications and give the pros and cons of each.
+In this chapter, we will explain a few approaches to implementing push notifications and give the pros and cons of each.
 
-Before starting development, read chapters about [Firebase Cloud Messaging](https://firebase.google.com/docs/cloud-messaging/), and [app server development](https://firebase.google.com/docs/cloud-messaging/server).
+Before starting development, read chapters about [Firebase Cloud Messaging](https://firebase.google.com/docs/cloud-messaging/) and [app server development](https://firebase.google.com/docs/cloud-messaging/server).
 
-## Development Approaches
-There are a few approaches for sending push notifications using Firebase:
+## Development approaches
+There are several approaches to sending push notifications using Firebase:
   * sending directly to device_ids
     * storing one device id per user
     * storing multiple device ids per user
@@ -23,29 +23,29 @@ There are a few approaches for sending push notifications using Firebase:
 
 ### Approach based on sending notifications directly to device_ids
 #### Having one device id per user
-* Using this approach means adding a new column `device_id` directly to a User model.
- * On each login, this column will be overwritten.
- * On each logout, this column should be deleted.
+* Using this approach means adding a new `device_id` column directly to a user model.
+ * This column will be overwritten on each login.
+ * This column should be deleted on each logout.
 
  * PROS
     * Easy to build.
 
  * CONS
-    * The user can get notifications only on the last logged in device.
+    * The user can get notifications only on the last device they logged in.
     * Mobile developers need to be reminded to do a proper logout API call when the user logs out. They often forget to do this.
 
  * Usually, a user has multiple devices, so this approach is not recommended.
 
 #### Having multiple device ids per user
 
-  * A new table to store user device_ids needs to be implemented.
+  * A new table for storing user device_ids needs to be implemented.
   * An index on device_id is mandatory
 
   * PROS
     * The user can get push notifications on multiple devices.
 
   * CONS
-    * We need to maintain user's device_ids (create, delete).
+    * We need to maintain the user's device_ids (create, delete).
 
 #### API sessions controller example
   ```ruby
@@ -124,7 +124,7 @@ There are a few approaches for sending push notifications using Firebase:
 
 ### Approach based on sending notifications to topics
 
-  * Topic messaging is best suited for content which is often sent to a group of users. E.g. all users subscribed to weather information, some subreddits, etc.
+  * Topic messaging is best suited for content which is often sent to a group of users, for example, all users subscribed to weather information, some subreddits, etc.
 
   * Based on the publish/subscribe model, FCM topic messaging allows you to send a message to multiple devices that have opted into a particular topic. You compose topic messages as needed, and FCM handles routing and delivering the message reliably to the right devices.
 
@@ -137,12 +137,12 @@ There are a few approaches for sending push notifications using Firebase:
     * CONS
       * Topic names are being duplicated in Firebase as well as in our backend.
 
-  * Non-Persisted topics
+  * Non-persisted topics
     * We can agree on a convention for topic names with mobile developers.
-    * Every topic name is parameterized. (Firebase Push Notifications -> firebase-push-notifications)
+    * Every topic name is parameterized (Firebase Push Notifications -> firebase-push-notifications).
 
     * PROS:
-      * With this approach we don't need to store topic names in the backend.
+      * With this approach, we don't need to store topic names in the backend.
       * Easy to build.
 
     * CONS:
@@ -189,11 +189,11 @@ There are a few approaches for sending push notifications using Firebase:
   for managing topic subscriptions via a server. With this feature, we can have full control over subscriptions if necessary.
 
 ### Approach based on sending notifications to device groups
-  * With device group messaging, you can send a single message to multiple instances of an app running on devices belonging to a group. Typically, a "group" refers a set of different devices that belong to a single user. All devices in a group share a common notification key, which is the token that FCM uses to fan out messages to all devices in the group.
+  * With device group messaging, you can send a single message to multiple instances of an app running on devices belonging to a group. Typically, a "group" refers to a set of different devices that belong to a single user. All devices in a group share a common notification key, which is the token that FCM uses to fan out messages to all devices in the group.
 
-  * If you need to send messages to multiple devices per user, consider device group messaging for those use cases.
+  * If you need to send messages to multiple devices per user, consider device group messaging for those cases of use.
 
-  * The maximum number of members allowed per notification key is 20.
+  * The maximum number of members allowed per a notification key is 20.
   * We haven't used device groups, but you can read more about this [approach]((https://firebase.google.com/docs/cloud-messaging/android/device-group)).
 
 ## Choosing the right development approach
@@ -204,4 +204,4 @@ Since we are rather new at using Firebase, please talk to someone from the team 
 
 2. The server key from the Firebase project settings should be copied to Vault. It authorizes your app server on Google services.
 
-3. Add [fcm gem](https://github.com/spacialdb/fcm) to your project. The Fcm gem serves as an SDK for communicating with the [Firebase](https://firebase.google.com/docs/cloud-messaging/send-message).
+3. Add the [FCM gem](https://github.com/spacialdb/fcm) to your project. The FCM gem serves as an SDK for communication with [Firebase](https://firebase.google.com/docs/cloud-messaging/send-message).

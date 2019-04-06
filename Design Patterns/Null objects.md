@@ -1,13 +1,13 @@
-The intent of a Null Object is to encapsulate the absence of an object by providing a substitutable alternative that offers suitable default behavior.
+The purpose of a null object is to encapsulate the absence of an object by providing a substitutable alternative that offers suitable default behavior.
 
-With Null objects we can:
+With null objects we can:
   * Encapsulate the absence of an object by providing a substitutable alternative
-  * Remove conditionals from our code (try, nil?, &&..)
-  * Keep all Null objects structured in one place
+  * Remove conditionals from our code (try, nil?, &&...)
+  * Keep all null objects structured in one place
 
 ## Example
 
-We have an address model where we store all the address information like city, zipcode, country, etc...
+We have an address model where we store all the address information, such as city, zip code, country, etc.
 
 ```ruby
 class Address
@@ -18,19 +18,19 @@ class Address
 end
 ```
 
-Also we have a company model which can have multiple addresses but it can also have no address data.
+Also, we have a company model which can have multiple addresses, but it can also have no address data.
 
-We want to print out first (primary) address.
+We want to print out the first (primary) address.
 
-## Bad Solution
+## Bad solution
 
-We get the first address this way:
+We get the first address in this way:
 
 ```ruby
 @address = @company.addresses.first
 ```
 
-Now `@address` can be `nil` so we have to check if address is present before we print it and give a fallback scenario:
+Now `@address` can be `nil`, so we have to check if the address is present before we print it and give a fallback scenario:
 
 ```ruby
 - if @address.present?
@@ -45,9 +45,9 @@ Now `@address` can be `nil` so we have to check if address is present before we 
   %p= '< no country entered >'
 ```
 
-## Good Solution
+## Good solution
 
-We create a NullAddress class with it's default behaviours:
+We create a NullAddress class with its default behaviors:
 
 ```ruby
 class NullAddress
@@ -69,7 +69,7 @@ class NullAddress
 end
 ```
 
-Then we instantiate it if needed:
+Then we instantiate it if necessary:
 
 ```ruby
 @address = @company.addresses.first || NullAddress.new
@@ -86,9 +86,9 @@ And we can remove the conditional now:
 
 ## Questions
 
-**Where to put my Null objects classes**
+**Where should I put my null objects classes?**
 
-Create a folder `app/nulls` and put all your Null object classes there
+Create an `app/nulls` folder and put all your null object classes there.
 
 ## Further reading
 

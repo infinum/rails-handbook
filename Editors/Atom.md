@@ -1,6 +1,6 @@
 https://atom.io/
 
-Atom is a text editor that's modern, approachable, yet hackable to the core—a tool you can customize to do anything but also use productively without ever touching a config file.
+Atom is a text editor that's modern, approachable, yet hackable to the core—a tool you can customize to do anything, but also use productively without ever touching a config file.
 
 ## Plugins
 
@@ -18,7 +18,7 @@ Atom is a text editor that's modern, approachable, yet hackable to the core—a 
 
 ["atom-beautify"](https://atom.io/packages/atom-beautify)
 
-Beautify HTML, CSS, JavaScript, PHP, Python, Ruby, Java, C, C++, C#, Objective-C, CoffeeScript, TypeScript, Coldfusion, SQL, and more in Atom
+Beautify HTML, CSS, JavaScript, PHP, Python, Ruby, Java, C, C++, C#, Objective-C, CoffeeScript, TypeScript, Coldfusion, SQL, and more in Atom.
 
 ["autocomplete-paths"](https://atom.io/packages/autocomplete-paths)
 
@@ -46,7 +46,7 @@ A package to export highlighted code as RTF, inspired by the SublimeHighlight pa
 
 ["git-control"](https://atom.io/packages/git-control)
 
-Provides a GUI interface to manage all commonly-used git commands.
+Provides a GUI interface to manage all commonly used Git commands.
 
 ![](https://i.github-camo.com/e35620a073ae64498e9dbff837aa273d3dcb263d/68747470733a2f2f7261772e67697468756275736572636f6e74656e742e636f6d2f6a61636f67722f61746f6d2d6769742d636f6e74726f6c2f6d61737465722f73637265656e73686f74732f6769742d30312e706e67)
 
@@ -64,7 +64,7 @@ Provides a GUI interface to manage all commonly-used git commands.
 
 ["linter"](https://atom.io/packages/linter)
 
-For all you linter needs...
+For all your linter needs...
 
 ["markdown-preview"](https://atom.io/packages/markdown-preview)
 
@@ -76,7 +76,7 @@ Open a rendered version of the Markdown in the current editor with `ctrl-shift-m
 
 ["pretty-json"](https://atom.io/packages/pretty-json)
 
-Select the text to format and then execute the Pretty JSON prettify command. For JSON files, format the entire file automatically without need to first select the text. Minify and sorting commands are available too.
+Select the text to format and then execute the Pretty JSON prettify command. For JSON files, you can format the entire file automatically without the need to select the text first. Minify and sorting commands are available too.
 
 ![](https://i.github-camo.com/df2969f63f4141f94d94d6f5ab71b3a4266811b5/687474703a2f2f692e696d6775722e636f6d2f4e6434477674502e676966)
 
@@ -86,7 +86,7 @@ Select the text to format and then execute the Pretty JSON prettify command. For
 
 ["rails-latest-migration"](https://atom.io/packages/rails-latest-migration)
 
-Adds a shortcut for quickly opening up the latest migration in your Rails app.
+Adds a shortcut that allows you to quickly open the latest migration in your Rails app.
 
 ["rails-snippets"](https://atom.io/packages/rails-snippets)
 
@@ -94,13 +94,13 @@ An atom package to add snippets for Ruby on Rails projects.
 
 ["rails-transporter"](https://atom.io/packages/rails-transporter)
 
-This package provides commands to open file depending on file which is being opened by active editor.
+This package provides commands to open a file depending on the file which is being opened by the active editor.
 
 ![](https://i.github-camo.com/f81515d474b3c524a0ae563e13f2da9275ddad5b/687474703a2f2f636c2e6c792f696d6167652f343330353341314a326231372f7261696c732d7472616e73706f727465722e676966)
 
 ["ruby-syntax-replacer"](https://atom.io/packages/ruby-syntax-replacer)
 
-When run (by pressing `cmd-alt-x`), will replace all old Ruby hash syntax in the current file with new.
+When you run it (by pressing `cmd-alt-x`), it will replace all old Ruby hash syntax in the current file with a new one.
 
 ["set-syntax"](https://atom.io/packages/set-syntax)
 

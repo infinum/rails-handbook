@@ -1,16 +1,16 @@
-Data objects are used for encapsulating (complex) data-structures into objects rather than into primitives such as arrays or hashes.
+Data objects are used for encapsulating (complex) data-structures into objects rather than into primitives, such as arrays or hashes.
 
 Data objects give us:  
 
-  * Better introspect into what our data structure holds
+  * Better insight into what our data structure holds
   * Flexibility to manipulate data in a uniform place
-  * Convenience of adding additional behavior (i.e. methods).
+  * Convenience of adding additional behavior (i.e., methods)
 
 ## Example
 
-We got a list of cities in a CSV format and we have to store them in our database.
+We have a list of cities in a CSV format, and we have to store them in our database.
 
-Each city comes with the following three informations: country code, city code and a name:
+Each city comes with the following information: country code, city code, and a name:
 
 ```csv
 US, NYC, new york city
@@ -18,15 +18,15 @@ US, LA, los angeles
 US, SF, san francisco
 ```
 
-The CSV is not exactly in the format that we want:  
+The CSV format does not exactly meet our needs:  
 
-  * we need all of the words in a cities name to be capitalized
-  * the codes aren't in a way we need them - we want to store them concatenated - `USNYC` instead of `US` & `NYC`
-  * the CSV is malformed and some of the cities came without a name - we have to ignore those.
+  * we need all of the words in a city's name to be capitalized
+  * we need different codes—we want to store them concatenated—`USNYC` instead of `US` & `NYC`
+  * the CSV is malformed, and some of the cities came without a name—we have to ignore those
 
-## Bad Solution
+## Bad solution
 
-We want to retrieve the cities from the CSV in Ruby - natively they would come as an array of arrays:
+We want to retrieve the cities from the CSV in Ruby—natively, they would come as an array of arrays:
 
 ```ruby
 [['US', 'NYC', 'New York City'],['US', 'LA', 'Los Angeles'],['US', 'SF', 'San Francisco']]
@@ -53,10 +53,10 @@ class CityImporter
 end
 ```
 
-1. Can you tell what the #import method does **without looking** at our CSV structure? The #import method is unreadable. And note, **this is an oversimplified version of the real world example.**
-2. What would happen if we reorganized the order of our columns? We would have to calculate column position multiple times and possibly at multiple places.
+1. Can you tell what the #import method does **without looking** at our CSV structure? The #import method is unreadable. And bear in mind that **this is an oversimplified version of a real-world example.**
+2. What would happen if we reorganized the order of our columns? We would have to calculate the column position multiple times and possibly in multiple places.
 
-## Good Solution
+## Good solution
 
 We could ditch our unreadable arrays and create an object that plays nicely with our CSV data:
 
@@ -80,7 +80,7 @@ class CSVCity
 end
 ```
 
-With the CSV city holding all of our data, our CityImporter class is a lot more readable:
+With the CSV city holding all our data, our CityImporter class is a lot more readable:
 
 ```ruby
 class LocationImporter
@@ -118,17 +118,17 @@ class City < ActiveRecord::Base
 end
 ```
 
-This is not a good solution because our `City` model should not have the responsibility of importing csv files, but rather only handle database persistence.
+This is not a good solution because our `City` model should not be responsibile for importing CSV files. It should handle only database persistence.
 
 Although this is just one method, our model would become bloated with a more complex example and with more similar tasks.
 
 **Where to put the `CSVCity` and `CityImporter` class?**
 
-There are multiple places where you could put this kind of code, a good place could be:  
+There are multiple places where you can put this kind of code. A good place may be:  
 
-  * create a folder `app/csv_importers`, add the `CityImporter` there, and the `CSVCity` inside the same class.
+  * create a folder `app/csv_importers`, add the `CityImporter` there and `CSVCity` inside the same class.
   * if you're using this in something like a rake task, you can write that content in the rake task file itself.
 
 ##Further reading
 
-  * [Be nice to each other, use data objects](http://brewhouse.io/2015/07/31/be-nice-to-others-and-your-future-self-use-data-objects.html)
+  * [Be nice to each other, use Data Objects](http://brewhouse.io/2015/07/31/be-nice-to-others-and-your-future-self-use-data-objects.html)

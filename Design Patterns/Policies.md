@@ -1,24 +1,24 @@
-Policy objects are plain old ruby ruby classes that encapsulates complex read operations. One definition says that policy objects are similar to Service objects, but the difference is that Service objects are used for write operations and Policy objects for reads. Also, they are different from Query objects as query objects focus on SQL reads and Policy objects operate on data already loaded in memory.
+Policy objects are plain old Ruby classes that encapsulate complex read operations. One definition says that policy objects are similar to service objects, but the difference is that service objects are used for write operations and policy objects for reads. Also, they are different from query objects because query objects focus on SQL reads, while policy objects operate on data already loaded in memory.
 
-Most common case to use Policy objects is for authorization when you need to check combination of rules before allowing user to execute some action. Sometimes those rules are complex and it is better to extract this logic in it's own class, rather than putting it in controllers.
+The most common case of using policy objects is for authorization when you need to check a combination of rules before allowing the user to execute some action. Sometimes those rules are complex, and it is better to extract this logic in its own class, rather than put it in controllers.
 
-The most used gem based on policy objects is [Pundit](https://github.com/elabs/pundit). In our examples we'll focus on this gem, because it shows a very good way of using policy objects for authorization.
+[Pundit](https://github.com/elabs/pundit) is the most commonly used gem based on policy objects. We'll focus on this gem in our examples because it shows a very good way of using policy objects for authorization.
 
 ## Example
 
-We have an Order model that has this fields: `company_id`, `due_date`, `active`, `offers_count`. Field `company_id` tells us which company created the order. An Order can have multiple Offers from **other companies**. The Offer model consist of `order_id`, `company_id`, `amount`.
+We have an order model with these fields: `company_id`, `due_date`, `active`, and `offers_count`. The `company_id` field tells us which company created the Order. An Order can have multiple Offers from **other companies**. The Offer model consist of `order_id`, `company_id`, and `amount`.
 
-Let's say that we have an OffersController with basic CRUD actions. Before every action we need to perform authorization checks.
+Let's say that we have an OffersController with basic CRUD actions. We need to carry out authorization checks before every action.
 
-For offer creation, these are the rules:
+These are the rules for creating an Offer:
 
-* A User can give offers only to orders of other companies.
-* Offers can be made only to active orders.
+* A User can give Offers only to Orders of other companies.
+* Offers can be made only to active Orders.
 
-For updating the order, the rules are as follows:
+These are the rules for updating an Offer:
 
-* User cannot edit other companies offers.
-* Offer cannot be updated after order's due date.
+* A User cannot edit other companies' Offers.
+* An Offer cannot be updated after the Order's due date.
 
 ## Bad solution
 
@@ -72,9 +72,9 @@ end
 
 ## Good solution
 
-We will use Pundit to extract authorization logic into a separate ruby class.
+We will use Pundit to extract authorization logic into a separate Ruby class.
 
-We will include Pundit in the Application controller (or some other base controller) and tell it how to handle unauthorized actions.
+We will include Pundit in the Application Controller (or some other base controller) and tell it how to handle unauthorized actions.
 
 ```ruby
 class ApplicationController < ActionController::Base
@@ -128,7 +128,7 @@ class OffersController < ApplicationController
 end
 ```
 
-Our authorization logic will be in the OfferPolicy class. A good place for our policy classes is the `app/policies` folder.
+Our authorization logic will be in the OfferPolicy class. The `app/policies` folder is a good place for our policy classes.
 
 ```ruby
 class OfferPolicy
@@ -154,10 +154,10 @@ That's it.
 
 ## Questions
 
-**How Pundit's `authorize` method actually works?**
+**How does Pundit's `authorize` method actually work?**
 
 From Pundit's docs:
-The authorize method automatically infers that Offer class will have a matching OfferPolicy class - it instantiates the OfferPolicy class, passing in the current user and the given record. It then infers from the action name, that it should call update? on this instance of the policy. In this case, you can imagine that authorize would have done something like this:
+The authorize method automatically infers that the Offer class will have a matching OfferPolicy class, and it instantiates the OfferPolicy class, handing in the current user and the given record. It then infers from the action name that it should call update? on this instance of the policy. In this case, you can imagine that authorize would have done something like this:
 
 ```ruby
 raise "not authorized" unless OfferPolicy.new(current_user, @offer).update?
@@ -165,5 +165,5 @@ raise "not authorized" unless OfferPolicy.new(current_user, @offer).update?
 
 ## Further reading
 
-* [Rails - the Missing Parts - Policies](http://eng.joingrouper.com/blog/2014/03/20/rails-the-missing-parts-policies/)
+* [Rails—the Missing Parts—Policies](http://eng.joingrouper.com/blog/2014/03/20/rails-the-missing-parts-policies/)
 * [Straightforward Rails Authorization with Pundit](http://www.sitepoint.com/straightforward-rails-authorization-with-pundit/)

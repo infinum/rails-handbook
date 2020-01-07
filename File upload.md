@@ -11,13 +11,13 @@ Table of contents:
 
 ## General
 
-Shrine is a general-purpose file uploader gem. As it has no direct dependency,
+Shrine is a general-purpose file uploader gem. Since it has no direct dependency,
 __it can be used in both Rails and non-Rails projects.__ Shrine features a rich
 plugin system which makes it incredibly easy to change its behavior to suit
 your needs. All this power is packaged in an easy-to-use form factor.
 
-It is the youngest of all popular file uploaders, but it maintains an issue
-count of 0 and has fixed all the issues that other gems have.
+It is the youngest of all the popular file uploaders, but it maintains an issue
+count of 0 and has fixed all the issues other gems have.
 
 If you wish to read more about Shrine's design, you can do so
 [here](http://twin.github.io/introducing-shrine/).
@@ -239,23 +239,22 @@ end
 
 * Validations
 
-This plugin allows you to check the dimensions and file type of uploaded images.
+This plugin allows you to check the dimensions and file type of the uploaded images.
 Check it out [here](https://github.com/janko-m/shrine#validations).
 
 * Metadata
 
-The Metadata plugin is used to store information on uploaded images.
+The Metadata plugin is used to store information on the uploaded images.
 You can read more about it [here](https://github.com/janko-m/shrine#metadata).
 
 * Background jobs
 
-Shrine supports background image processing and deletion. You can read how to set it up 
+Shrine supports background image processing and deletion. You can read how to set it up
 [here](https://github.com/janko-m/shrine#background-jobs).
 
 ## Migrating from other uploaders
 
-Here are two articles that explain how to migrate to
-Shrine from other uploaders:
+Here are two articles that explain how to migrate to Shrine from other uploaders:
 
 * [Shrine for CarrierWave Users](http://shrinerb.com/rdoc/files/doc/carrierwave_md.html)
 * [Shrine for Paperclip Users](http://shrinerb.com/rdoc/files/doc/paperclip_md.html)

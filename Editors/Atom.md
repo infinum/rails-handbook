@@ -1,6 +1,6 @@
 https://atom.io/
 
-Atom is a text editor that's modern, approachable, yet hackable to the core—a tool you can customize to do anything, but also use productively without ever touching a config file.
+Atom is a text editor that is modern and approachable, yet hackable to the core. It's a tool you can customize to do anything, but also use productively without ever touching a config file.
 
 ## Plugins
 
@@ -76,7 +76,7 @@ Open a rendered version of the Markdown in the current editor with `ctrl-shift-m
 
 ["pretty-json"](https://atom.io/packages/pretty-json)
 
-Select the text to format and then execute the Pretty JSON prettify command. For JSON files, you can format the entire file automatically without the need to select the text first. Minify and sorting commands are available too.
+Select the text to format and then execute the Pretty JSON prettify command. For JSON files, you can format the entire file automatically without the need to select the text first. Minify and sorting commands are available, too.
 
 ![](https://i.github-camo.com/df2969f63f4141f94d94d6f5ab71b3a4266811b5/687474703a2f2f692e696d6775722e636f6d2f4e6434477674502e676966)
 
@@ -90,7 +90,7 @@ Adds a shortcut that allows you to quickly open the latest migration in your Rai
 
 ["rails-snippets"](https://atom.io/packages/rails-snippets)
 
-An atom package to add snippets for Ruby on Rails projects.
+An atom package used to add snippets for Ruby on Rails projects.
 
 ["rails-transporter"](https://atom.io/packages/rails-transporter)
 

@@ -1,15 +1,12 @@
 Adapters are objects whose purpose is to wrap third-party API calls. The idea behind adapter objects is to introduce an abstraction layer
 over our external API calls. This makes all the requests going from our application to outside third-party APIs centralized in one place.
-Also, if we want to replace the existing gem for API calls for some reason, we can easily do so without the need to search the entire codebase
-and replace each method.
+Also, if we want to replace the existing gem for API calls for some reason, we can easily do so without the need to search the entire codebase and replace each method.
 
 Adapter objects are placed inside the /app/adapters/ folder.
 
 ## Bad solution
 
-Having API calls in controller or service objects. We are instantiating an Instagram client from the controller and keeping the token as
-a constant in the controller. If we have similar code scattered around as well, it will be difficult to carry out changes if we want to replace the
-gem, or if the API of the gem itself is changed.
+Having API calls in controller or service objects. We are instantiating an Instagram client from the controller and keeping the token as a constant in the controller. If we have similar code scattered around as well, it will be difficult to carry out changes if we want to replace the gem, or if the API of the gem itself is changed.
 
 ```ruby
 class PhotosController < ApplicationController
@@ -26,12 +23,9 @@ end
 
 ## Better solution
 
-We extract all external API calls to a single, InstagramAdapter. Also, all data that is necessary to instantiate
-the client is moved to the adapter class. In this way, it is easy to swap the gem for some other. Also, we are not breaking
-the Single Responsibility Principle, since the InstagramAdapter class handles calls to the Instagram API.
+We extract all external API calls to a single, InstagramAdapter. Also, all the data necessary to instantiate the client is moved to the adapter class. This way, it is easy to swap the gem for some other. Also, we are not breaking the Single Responsibility Principle, since the InstagramAdapter class handles calls to the Instagram API.
 
-If we are making a couple of calls to Facebook, Instagram, GitHub, etc., this solution is going to be sufficient; especially
-if we already rely on an existing gem (i.e., in this case, we are using the Instagram gem, and InstagramAdapter is just a wrapper).
+If we are making a couple of calls to Facebook, Instagram, GitHub, etc., this solution is going to be sufficient; especially if we already rely on an existing gem (in this case, we are using the Instagram gem, and InstagramAdapter is just a wrapper).
 
 ```ruby
 class PhotosController < ApplicationController
@@ -66,7 +60,8 @@ end
 In this case, there is a single ```instagram_adapter.rb``` class located in ```/app/adapters/instagram/```. If the single class starts to get too large, we can separate the concerns based on API calls. For example, let's say we have a GitHub adapter. We can have two adapters—one for commits, and one for repos. So the structure would be as follows ```app/adapters/github/commits_adapter.rb``` and ```app/adapters/github/repos_adapter.rb```, and we would have a base class for connecting to the API located in ```app/adapters/github/base_adapter.rb```. Except for multiple files, there is not much difference from the example above.
 
 ## Going beyond simple adapters
-If we are going to build a complete wrapper around a third-party API (i.e., Dolcela, PTV, etc.), or if we need options for manipulating requests and responses from the API (i.e., GitHub, Instagram, Facebook), using only adapters won't be sufficient.
+
+If we are going to build a complete wrapper around a third-party API (e.g., Dolcela, PTV, etc.), or if we need options for manipulating requests and responses from the API (e.g., GitHub, Instagram, Facebook), using only adapters won't be sufficient.
 
 This is especially the case if the external API is using XML and we are using JSON in our responses, or if we don't have a complete gem we can rely on and need to develop our own custom solution.
 
@@ -76,8 +71,7 @@ Deserializers—used for parsing responses from the external API.
 
 ## Deserializer objects
 
-Deserializers are used when we want to parse the response we received from the external API. This is very frequent when
-the response format from the API does not quite meet our application's needs.
+Deserializers are used when we want to parse the response we received from the external API. This is very frequent when the response format from the API does not quite meet our application's needs.
 
 Deserializers are stored in ```/app/adapters/{api_service}/deserializers/```, where ```api_service``` is the external API, e.g., Instagram, Dolcela, PTV, etc.
 
@@ -124,8 +118,7 @@ end
 
 **Using a deserializer in an adapter**
 
-In the above example, after we'd fetched recent user media from Instagram, we passed the response to the RecentMedia parser which
-is going to parse the response and add some additional methods around the response, for example failed?, success?, etc.
+In the above example, after we'd fetched the recent user media from Instagram, we passed the response to the RecentMedia parser which is going to parse the response and add some additional methods around the response (for example: failed?, success?, etc.).
 
 ```ruby
 module Adapters
@@ -155,8 +148,7 @@ end
 
 **Deserializing collections**
 
-If you want to deserialize a collection you received from the API, you can make collection objects. In this case, the itemize method makes a collection
-of MediaItem objects.
+If you want to deserialize a collection you received from the API, you can make collection objects. In this case, the itemize method makes a collection of MediaItem objects.
 
 ```ruby
 module Instagram
@@ -304,8 +296,7 @@ module Coolinarika
 end
 ```
 
-Here is an example of what the BaseAdapter class looks like. It is a base class for all adapters and it contains the
-execute_request method for making requests to the API.
+Here is an example of what the BaseAdapter class looks like. It is a base class for all adapters and contains the execute_request method for making requests to the API.
 
 ```ruby
 module Coolinarika
@@ -328,17 +319,13 @@ end
 
 ## Benefits
 
-Creating an adapter object allows you to provide a layer of abstraction around your external libraries. Since you decide what interface your
-adapter is going to expose, it’s easy to use another library that does the same job. In such cases, you only have to change the adapter’s code.
+Creating an adapter object allows you to provide a layer of abstraction around your external libraries. Since you decide what interface your adapter is going to expose, it’s easy to use another library that does the same job. In such cases, you only have to change the adapter’s code.
 
-If you have a code that you cannot change, and it has a dependency which you provide, you can use an adapter to easily exchange this dependency
-for something else. This is especially useful if you have code which uses a legacy gem, and you want to get rid of it and provide a new gem with
-the same functionality (but different API).
+If you have a code that you cannot change, and it has a dependency which you provide, you can use an adapter to easily exchange this dependency for something else. This is especially useful if you have code which uses a legacy gem, and you want to get rid of it and provide a new gem with the same functionality (but different API).
 
-Adapters can also be useful for testing—you can easily exchange a real integration with an external service (like Facebook) for an object which
-returns prepared responses. This calls an in-memory adapter, and it’s a very useful technique to make your tests run faster.
+Adapters can also be useful for testing. You can easily exchange a real integration with an external service (like Facebook) for an object which returns prepared responses. This calls an in-memory adapter, and it’s a very useful technique to make your tests run faster.
 
 ## More info
 
-* [Arkency Ruby Rails adapters](http://blog.arkency.com/2014/08/ruby-rails-adapters/)
+* [Arkency Ruby Rails Adapters](http://blog.arkency.com/2014/08/ruby-rails-adapters/)
 * [Adapter Design Pattern in Rails Application](http://rustamagasanov.com/blog/2014/11/16/adapter-design-pattern-usage-in-rails-application-on-examples/)

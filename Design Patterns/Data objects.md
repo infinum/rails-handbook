@@ -1,4 +1,4 @@
-Data objects are used for encapsulating (complex) data-structures into objects rather than into primitives, such as arrays or hashes.
+Data objects are used for encapsulating (complex) data-structures into objects rather than into primitives such as arrays or hashes.
 
 Data objects give us:  
 
@@ -26,7 +26,7 @@ The CSV format does not exactly meet our needs:
 
 ## Bad solution
 
-We want to retrieve the cities from the CSV in Ruby—natively, they would come as an array of arrays:
+We want to retrieve the cities from the CSV in Ruby. Natively, they would come as an array of arrays:
 
 ```ruby
 [['US', 'NYC', 'New York City'],['US', 'LA', 'Los Angeles'],['US', 'SF', 'San Francisco']]
@@ -80,7 +80,7 @@ class CSVCity
 end
 ```
 
-With the CSV city holding all our data, our CityImporter class is a lot more readable:
+With the CSV city holding all our data, our CityImporter class is much more readable:
 
 ```ruby
 class LocationImporter
@@ -126,8 +126,8 @@ Although this is just one method, our model would become bloated with a more com
 
 There are multiple places where you can put this kind of code. A good place may be:  
 
-  * create a folder `app/csv_importers`, add the `CityImporter` there and `CSVCity` inside the same class.
-  * if you're using this in something like a rake task, you can write that content in the rake task file itself.
+  * Create a folder `app/csv_importers`, add the `CityImporter` there and `CSVCity` inside the same class.
+  * If you're using this in something like a rake task, you can write that content in the rake task file itself.
 
 ##Further reading
 

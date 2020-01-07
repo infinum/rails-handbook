@@ -6,11 +6,10 @@ The benefit of using services is concentrating the core logic of the application
 
 ## Conventions
 
-* Services go under the app/services directory. Use subdirectories for business logic-heavy domains. For instance,
-the `app/services/order/creator.rb` file will define `Order::Creator`
-* Services end with an actor (and do not end with Service): `TransactionApprover`, `TestNewsletterSender`, `UsersImporter`
-* A service object should have only *one* public method
-* Services should, in most cases, respond to a `call` method—using another verb makes it a bit redundant: `TransactionApprover.approve`
+* Services go under the app/services directory. Use subdirectories for business logic-heavy domains. For instance, the `app/services/order/creator.rb` file will define `Order::Creator`.
+* Services end with an actor (and do not end with Service): `TransactionApprover`, `TestNewsletterSender`, `UsersImporter`.
+* A service object should have only *one* public method.
+* Services should, in most cases, respond to a `call` method—using another verb makes it a bit redundant: `TransactionApprover.approve`.
 
 ## Example
 
@@ -121,7 +120,7 @@ end
 
 ## Further reading
 
-[Keeping your Rails controllers dry with services](https://blog.engineyard.com/2014/keeping-your-rails-controllers-dry-with-services)
+[Keeping your Rails Controllers dry with Services](https://blog.engineyard.com/2014/keeping-your-rails-controllers-dry-with-services)
 
 [Gourmet Service Objects](http://brewhouse.io/blog/2014/04/30/gourmet-service-objects.html)
 

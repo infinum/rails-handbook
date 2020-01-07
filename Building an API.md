@@ -1,21 +1,15 @@
 # Intro
 
-Building an API is different than building a regular HTML application. There are
-no HTML views to worry about, but instead you should take extra care about response statuses, response format and especially documentation since your application will be used by other developers.
+Building an API is different than building a regular HTML application. There are no HTML views to worry about, but instead you should take extra care of response statuses, response format and documentation, since your application will be used by other developers.
 
 ## Creating an application
 
-To generate a Rails application with only the elements necessary for an API
-application, use the `--api` flag, e.g.,
-`rails new my_application --api`.
+To generate a Rails application with only the elements necessary for an API application, use the `--api` flag, e.g., `rails new my_application --api`.
 
-Use the `--api` flag only if you're sure that your application will be exclusively an API. If you'll have
-an admin backend, or use the view layer in some capacity, the Rails API mode will not suffice, and it's best to
-use the standard `rails new` command.
+Use the `--api` flag only if you're sure that your application will be exclusively an API. If you'll have an admin backend, or use the view layer in some capacity, the Rails API mode will not suffice, and it's best to use the standard `rails new` command.
 
 We write our APIs using the JSON format, more specifically, we use the [JSON API standard](http://jsonapi.org/).
-This allows those who consume our APIs to know what to expect regarding the
-document structure, and they can use libraries which enable them to build their clients faster and easier.
+This allows those who consume our APIs to know what to expect regarding the document structure, and they can use libraries which enable them to build their clients faster and easier.
 
 ## Example app
 
@@ -49,15 +43,14 @@ Responding with a status `200` (_OK_) if the object is valid and with `422` (_Un
 
 ### Data serialization/deserialization
 
-So far we've used the [jsonapi-rails](https://github.com/jsonapi-rb/jsonapi-rails), which takes care of serialization/deserialization of Ruby objects into/out of JSON objects, all according to the JSON API standard, so you don't have to think about those details.
+So far we've used the [jsonapi-rails](https://github.com/jsonapi-rb/jsonapi-rails), which takes care of serialization/deserialization of Ruby objects into/out of JSON objects. It's done according to the JSON API standard, so you don't have to think about those details.
 
 Another alternative is [fast_jsonapi](https://github.com/Netflix/fast_jsonapi). Netflix's gem proved it can do serialization faster. You can check out the [benchmark specs](https://github.com/Netflix/fast_jsonapi/blob/master/spec/lib/object_serializer_performance_spec.rb) if you're interested.
 
 ### Testing & Documentation
 
 [rspec](https://github.com/rspec/rspec-rails)
- * Testing is always important when building software, but doubly so when writing
-an API since we can use tests to generate documentation.
+ * Testing is always important when building software, but doubly so when writing an API since we can use tests to generate documentation.
 
 [dox](https://github.com/infinum/dox)
 *  Generates documentation from the RSpec tests in the API Blueprint format.
@@ -70,14 +63,13 @@ response when there are errors, and any other outcome of the action. Also, docum
 
 Take special care to document crucial parts of your API, such as authentication and session management.
 
-Generating documentation should be a part of the Continuous Integration process so that you can be sure your documentation is always up-to-date. You can use a service like
-[Apiary](https://apiary.io/) to host the documentation.
+Generating documentation should be a part of the Continuous Integration process so that you can be sure your documentation is always up-to-date. You can use a service like [Apiary](https://apiary.io/) to host the documentation.
 
 ## Versioning
 
-APIs must be versioned from the start. In that way, in case of large changes, clients can still use the older version of the API while adjusting their application to the new API specification. Otherwise, if the API is not versioned, changes to the API would break the  client's applications frequently, and the client would have to take a lot of care to track the changes.
+APIs must be versioned from the start. That way, in case of large changes, clients can still use the older version of the API while adjusting their application to the new API specification. Otherwise, if the API is not versioned, changes to the API would break the  client's applications frequently, and the client would have to take a lot of care to track the changes.
 
-Namespace different API versions in the URL, e.g., a new version of ```api/v1/resource``` would look like ```api/v2/resource```. Also, make sure that your application code, that is, your controllers, serializers, tests, and documentation are also namespaced.
+Namespace different API versions in the URL, e.g., a new version of ```api/v1/resource``` would look like ```api/v2/resource```. Also, make sure that your application code, that is, your controllers, serializers, tests, and documentation, are also namespaced.
 
 ## Pagination
 

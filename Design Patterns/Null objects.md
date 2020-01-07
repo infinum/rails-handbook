@@ -24,7 +24,7 @@ We want to print out the first (primary) address.
 
 ## Bad solution
 
-We get the first address in this way:
+We get the first address this way:
 
 ```ruby
 @address = @company.addresses.first
@@ -69,7 +69,7 @@ class NullAddress
 end
 ```
 
-Then we instantiate it if necessary:
+Then, we instantiate it if necessary:
 
 ```ruby
 @address = @company.addresses.first || NullAddress.new

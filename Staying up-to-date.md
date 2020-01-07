@@ -24,7 +24,7 @@ We use stuff that goes beyond Ruby & Rails, primarily databases:
 
 [Capsized Eight](https://infinum.co/the-capsized-eight/tags/ruby)—we run Capsized Eight, a blog about various technologies Infinum uses, where you can find a fair amount of Ruby/Rails blog posts.
 
-[Giant Robots Smashing Into Other Giant Robots](https://robots.thoughtbot.com/)—Thoughbot is a software development consultancy with awesome posts.
+[Giant Robots Smashing Into Other Giant Robots](https://robots.thoughtbot.com/)—Thoughtbot is a software development consultancy with awesome posts.
 
 [Signal v Noise](https://m.signalvnoise.com/)—Basecamp's strong opinions and shared thoughts on design, business, and tech. Not so closely tied to Rails development, more of a tech philosophy blog.
 
@@ -32,7 +32,7 @@ We use stuff that goes beyond Ruby & Rails, primarily databases:
 
 ## Reddit & Ruby flow
 
-Most of the stuff that you'll see in the RubyWeekly is curated from [RubyWeekly](http://www.rubyflow.com/), a community link log by Peter Cooper (the person behind RubyWeekly). This is probably the best resource that you can find among Ruby pages.
+Most of the stuff that you'll see in the RubyWeekly is curated from [RubyWeekly](http://www.rubyflow.com/), a community link log by Peter Cooper (the person behind RubyWeekly). This is probably the best resource you can find among Ruby pages.
 
 There's also reddit, with the [r/ruby](http://reddit.com/r/ruby) subreddit as the best resource. There's also [r/rails](http://reddit.com/r/rails), but it's not as good as r/ruby.
 

@@ -17,7 +17,7 @@ Since it's often difficult, just remember that it was created because of control
 Other guidelines
 
 * [Avoid writing class methods](http://blog.codeclimate.com/blog/2012/11/14/why-ruby-class-methods-resist-refactoring/)—they resist refactoring and are better as extracted objects with one public method and multiple privates than as a single class method.
-Class methods should be used only for describing a rule that's applied for all instances:
+Class methods should be used only for describing a rule that is applied to all instances:
 
 ```Ruby
 class Order

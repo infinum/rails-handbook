@@ -44,7 +44,7 @@ around.
 
 **2. Use helper methods**
 
-Another possibility is putting the methods in helpers:
+Another option is to put the methods in helpers:
 
 ``` ruby
 module UserHelper
@@ -124,17 +124,14 @@ Birthday:
 = @user.formatted_birthday
 ```
 
-While this fixes all issues we had with defining the methods in helpers,
-it brings back the problems we had when we defined those things in the view—these kinds of methods will appear quickly and often, which will lead to fat
-models and cause those models to become unmaintainable. Also, the User model should not be concerned with how
-and when to display stuff in the view.
+While this fixes all issues we had with defining the methods in helpers, it brings back the problems we had when we defined those things in the view. These kinds of methods will appear quickly and often, which will lead to fat models and cause those models to become unmaintainable. Also, the User model should not be concerned with how and when to display stuff in the view.
 
 ## Good solutions
 
 **1. Make a decorator using SimpleDelegator**
 
 [SimpleDelegator](http://ruby-doc.org/stdlib-2.2.3/libdoc/delegate/rdoc/SimpleDelegator.html)
-is a Ruby class that provides a means to easily delegate all method calls to an object passed
+is a Ruby class that provides the means to easily delegate all method calls to an object passed
 to the constructor. A simple implementation of a decorator using SimpleDelegator looks
 something like this:
 
@@ -191,7 +188,7 @@ something too desirable, so make sure to use it only for simple conditional rend
 ``` ruby
 class UserDecorator < Draper::Decorator
   # Using decorates_associaton always returns a decorated object or a collection
-  # when calling the association on the already decorated object, e.g. user.comments
+  # when calling the association on the already decorated object, e.g., user.comments
   decorates_association :comments
 
   # You can delegate either specific methods to the underlying object, or use delegate_all
@@ -242,12 +239,11 @@ Birthday:
 = @user.first_name
 ```
 
-Be sure to read the documentation, since Draper offers a lot more than what's
-been shown here.
+Be sure to read the documentation, since Draper offers a lot more than what's been shown here.
 
 ## Further reading
 
 * [7 Patterns to Refactor Fat ActiveRecord Models](http://blog.codeclimate.com/blog/2012/10/17/7-ways-to-decompose-fat-activerecord-models/)
 * [Refactoring Fat Models with Patterns by Bryan Helmkamp](https://www.youtube.com/watch?v=5yX6ADjyqyE)—A talk going through all the patterns from the 7 Patterns to the Refactor Fat ActiveRecord Models blog post
-* [Evaluating Alternative Decorator Implementations](https://robots.thoughtbot.com/evaluating-alternative-decorator-implementations-in) —Some other ways to implement the decorator pattern
+* [Evaluating Alternative Decorator Implementations](https://robots.thoughtbot.com/evaluating-alternative-decorator-implementations-in)—Some other ways to implement the decorator pattern
 * [What I dislike about Draper](http://thepugautomatic.com/2014/03/draper/)—A critique of Draper

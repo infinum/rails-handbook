@@ -1,4 +1,4 @@
-Policy objects are plain old Ruby classes that encapsulate complex read operations. One definition says that policy objects are similar to service objects, but the difference is that service objects are used for write operations and policy objects for reads. Also, they are different from query objects because query objects focus on SQL reads, while policy objects operate on data already loaded in memory.
+Policy objects are plain old Ruby classes that encapsulate complex read operations. One definition says that policy objects are similar to service objects. The difference is that service objects are used for write operations and policy objects for reads. Also, they are different from query objects because query objects focus on SQL reads, while policy objects operate on data already loaded in memory.
 
 The most common case of using policy objects is for authorization when you need to check a combination of rules before allowing the user to execute some action. Sometimes those rules are complex, and it is better to extract this logic in its own class, rather than put it in controllers.
 
@@ -6,9 +6,9 @@ The most common case of using policy objects is for authorization when you need 
 
 ## Example
 
-We have an order model with these fields: `company_id`, `due_date`, `active`, and `offers_count`. The `company_id` field tells us which company created the Order. An Order can have multiple Offers from **other companies**. The Offer model consist of `order_id`, `company_id`, and `amount`.
+We have an order model with these fields: `company_id`, `due_date`, `active`, and `offers_count`. The `company_id` field tells us which company created the Order. An Order can have multiple Offers from **other companies**. The Offer model consists of `order_id`, `company_id`, and `amount`.
 
-Let's say that we have an OffersController with basic CRUD actions. We need to carry out authorization checks before every action.
+Let's say that we have an OffersController with the basic CRUD actions. We need to carry out authorization checks before every action.
 
 These are the rules for creating an Offer:
 
@@ -22,7 +22,7 @@ These are the rules for updating an Offer:
 
 ## Bad solution
 
-We will put authorization logic in controller actions.
+We will put the authorization logic in controller actions.
 
 ```ruby
 class OffersController < ApplicationController
@@ -72,7 +72,7 @@ end
 
 ## Good solution
 
-We will use Pundit to extract authorization logic into a separate Ruby class.
+We will use Pundit to extract the authorization logic into a separate Ruby class.
 
 We will include Pundit in the Application Controller (or some other base controller) and tell it how to handle unauthorized actions.
 

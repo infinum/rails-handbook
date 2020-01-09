@@ -9,13 +9,9 @@ data aggregation.
 Query objects live in the `app/queries` folder.
 
 Their naming convention is similar to that of controllers.
-Each object should bear the plural of the name of the model it queries
-suffixed by the word 'Query'. For example, an object that queries articles should be
-called ArticlesQuery.
+Each object should bear the plural of the name of the model it queries, suffixed by the word 'Query'. For example, an object that queries articles should be called ArticlesQuery.
 
-Each object should be passed a relation as an optional argument from which it queries
-the data. If no relation has been passed, it queries all
-objects by default.
+Each object should be passed a relation as an optional argument from which it queries the data. If no relation has been passed, it queries all objects by default.
 
 ```Ruby
   # queries all articles
@@ -118,14 +114,14 @@ class Article < ActiveRecord::Base
 end
 ```
 
-It doesn't matter if we put this code in a controller or in a model, it simply
-doesn't belong there. A model's job isn't to handle querying logic, query
+It doesn't matter if we put this code in a controller or in a model - it simply
+doesn't belong there. A model's job isn't to handle querying logic. Query
 logic in a controller isn't reusable and it makes the controller 'fat'.
 
 ## Good solution
 
 Create a Query Object in the `app/queries` directory.
-It's implementation should resemble the following:
+Its implementation should resemble the following:
 
 ```Ruby
 class ArticlesQuery
@@ -158,7 +154,7 @@ class ArticlesQuery
 end
 ```
 
-Then you would use it like this:
+Then, you would use it like this:
 
 ```Ruby
 class ArticlesController < ApplicationController

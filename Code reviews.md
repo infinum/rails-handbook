@@ -12,4 +12,4 @@ We give each other suggestions on how to improve our code, generally suggest bet
 
 By switching over projects every few weeks, we have a chance to get to know more projects and their code, and learn a lot of new and exciting things.
 
-You have to have a code review every week, and you can clock them under Internal/Education. When new code review pairs are generated, please remember to book a conference room a few weeks in advance.
+You have to have a code review every week, and you can clock them under Internal/Education. When the new code review pairs are generated, please remember to book a conference room a few weeks in advance.

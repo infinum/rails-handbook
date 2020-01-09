@@ -22,7 +22,7 @@ We have a registration form in which we ask the users to provide the following d
 
 ## Bad solution
 
-There are a couple of bad ways to do this. One is by adding missing attributes to one model, let's say the User:
+There are a couple of bad ways to do this. One is by adding the missing attributes to one model, let's say the User:
 
 ```ruby
 class User < ActiveRecord::Base
@@ -68,7 +68,7 @@ class RegistrationsController < ApplicationController
       render :new
     end
   end
-  
+
   def user_params
     params.require(:user).permit(:full_name, :company_name, :phone, :email)
   end
@@ -112,7 +112,7 @@ end
 
 Including `ActiveModel::Model` gives us access to model name introspections, conversions, translations, and validations (e.g., we can call the method `valid?` to check validations).
 
-Now we use this form object in our view and controller:
+Now, we use this form object in our view and controller:
 
 ```ruby
 = simple_form_for(@form, url: registrations_path) do |f|
@@ -152,7 +152,7 @@ If the form is valid, we create both models and redirect to the success path. On
 
 **Can I use I18n with form objects?**
 
-Sure, the same way you use I18n with ActiveRecord objects. Just use `activemodel` instead of the `activerecord` key in your locale files:
+Sure, the same way you use I18n with ActiveRecord objects. Just use `activemodel` instead of the `activerecord` key in your local files:
 
 ```yml
 en:

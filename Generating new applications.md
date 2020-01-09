@@ -1,8 +1,8 @@
-## PreCreation checklist (Devops)
+## PreCreation checklist (DevOps)
 
 Before a developer creates a new application, a couple of third-party services need to be set up.
 
-* **Bitbucket repository**—Create a repository for the project with template "web-{app-name}"
+* **Bitbucket repository**—Create a repository for the project with the template "web-{app-name}"
 * **Bugsnag**—Create a new project on Bugsnag and add developers to it
 * **Semaphore**
   - Create a new project, link it to Bitbucket, integrate it with Slack
@@ -14,11 +14,11 @@ Before a developer creates a new application, a couple of third-party services n
 * Server nginx conf
 * Add DNS records
 
-## Generating new Rails application
+## Generating a new Rails application
 
 99% of our work is based on the Rails framework. We have some standard configurations and gems that are basically in every Rails application. To make our lives easier, we've made a [default template](https://github.com/infinum/default_rails_template/) to generate new Rails applications that meet those standards.
 
 ## First deploy
 
-Immediately after the application is created, your friendly devops will give you all the information you need to set up for the first deploy.
+Immediately after the application is created, your friendly DevOps will give you all the information you need to set up the first deploy.
 Commit the changes, push them to Git, and make sure Semaphore successfully deploys the application.

@@ -1,15 +1,15 @@
 We used to send push notifications directly to APNS or GCM from our code. We were maintaining device_ids, OS types, and GCM/APNS certificates. This approach was complicated and hard to maintain.
 
-We knew that an easier solution must exist. And then we discovered Firebase.
+We knew that an easier solution must exist. Then, we discovered Firebase.
 
 Firebase is a service that does all the hard work for us. There is no need to store certificates on the server because Firebase handles them. Furthermore, we don't need to maintain OS types because Firebase knows which notification goes to APNS and which to GCM. Basically, Firebase handles the routing and delivery of push notifications to targeted devices. Firebase also has a dashboard with statistics that mobile developers can use for testing purposes.
 
 There are many services (such as Amazon SNS) that provide push notifications, but we use Firebase because of its simplicity and reliability.
 
 ## General
-In this chapter, we will explain a few approaches to implementing push notifications and give the pros and cons of each.
+In this chapter, we will explain a few approaches to implementing push notifications and explain the pros and cons of each.
 
-Before starting development, read chapters about [Firebase Cloud Messaging](https://firebase.google.com/docs/cloud-messaging/) and [app server development](https://firebase.google.com/docs/cloud-messaging/server).
+Before starting with development, read chapters about [Firebase Cloud Messaging](https://firebase.google.com/docs/cloud-messaging/) and [app server development](https://firebase.google.com/docs/cloud-messaging/server).
 
 ## Development approaches
 There are several approaches to sending push notifications using Firebase:
@@ -39,7 +39,7 @@ There are several approaches to sending push notifications using Firebase:
 #### Having multiple device ids per user
 
   * A new table for storing user device_ids needs to be implemented.
-  * An index on device_id is mandatory
+  * An index on device_id is mandatory.
 
   * PROS
     * The user can get push notifications on multiple devices.
@@ -124,7 +124,7 @@ There are several approaches to sending push notifications using Firebase:
 
 ### Approach based on sending notifications to topics
 
-  * Topic messaging is best suited for content which is often sent to a group of users, for example, all users subscribed to weather information, some subreddits, etc.
+  * Topic messaging is best suited for the content which is often sent to a group of users, for example, all users subscribed to weather information, some subreddits, etc.
 
   * Based on the publish/subscribe model, FCM topic messaging allows you to send a message to multiple devices that have opted into a particular topic. You compose topic messages as needed, and FCM handles routing and delivering the message reliably to the right devices.
 
@@ -185,15 +185,14 @@ There are several approaches to sending push notifications using Firebase:
     end
   ```
 
-  * Firebase recently added [support](https://firebase.google.com/docs/cloud-messaging/admin/manage-topic-subscriptions)
-  for managing topic subscriptions via a server. With this feature, we can have full control over subscriptions if necessary.
+  * Firebase recently added [support](https://firebase.google.com/docs/cloud-messaging/admin/manage-topic-subscriptions) for managing topic subscriptions via a server. With this feature, we can have full control over subscriptions if necessary.
 
 ### Approach based on sending notifications to device groups
   * With device group messaging, you can send a single message to multiple instances of an app running on devices belonging to a group. Typically, a "group" refers to a set of different devices that belong to a single user. All devices in a group share a common notification key, which is the token that FCM uses to fan out messages to all devices in the group.
 
   * If you need to send messages to multiple devices per user, consider device group messaging for those cases of use.
 
-  * The maximum number of members allowed per a notification key is 20.
+  * The maximum number of members allowed per one notification key is 20.
   * We haven't used device groups, but you can read more about this [approach]((https://firebase.google.com/docs/cloud-messaging/android/device-group)).
 
 ## Choosing the right development approach

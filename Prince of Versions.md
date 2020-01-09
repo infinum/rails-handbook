@@ -35,5 +35,4 @@ Use these contents when you're creating the file. The mobile team will contact y
   ```
 
 ## Validate it!
-You should always validate the `mobile-versions.json` file after making a change (https://jsonlint.com/) and before
-pushing the change and deploying it to production.
+You should always validate the `mobile-versions.json` file after making a change (https://jsonlint.com/) and before pushing the change and deploying it to production.

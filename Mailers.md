@@ -7,7 +7,7 @@ We use [Mailgun](https://mailgun.com) to send emails from our apps.
 1. Check Last Pass if the client already has a Mailgun account.
 2. Create an account if they don't. The email template is: mailgun+{client}@infinum.hr
 3. Create a domain for the app.
-4. Contact your friendly neighborhood devops to add DNS records for domain verification.
+4. Contact your friendly neighborhood DevOps to add DNS records for domain verification.
 5. Add the `mailgun_rails` gem to the gemfile.
 6. Add smtp settings to your app. Example:
 
@@ -23,7 +23,7 @@ We use [Mailgun](https://mailgun.com) to send emails from our apps.
 The HTTP API has some advantages over SMTP:
 
 1. It’s faster.
-2. Better for large scale sending.
+2. It's better for large-scale sending.
 3. You don’t have to deal with MIME because Mailgun will assemble it on their side.
 4. Request libraries are available for your language of choice.
 
@@ -52,9 +52,9 @@ We use [recipient_interceptor](https://github.com/croaky/recipient_interceptor) 
                subject_prefix: '[STAGING]')
         )
 3. Add the permitted_emails key in secrets.yml under the staging section.
-4. If you want to set more then one email address, then they should be separated with a comma. (Example: 'test1@infinum.co,test2@infinum.co')
+4. If you want to set more then one email address, they should be separated with a comma (e.g., 'test1@infinum.co,test2@infinum.co').
 
-If everything is configured, all emails will be delivered to the specified email addresses.
+If everything is configured well, all emails will be delivered to the specified email addresses.
 
 ## Development
 

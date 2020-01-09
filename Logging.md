@@ -56,7 +56,7 @@ To use Graylog in a Rails project, you need to do the following:
 
 * Customize payload
 
-  * Add the following code in the controllers whose logs you wish to alter.
+  * Add the following code in the controllers whose logs you wish to alter:
 
     ```Ruby
       def append_info_to_payload(payload)
@@ -67,4 +67,4 @@ To use Graylog in a Rails project, you need to do the following:
     ```
 * Consult with your PM and define the time range for keeping historical data.
 
-* Notify our devops before turning logging on because they should handle streams, permissions, backup options, etc.
+* Notify our devops before turning the logging on because they should handle streams, permissions, backup options, etc.

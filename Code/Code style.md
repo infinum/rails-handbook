@@ -12,7 +12,8 @@ Each project must have its own copy of rubocop.yml where project specific config
 
 Some exceptions from our config file:
 
-* We tend not to write documentation for every class or module. It doesn't make sense to document a User, Post, or a Comment class. However, sometimes applications tend to have a Domain-Specific Business Logic that just needs to be documented since, without a few comments, it's often not clear what's going on. If that's the case, please write up a few comments explaining the interactions.
+* We avoid documenting every class or module. It doesn't make sense to write about a User, Post, or a Comment class and all of its methods. However, applications tend to have a Domain-Specific Business Logic that requires a documentation since, without a few comments, it's often not clear what's going on. If that's the case, please explain the interactions in the project README.
+If you're adding a *hack* or some method is implemented in a non-standard way, inline comment is **mandatory**.
 
 * The community guidelines suggest to write arrays with string elements with the [percent notation](https://en.wikibooks.org/wiki/Ruby_Programming/Syntax/Literals#The_.25_Notation):
 

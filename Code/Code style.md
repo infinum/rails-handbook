@@ -1,4 +1,10 @@
-The Infinum Backend Team uses the [community guidelines](https://github.com/bbatsov/ruby-style-guide#naming) for naming and syntax conventions. Please read them.
+The Infinum Backend Team writes code following the community guidelines:
+
+* [Ruby style guide](https://github.com/rubocop-hq/ruby-style-guide)
+* [Rails style guide](https://github.com/rubocop-hq/rails-style-guide)
+* [Betterspecs](http://www.betterspecs.org/)
+
+Please read them.
 
 We use a Ruby style-checking analyzer called [Rubocop](https://github.com/bbatsov/rubocop) to preserve syntax consistency in our applications. It's packaged as a Ruby gem and comes with a CLI to check style consistency.
 We run the checks through an [Overcommit](https://github.com/sds/overcommit) hook on almost all our projects (if it's missing on a legacy project, check with your colleagues whether it makes sense to install it).

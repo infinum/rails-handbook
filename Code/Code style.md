@@ -3,7 +3,7 @@ The Infinum Backend Team uses the [community guidelines](https://github.com/bbat
 We use a Ruby style-checking analyzer called [Rubocop](https://github.com/bbatsov/rubocop) to preserve syntax consistency in our applications. It's packaged as a Ruby gem and comes with a CLI to check style consistency.
 We run the checks through an [Overcommit](https://github.com/sds/overcommit) hook on almost all our projects (if it's missing on a legacy project, check with your colleagues whether it makes sense to install it).
 
-We also use it as a plugin in our editors to get real time in-editor warnings just as we're writing code. Whether you're using Vim, Atom or Sublime, please check that it's properly installed after you've run our installation scripts.
+We also use it as a plugin in our editors to get real time in-editor warnings just as we're writing code. Whether you're using Vim, Atom or Sublime, please check that it's properly installed after you run our installation scripts.
 
 Rubocop is highly configurable, and we deviate only slightly from the suggested guidelines.
 Our configuration can be found [here](https://github.com/infinum/default_rails_template/blob/master/.rubocop.yml).

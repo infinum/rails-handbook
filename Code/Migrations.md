@@ -1,19 +1,27 @@
 ## Schema migrations
 
-The [Rails Migrations Guide](http://edgeguides.rubyonrails.org/active_record_migrations.html) does a very good job at explaining how schema migrations work in Rails.
+The [Rails Migrations Guide](https://edgeguides.rubyonrails.org/active_record_migrations.html) does a very good job at explaining how schema migrations work in Rails.
 
-I would just like to point out that you can [pass modifiers](http://edgeguides.rubyonrails.org/active_record_migrations.html#passing-modifiers) when you are generating migrations from the command line. Not many people know this.
+Not many people know this, but you can [pass modifiers](https://edgeguides.rubyonrails.org/active_record_migrations.html#passing-modifiers) when you are generating migrations from the command line. 
+
+Whenever possible, **write reversible migrations**. If a migration can't be reversed, then make sure you raise `ActiveRecord::IrreversibleMigration` exception.
+
+
+**Must read** - take a look at [strong_migrations](https://github.com/ankane/strong_migrations) for tips on how to write safer migrations. Please don't hesitate to add the gem to your project, it will help you catch unsafe migrations in development.
+
 
 ## Data migrations
 
 Here is where things get a bit complicated. As your project grows and evolves, so does your data. At some point, you might realize you forgot to add a default to a field. Or that you want to change an enumeration. Or manipulate the existing data in your database in any way.
 
-There are two way of dealing with these problems:  
+There are two ways of dealing with these problems, and both have its use cases: 
 
 1. Write a rake task
 2. Write a data migration
 
 Your first instinct would be to write a simple rake task. You have access to all your models, and it is easily testable and runnable. You can even delete the file afterwards. The problem with the rake task is that you have to remember to run it. It does not run automatically. Also, if you are writing a big feature and need that change in the middle of your schema migrations, then you have a problem.
+But if the data migration can be ran after the deployment at any time, and the migration is really really complicated and involves multiple models, then a rake task is the way to go.
+
 
 Writing a data migration is a bit trickier. You start of by writing a schema migration, but instead of doing `add_column` or `rename_column` in your `change` method, you do a `Model.update_all()`. Problems start to arise when, after a month of developing a new feature, you introduce some validations that break that migration. Or you remove a method you are using in that migration. Or you remove the model entirely. And you notice the problem only when you try to deploy your application to the server.
 
@@ -37,7 +45,8 @@ def change
 end
 ```
 
-To make your life a bit easier, I suggest you write the query with ActiveRecord, and just use the `to_sql` method on the query.
+When writing raw SQL queries, it's best to use a database client, such as [TablePlus](https://tableplus.com/) or [Postico](https://eggerapps.at/postico/) where you can check the syntax and test the query faster.
+You can also write the query with ActiveRecord and call the `to_sql` method on the AR query object.
 
 **Reversible data migration**
 

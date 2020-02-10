@@ -31,6 +31,12 @@ This is extremely useful if you want to speed up the uploading process and impro
 
 To implement direct S3 upload with Shrine, read the instructions [here](https://shrinerb.com/docs/direct-s3).
 
+## Security
+Files stored on S3 are private by default. This means file URL's will be signed and they will expire after some specified time.
+It's best to explicitly set the expiration time for **each uploader class** using [url_options](https://shrinerb.com/docs/plugins/url_options) plugin.
+
+Some files need be public, i.e. albums' covers. In that case, set the `acl` to `public-read` via [upload_options](https://shrinerb.com/docs/plugins/upload_options) plugin.
+
 
 ## Important things
 
@@ -42,3 +48,23 @@ To implement direct S3 upload with Shrine, read the instructions [here](https://
 - Always validate **mime type** for uploaded files, and extension if needed.
 
 - Shrine doesn't automatically delete files from cache storage when moving them to store storage. Tell DevOps to **set a lifecycle policy** with appropriate amount of time **for cache storage** prefix.
+
+
+## Accessing files on S3
+To access files on s3, ask somebody from the DevOps team for S3 console access. 
+If you already have bucket credentials, you can also use [Cyberduck](https://cyberduck.io/).
+
+After downloading Cyberduck, follow these steps to connect to your S3 bucket.
+
+1. Click to create a new bookmark.
+
+![New bookmark](/images/cyberduck_bookmark.jpg)
+
+2. Fill in the information from your S3 secrets.
+
+![Bucket info](/images/cyberduck_bucket_info.jpg)
+
+3. Double-click your bookmark and fill in the Secret Access Key.
+
+![Connection](/images/cyberduck_connection.jpg)
+

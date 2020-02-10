@@ -1,6 +1,6 @@
 Almost every app needs file upload implementation. 
 
-We use S3 as file storage on servers, and disk storage in development and test environments.
+We use [S3](https://aws.amazon.com/s3/) as file storage on servers, and disk storage in development and test environments.
 
 # Shrine
 There are several file upload gems out there. We use [Shrine](https://github.com/janko-m/shrine) because of its flexibility. It is the youngest of all the popular file uploaders, but it maintains an issue count of 0 and has fixed all the issues other gems have.

@@ -44,25 +44,13 @@ To set up Mailgun in the app, add the official [mailgun-ruby](https://github.com
 Mailgun also has webhooks, if you, for example, need to track failed deliveries due to having non-existing/non-verified emails in the database.
 
 
-## Staging
+## Sending emails on behalf of users
+Sometimes you will need to send email on behalf of the app's users, i.e. Contact form submissions. **Never set from field to user's address - use Reply-To.**. Mailgun won't deliver emails with from address with a different domain than the one configured in Mailgun settings.
 
-### Email interceptor setup
-Sometimes, we trigger an action which could send emails. To prevent this,
-we should intercept all emails that are sent from the staging environment.
+## Intercepting emails
+In most apps you should intercept emails in staging, to prevent sending emails to real users or avoid Mailgun failures if you have fake/non-existing emails in the database. 
 
-We use [recipient_interceptor](https://github.com/croaky/recipient_interceptor) to restrict emails at staging.
+There's a [mail_interceptor](https://github.com/bigbinary/mail_interceptor) gem which intercepts and forwards emails to a given address, and also sends the emails only to whitelisted addresses.
 
-1. Add the `recipient_interceptor` gem to the gemfile
-2. Add the gem settings in config/environments/staging.rb. Example:
-
-        Mail.register_interceptor(
-          RecipientInterceptor
-          .new(Rails.application.secrets.permitted_emails,
-               subject_prefix: '[STAGING]')
-        )
-3. Add the permitted_emails key in secrets.yml under the staging section.
-4. If you want to set more then one email address, they should be separated with a comma (e.g., 'test1@infinum.co,test2@infinum.co').
-
-If everything is configured well, all emails will be delivered to the specified email addresses.
-
-
+Non-production environments should have prefixed subjects, i.e. `[Staging] Confirmation Instructions`.
+https://guides.rubyonrails.org/action_mailer_basics.html#intercepting-emails

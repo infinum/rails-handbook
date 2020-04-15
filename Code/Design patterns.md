@@ -1,0 +1,12 @@
+- what are design patterns
+- list of design patterns in rails with links to external blogposts
+
+- previous chapters included:
+  - Adapters
+  - Data objects (Value objects)
+  - Decorators
+  - Form objects
+  - Null objects
+  - Policies
+  - Query objects
+  - Service objects

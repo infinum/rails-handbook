@@ -129,6 +129,6 @@ There are multiple places where you can put this kind of code. A good place may 
   * Create a folder `app/csv_importers`, add the `CityImporter` there and `CSVCity` inside the same class.
   * If you're using this in something like a rake task, you can write that content in the rake task file itself.
 
-##Further reading
+## Further reading
 
   * [Be nice to each other, use Data Objects](http://brewhouse.io/2015/07/31/be-nice-to-others-and-your-future-self-use-data-objects.html)

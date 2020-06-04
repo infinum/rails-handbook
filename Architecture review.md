@@ -23,7 +23,7 @@ Please follow this timeline:
 5. Once you're done with the initial project meeting and have the specification, sit down with the member of your team that was at the meeting with you and design the database. You can do this on a whiteboard or a piece of paper, or use a tool, such as [Gliffy](https://www.gliffy.com/) or [MySQL Workbench](https://dev.mysql.com/downloads/workbench/). If you need to draw a sequence diagram, use [Web Sequence Diagram](https://www.websequencediagrams.com/).
 6. Consult the project manager at will and add new discoveries to the specification if you find that something's missing.
 7. Don't hesitate to involve other team members since this is the most important part of the app.
-8. Once you've finished the database design, it has to be approved by someone from the management. Matej is the first person to ping.
+8. Once you've finished the database design, it has to be approved by someone from the management.
 9. Once your architecture has been approved, you can generate a new Rails project. Read more about that on the next page.
 
 In order to start coding, the whole project must go through an architecture review.

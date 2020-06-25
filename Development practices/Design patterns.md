@@ -21,7 +21,7 @@ You have a method which instantiates a different type of object depending on a p
 Read more [here](https://www.sihui.io/design-pattern-factory/).
 
 ### Form object
-Simplify record operations by keeping logic in them.
+Move form-specific logic away from your ActiveRecord models into a separate class.
 
 #### Problem
 * Your controllers are huge and you want to make them more readable by extracting some of their logic, but you don't want to clutter your models
@@ -42,6 +42,7 @@ The problem can be spotted by finding:
 
 #### Solution
 Read more [here](https://revs.runtime-revolution.com/value-objects-in-ruby-on-rails-9df64bc8db34).
+[dry-rb](https://dry-rb.org/gems/dry-initializer/3.0/) is a Ruby gem that can be used for value objects.
 
 ### Null object
 Instead of returning null, or some odd value, return a Special Case that has the same interface as what the caller expects.

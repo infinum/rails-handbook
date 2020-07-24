@@ -1,4 +1,5 @@
 Our standard file upload setup includes:
+
 * using Shrine gem
 * direct S3 uploads
 * [S3](https://aws.amazon.com/s3/) as file storage for production and staging servers, and disk storage for development.
@@ -15,11 +16,12 @@ There is also [a demo application](https://github.com/erikdahlstrand/shrine-rail
 Shrine features a rich plugin system which makes it incredibly easy to change its behavior to suit your needs.
 
 Here are some of the plugins we use often:
+
 * [activerecord](https://shrinerb.com/docs/plugins/activerecord)
 * [bakgrounding](https://shrinerb.com/docs/plugins/backgrounding)
-* [cached_attachment_data](https://shrinerb.com/docs/plugins/cached_attachment_data) - for forms
+* [cached\_attachment\_data](https://shrinerb.com/docs/plugins/cached_attachment_data) - for forms
 * [derivatives](https://shrinerb.com/docs/plugins/derivatives)
-* [determine_mime_type](https://shrinerb.com/docs/plugins/determine_mime_type)
+* [determine\_mime\_type](https://shrinerb.com/docs/plugins/determine_mime_type)
 * [presign_endpoint](https://shrinerb.com/docs/plugins/presign_endpoint) - for direct S3 uploads
 * [upload_options](https://shrinerb.com/docs/plugins/upload_options)
 * [url_options](https://shrinerb.com/docs/plugins/url_options)

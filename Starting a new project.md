@@ -4,7 +4,7 @@ When you're starting a new project, there are a few things you need to do:
 
 #### 1. Open a repository
 
-Ask your team lead or DevOps to open a repository
+Ask your team lead or DevOps to open a repository.
 
 #### 2. Fill out the project setup sheet
 

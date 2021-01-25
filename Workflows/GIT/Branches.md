@@ -1,4 +1,4 @@
-Our Git process is an upgraded version of [Github Flow](https://guides.github.com/introduction/flow/).
+Our Git process is an upgraded version of [Github Flow](https://guides.github.com/introduction/flow/)
 
 ![](https://ftp.infinum.co/stjepan_hadjic/git-flow-2.jpg)
 

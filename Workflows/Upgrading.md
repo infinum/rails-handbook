@@ -1,4 +1,3 @@
-# Dependencies
 > Every dependency in your application has the potential to bloat your app, to destabilize your app, to inject odd behaviour via monkeypatching or buggy native code.
 >
 > When you are considering adding a dependency to your Rails app, it’s a good idea to do a quick sanity check, in order of preference:
@@ -29,10 +28,6 @@ The Ruby ecosystem is quite large and active, so being up to date on all your de
 ### Bundle outdated
   Bundler [already includes](https://bundler.io/man/bundle-outdated.1.html) a handy tool which can be used to get a list of outdated gems in your project.
   ```
-    Fetching gem metadata from https://rubygems.org/.........
-    Fetching gem metadata from https://rubygems.org/.
-    Resolving dependencies...........
-
     Outdated gems included in the bundle:
       * aws-partitions (newest 1.367.0, installed 1.338.0)
       * blueprinter (newest 0.25.1, installed 0.25.0) in groups "default"
@@ -111,7 +106,7 @@ Upgrading a major version of Rails is [no small task](https://github.blog/2018-0
 One of the proposed novel strategies for battling a long running upgrade is [dual](https://medium.com/oreilly-engineering/upgrading-rails-apps-with-dual-boot-e5c271e68a6e) [booting](https://www.fastruby.io/blog/upgrade-rails/dual-boot/dual-boot-with-rails-6-0-beta.html) [Rails](https://blog.testdouble.com/posts/2019-09-03-3-keys-to-upgrading-rails/). The idea is that your Rails application is bootable with a pair of `Gemfile.lock` dependency sets - the current and the next one. This allows you merge the necessary changes to the main branch one small PR at a time, as frequently as you would like!
 
 Going down this road requires some more setup. There are a few gems like [Next Rails](https://github.com/fastruby/next_rails) and [bootboot](https://github.com/Shopify/bootboot) that can help you get started. The only thing you will need to add to your code base is a version condition helper, to achieve version specific behaviour -
-```ruby
+```
 if MyApplication.before_rails_6?
   old_dependency
 else

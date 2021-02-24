@@ -27,12 +27,14 @@ Convincing clients that we need to spend time regularly updating dependencies is
 The Ruby ecosystem is quite large and active, so being up to date on all your dependency changes can be a challenge. Manual options like checking the [Ruby security mailing lists](https://groups.google.com/g/ruby-security-ann) and Github repositiories have their place, but they require developers to put in extra time and effort. Luckily the community has developed some great automated tools to help you ease the load.
 ### Bundle outdated
   Bundler [already includes](https://bundler.io/man/bundle-outdated.1.html) a handy tool which can be used to get a list of outdated gems in your project.
+
   ```
     Outdated gems included in the bundle:
       * aws-partitions (newest 1.367.0, installed 1.338.0)
       * blueprinter (newest 0.25.1, installed 0.25.0) in groups "default"
       * brakeman (newest 4.9.1, installed 4.9.0) in groups "development"
   ```
+
   You should have a periodic reminder in your calendar to run `bundle outdated` and triage the result. You can't always be on the edge, but you should at least be aware how far behind you are. This will help you estimate the time needed to update your dependencies and fit them in your schedule.
 ### [Bundler-audit](https://github.com/rubysec/bundler-audit)
 Running `bundle-audit` give you a list of all the dependencies in your project that contain publicly known security vulnerabilities. We mandate this check to be executed before each commit (using [overcommit](https://github.com/sds/overcommit) or [lefthook](https://github.com/Arkweid/lefthook)). This gives developers a clear message -
@@ -44,7 +46,8 @@ Once a vulnerability is made public and added to the [Ruby Advisory Database](ht
 Can you imagine having a co-worker who would check your dependencies for updates, summarise the changelogs and open a PR for each new one each week? You're in luck, Dependabot does exactly that.
 
 To trigger Dependabot you will have to add a file named `dependabot.yml` to the `.github` directory, located in the root of the project. The configuration should loosely follow the following format
-```yaml
+
+```
 version: 2
 updates:
   - package-ecosystem: "bundler"
@@ -59,6 +62,7 @@ updates:
       interval: "weekly"
     open-pull-requests-limit: 2
 ```
+
 We recommend that you adjust the limit of weekly pull requests based on the circumstance of your project. Dependencies get updated rapidly, and you won't always have the time sift through all the updates in the same week.
 
 ## Updating dependencies
@@ -106,11 +110,13 @@ Upgrading a major version of Rails is [no small task](https://github.blog/2018-0
 One of the proposed novel strategies for battling a long running upgrade is [dual](https://medium.com/oreilly-engineering/upgrading-rails-apps-with-dual-boot-e5c271e68a6e) [booting](https://www.fastruby.io/blog/upgrade-rails/dual-boot/dual-boot-with-rails-6-0-beta.html) [Rails](https://blog.testdouble.com/posts/2019-09-03-3-keys-to-upgrading-rails/). The idea is that your Rails application is bootable with a pair of `Gemfile.lock` dependency sets - the current and the next one. This allows you merge the necessary changes to the main branch one small PR at a time, as frequently as you would like!
 
 Going down this road requires some more setup. There are a few gems like [Next Rails](https://github.com/fastruby/next_rails) and [bootboot](https://github.com/Shopify/bootboot) that can help you get started. The only thing you will need to add to your code base is a version condition helper, to achieve version specific behaviour -
-```
+
+```Ruby
 if MyApplication.before_rails_6?
   old_dependency
 else
   new_dependency
 end
 ```
+
 You will be able to keep track of your update progress with an additional CI check that will use the new dependencies with the existing codebase.

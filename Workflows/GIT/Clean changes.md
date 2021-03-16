@@ -76,6 +76,76 @@ While on feature branch:
 ```bash
 git fetch origin master
 git rebase -i origin/master
+```
+
+This will start interactive rebase. You can edit it with your editor of choice.
+To set the default editor you'll need to edit the git configuration:
+
+```bash
+git config core.editor "{editor-name} --wait"
+```
+
+Examples for visual studio code, atom and vim:
+
+```bash
+git config core.editor "code --wait"
+git config core.editor "atom --wait"
+git config core.editor "vim --wait"
+```
+
+Refer to [this](https://git-scm.com/book/en/v2/Appendix-C%3A-Git-Commands-Setup-and-Config) guide
+for more information.
+
+Once the interactive rebase has started, you will see feature branch's commits listed. Each commit will consist of command, SHA (commit hash) and commit's text. Each commit will, initially, have `pick` command. You'll see something similar to this (may vary depending on the editor):
+
+```bash
+pick 07c5abd First commit
+pick de9b1eb Add controller
+pick 3e7ee36 Remove controller
+pick fa20af3 Finish up
+
+# Rebase 8db7e8b..fa20af3 onto 8db7e8b
+#
+# Commands:
+#  p, pick = use commit
+#  r, reword = use commit, but edit the commit message
+#  e, edit = use commit, but stop for amending
+#  s, squash = use commit, but meld into previous commit
+#  f, fixup = like "squash", but discard this commit's log message
+#  x, exec = run command (the rest of the line) using shell
+#
+# These lines can be re-ordered; they are executed from top to bottom.
+#
+# If you remove a line here THAT COMMIT WILL BE LOST.
+#
+# However, if you remove everything, the rebase will be aborted.
+#
+# Note that empty commits are commented out
+```
+
+At this point you'll want to change all commands to `squash` or even `fixup`. The difference between `squash` and `fixup` is that `fixup` will discard log for that commit. This is how the commit list looks after the change:
+
+```bash
+pick 07c5abd First commit
+squash de9b1eb Add controller
+squash 3e7ee36 Remove controller
+squash fa20af3 Finish up
+```
+
+Or you can even use shorthand flag for the command, for instance `s` instead of `squash`
+
+```bash
+pick 07c5abd First commit
+s de9b1eb Add controller
+s 3e7ee36 Remove controller
+s fa20af3 Finish up
+```
+
+You should rename your squashed commit message into something more meaningful, so pick `reword` for the first commit. Edit commit message, save and close editor to finish the rebase.
+
+Next, force push to update remote's history:
+
+```bash
 git push --force-with-lease
 ```
 

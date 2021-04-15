@@ -203,5 +203,3 @@ Good:
 Make sure that everything is OK by running the specs, then push.
 
 If you're having trouble understanding the differences between squashing, rebasing or any other topics covered in these chapters, you can learn more from the [Git book](https://git-scm.com/book/en/v2).
-
-Change something elsle

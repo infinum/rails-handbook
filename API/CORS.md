@@ -7,7 +7,7 @@ An excellent guide to CORS is available [here](https://developer.mozilla.org/en-
 Assuming you have read the guide, you still might misunderstand how it works. This is not uncommon with CORS, it is one of the most misunderstood aspects of the Web. Therefore, the following list of misconceptions was compiled to help you understand it better:
 - "CORS is enforced by the server"
   - Servers only supply CORS headers, the enforcer is actually **the browser**. It sends a preflight request to discover server's CORS policy, and based on that info decides whether to execute the request or raise an error.<br />
-  This is also the reason why CORS errors don't show in tools like cURL or Postman — they don't send a preflight request or enforce the server's headers.
+  This is also the reason why CORS errors don't show up in tools like cURL or Postman — they don't send a preflight request or enforce the server's headers.
 - "I can just allow all origins with `*` and be done with it"
   - Depends. Setting `*` only works when the request doesn't include credentials (cookies or Authorization header). If you allow all origins *and* include credentials, the browser will [raise an error](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS/Errors/CORSNotSupportingCredentials). When you need to include credentials, `Access-Control-Allow-Origin` header must have a concrete origin value.
 - "I can copy `Origin` header to `Access-Control-Allow-Origin` to satisfy CORS"

@@ -37,6 +37,7 @@ A small simple object, like a date range or location, whose equality isn’t bas
 
 #### Problem
 The problem can be spotted by finding:
+
 * attributes that don't make sense on their own
 * logic that is tightly coupled with primitives (attributes with behaviour - methods)
 

@@ -36,9 +36,10 @@ It is said that you can discern the application's purpose just by looking at fil
 Here is an example of a project services folder. Can you tell me what this application does?
 
 <details>
-  <summary>Services</summary>
+<summary>Services</summary>
 
-```
+<pre>
+<code>
 app/services
 ├── add_points_to_user.rb
 ├── aes_crypt.rb
@@ -183,8 +184,8 @@ app/services
     ├── get_location_attributes.rb
     ├── get_route.rb
     └── leave_reachable.rb
-```
-
+</code>
+</pre>
 </details>
 
 At some point this folder became a dumpall folder without rhyme or reason.

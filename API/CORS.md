@@ -4,7 +4,8 @@ An excellent guide to CORS is available [here](https://developer.mozilla.org/en-
 
 ## Misconceptions
 
-Assuming you have read the guide, you still might misunderstand how it works. This is not uncommon with CORS, it is one of the most misunderstood aspects of the Web. Therefore, the following list of misconceptions was compiled to help you understand it better:
+Assuming you have read the guide, you still might feel a lack of confidence as to how it works. This is not uncommon with CORS, it is one of the most misunderstood aspects of the Web. Therefore, the following list of misconceptions was compiled to help you understand it better:
+
 - "CORS is enforced by the server"
   - Servers only supply CORS headers, the enforcer is actually **the browser**. It sends a preflight request to discover server's CORS policy, and based on that info decides whether to execute the request or raise an error.<br />
   This is also the reason why CORS errors don't show up in tools like cURL or Postman — they don't send a preflight request or enforce the server's headers.

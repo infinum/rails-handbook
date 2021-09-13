@@ -8,7 +8,7 @@ There are different ways to enable pagination and to paginate resources, however
 
 ## Enabling pagination
 
-In most cases, pagination is enabled through query string. Query string lets clients pass additional parameters which are not appropriate to send in headers or the body. A URL with pagination applied might look like this: `/api/v1/countries?page=5`. In the example, we're fetching countries and requesting the 5th page of results. Query string is the preferred way to enable pagination and also the one we use.
+In most cases, pagination is enabled through query string. Query string lets clients pass additional parameters which are not appropriate to send in headers or the body. A URL with pagination applied might look like this: `/api/v1/countries?page=5`. In the example, we're fetching countries and requesting the 5th page of results. Query string is the preferred way to enable pagination, but you can keep it also enabled by default, where a request without pagination query strings is handled as `page=1`.
 
 ## Types
 
@@ -19,20 +19,26 @@ There are many pagination types, and working with APIs you'll find different imp
 Page-based pagination divides a set of records into pages of equal size (except for the last page which can have less records than other pages). A number is assigned to every page, starting with 1.
 
 API should support client-set page size and page number params. An endpoint with pagination params applied could look like this: `/api/v1/countries?page[size]=50&page[number]=3`. In the example, the client requests the 3rd page of countries with maximum 50 records.
+This means that the API will respond with countries from 101 to 150, if the API database contains that many countries. Here are some cases when it doesn't:
+
+- 120 countries: the client would receive only 20 countries (from 101 to 120)
+- 160 countries: the client would receive 50 of them (from 101 to 150)
 
 If the client omits page size param you should set a default value. You should also set a maximum value (so clients can't request all records by providing an absurdly large number). If a client requests more records than the maximum allows, you can either clamp the value to the maximum or respond with an error, whatever you think is the right choice.
 
 When page number param is omitted, you should respond with the first page. Respond with an error if the param is lesser than 1, but if it's greater than the total number of pages then return the last page. Returning the last page instead of responding with an error prevents an edge case when pages disappear due to records being deleted but clients still requesting the missing page (which they think exists).
 
 Response should optionally include pagination metadata:
+
 - current page (in case it differs from the requested page)
 - total number of pages
 - total number of items
+
 This information is optional because it won't always be used by clients, and, since it typically requires executing an additional SQL COUNT query, it can be a costly operation.
 
-Since this type of pagination allows clients to request any page, it is usually reperesented in the UI with a paginator where you can select a page (e.g. `<- 2 3 4 5 6 ->`). If this is the kind of UI you're implementing pagination for, then page-based type is the right choice.
+Since this type of pagination allows clients to request any page, it is usually represented in the UI with a paginator where you can select a page (e.g. `<- 2 3 4 5 6 ->`). If this is the kind of UI you're implementing pagination for, then page-based type is the right choice.
 
-This type is also popular because it's easy to implement using SQL's `OFFSET` clause. `page[size]=50&page[number]=3` simply translates to `LIMIT 50 OFFSET 50 * (3 - 1) => LIMIT 50 OFFSET 100` in SQL. However, this has a negative side. The clause requires scanning _all_ rows included by the offset value, which is inefficient for large offsets and causes performance to suffer the more pages you have (e.g. page 100 is slower to fetch than page 1). If you don't have to paginate many records, then it's not that much of an issue.
+This type is also popular because it's easy to implement using SQL's `OFFSET` clause. `page[size]=50&page[number]=3` simply translates to `LIMIT 50 OFFSET 50 * (3 - 1) => LIMIT 50 OFFSET 100` in SQL. However, offset based pagination has a negative side. The clause requires scanning _all_ rows included by the offset value, which is inefficient for large offsets and causes performance to suffer the more pages you have (e.g. page 100 is slower to fetch than page 1). If you don't have to paginate many records, then it's not that much of an issue.
 
 ### Cursor-based
 
@@ -40,7 +46,7 @@ Cursor-based pagination uses a cursor which points to a specific record in the d
 
 An endpoint with pagination params applied could look like this: `/api/v1/countries?page[after]=dQw4w9`. `page[after]` can be replaced with `page[before]` if we want to retrieve records preceding a cursor.
 
-Notice that the cursor in the example is a random string — this is intentional. Some implementations opt for opaque strings (which have no meaning to clients), while others use record IDs for cursors (take for example [Stripe's API](https://stripe.com/docs/api/pagination)).
+Notice that the cursor in the example is a random unique string — this is intentional. Some implementations opt for opaque strings (which have no meaning to clients), while others use record IDs for cursors (take for example [Stripe's API](https://stripe.com/docs/api/pagination)).
 
 This pagination type should also support client-set page size param (same rules apply as for page-based type).
 

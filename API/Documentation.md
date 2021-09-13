@@ -12,13 +12,14 @@ The following checklist lists documentation essentials. This is not an exhaustiv
 - **Format requirements** - If you use JSON:API, GraphQL or some other format, they typically come with requirements, like setting `Content-Type`/`Accept` headers, which the clients must abide by.
 - **CORS** - If applicable, document your CORS policy (allowed origins, methods, exposed headers, credentials, etc.).
 - **Authentication** - Applicable if endpoints are authenticated. Explain the authentication method(s) used (API key, cookies, JWT, etc.) and how to obtain credentials.
-- **Authorization** - If the outcome of requests depends on the user's permissions, then that should also be documented. If authorization logic varies between endpoints, each endpoint should expain its logic.
+- **Authorization** - If the outcome of requests depends on the user's permissions, then that should also be documented. If authorization logic varies between endpoints, each endpoint should explain its logic.
 - **Errors** - All APIs are subject to errors. Errors are roadblocks, preventing clients from doing what they need to do. And when a roadblock comes with either no explanation or a vague one (`PC LOAD LETTER`), frustration ensues.<br />
 Document <u>all</u> common errors and supply descriptions. Descriptions should explain what happened and what the client can do to remove the error. Document even the 5xx messages, no matter how obvious they seem.
 - **Changelog** - Major changes to the API should be documented for historical reference. It's an optional step if the API will be used by a limited number of users to whom you can communicate changes directly, though it's useful to have even then.
-- **Endpoints** - The main body of the documentation, each endpoint should: describe what it is, document available HTTP verbs, and show example requests and responses for happy and sad paths. If a response error is specific to an endpoint, document it. 
+- **Endpoints** - The main body of the documentation, each endpoint should: describe what it is, document available HTTP verbs, and show example requests and responses for happy and sad paths. If a response error is specific to an endpoint, document it.
 
 *Bonus points:*
+
 - **Quickstart guide** - Onboard clients quickly by providing an example request (e.g. in cURL) which they can copy/paste to test out and modify. This approach is the fastest way to get clients to learn using the API.
 - **Diagrams** - Complex flows are hard to explain with just words. If the API, for example, controls a state machine, words will struggle to explain its states and transitions. Diagrams, even simple ones created in tools like [draw.io](https://draw.io), will help clients tremendously in understanding the underlying logic.<br />
 *Tip*: keep raw, editable files in the repository along with exported formats (like PNG). That way other developers can later update existing diagrams instead of having to create new ones.
@@ -28,7 +29,8 @@ Document <u>all</u> common errors and supply descriptions. Descriptions should e
 Everything written about documentation practices in the preceding paragraphs sets a basis on which API documentation should be written. But it's just that — a basis. Real-world APIs are big and complex and to write comprehensible documentation for them means to consider many aspects not pointed out here. Instead of trying to put everything into words, here are some API documentations which prove that it's possible to manage complexity and present it in an understandable and user-friendly way to the clients.
 
 - [Stripe API](https://stripe.com/docs/api)
-# TODO: add other examples
+- [Productive](https://developer.productive.io/)
+- [Underline](https://underline-api.byinfinum.co/api/v1/docs/)
 
 ## Automating documentation
 

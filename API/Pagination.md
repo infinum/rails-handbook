@@ -55,3 +55,16 @@ Notice that the cursor in the example is a random unique string — this is inte
 This pagination type should also support client-set page size param (same rules apply as for page-based type).
 
 Due to the nature of this pagination type, you cannot show a paginator element in the UI (like you can for page-based type). Based on the current page (which is defined with a cursor), clients can jump only page-by-page back or forth, but only one page at a time. This type is appropriate for the so-called infinite scroll design, where we load the next page when the client reaches the end of the current page. It can also be used in situations where users can paginate only with `Previous page` and `Next page` buttons.
+
+## Common pitfalls
+
+Always ensure that the records are sorted by a unique attribute (eg: ID). If the collection contains duplicate values of the attribute they are sorted by, there may be occurrences where records appear missing.
+Imagine a scenario where we have an API that responds with countries sorted by the number of counties and we only show 2 countries per page:
+
+- Canada, 50
+- Chile, 45
+- Colombia, 45
+- Denmark, 40
+- Ecuador, 35
+
+The 1st page will show Canada and Chile, whereas the 2nd page shows Chile and Denmark, instead of Colombia and Denmark. The fix to the issue is to sort the collection by the count **and** some unique attribute of the record (especially if it also has an index).

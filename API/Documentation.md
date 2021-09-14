@@ -36,4 +36,7 @@ Everything written about documentation practices in the preceding paragraphs set
 
 Documentation writing is a labor. Most of it has to be done by hand — nothing can replace that — but some things can be automated. One of the things we can automate are example requests and responses.
 
-# TODO: explain Dox
+### Dox
+
+Infinum's very own gem that does the majority of work in regards to API documentation for the developer. It's super easy to setup and with just a couple of changes to your existing request specs you get an updated API documentation after the specs finish running.
+Check the dox documentation by following [this link](https://github.com/infinum/dox).

@@ -18,6 +18,8 @@ There are many pagination types, and working with APIs you'll find different imp
 
 Page-based pagination divides a set of records into pages of equal size (except for the last page which can have less records than other pages). A number is assigned to every page, starting with 1.
 
+![page-based-pagination](/img/page-based-pagination.png)
+
 API should support client-set page size and page number params. An endpoint with pagination params applied could look like this: `/api/v1/countries?page[size]=50&page[number]=3`. In the example, the client requests the 3rd page of countries with maximum 50 records.
 This means that the API will respond with countries from 101 to 150, if the API database contains that many countries. Here are some cases when it doesn't:
 
@@ -43,6 +45,8 @@ This type is also popular because it's easy to implement using SQL's `OFFSET` cl
 ### Cursor-based
 
 Cursor-based pagination uses a cursor which points to a specific record in the dataset and returns a number of records before or after it.
+
+![cursor-based-pagination](/img/cursor-based-pagination.png)
 
 An endpoint with pagination params applied could look like this: `/api/v1/countries?page[after]=dQw4w9`. `page[after]` can be replaced with `page[before]` if we want to retrieve records preceding a cursor.
 

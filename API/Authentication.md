@@ -23,6 +23,8 @@ There are two important cookie attributes you should know about:
 - `Secure` — When set, the cookie will only be sent to the server and saved in the browser if the protocol through which they're sent/received is `https`. Insecure `http` protocol can't access cookies with that attribute. If you're communicating over `https`, make sure to set this attribute.
 - `HttpOnly` - These cookies cannot be accessed by JavaScript code. They are exchanged only between the browser and the server. If the cookie is used to store server-side session (a method described below), this attribute should be enabled because the cookie should be saved and used only by the browser, not read or changed by the user through JS. Note that this attribute doesn't prevent tampering of cookies as users can still edit them manually (for example, in a developer console).
 
+_Note_: Cookie with the `HttpOnly` flag is the safest option for storing sensitive information in a browser, so if you have a JS-based frontend application that will consume your APIs, and you need to keep the secrets really secret, consider using this technique.
+
 ### Authorization header
 
 HTTP supports sending a standard `Authorization` header in requests. The header consists of a type (indicating what kind of a credential it is) and a value separated by whitespace. An example header can look like this: `Basic aHR0cHM6Ly95b3V0dS5iZS9kUXc0dzlXZ1hjUQ==`.

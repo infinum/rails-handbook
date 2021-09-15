@@ -30,7 +30,7 @@ Everything written about documentation practices in the preceding paragraphs set
 
 - [Stripe API](https://stripe.com/docs/api)
 - [Productive](https://developer.productive.io/)
-- [Underline](https://underline-api.byinfinum.co/api/v1/docs/)
+- [Example App](https://cekila.byinfinum.co/api/v1/docs/)
 
 ## Automating documentation
 

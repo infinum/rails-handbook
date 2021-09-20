@@ -65,10 +65,6 @@ The problem is not the choice of cases (every option is good), nor the language,
 
 This doesn't apply just to request and response bodies, URLs are also subject to consistency rules, e.g. endpoints `/api/country_data` and `/api/currency-data` are bad design because they're mixing snake_case and kebab-case.
 
-### Robust
-
-
-
 ### Following conventions and standards
 
 Here is an example of an endpoint which returns album data:
@@ -83,14 +79,73 @@ Here is an example of an endpoint which returns album data:
 
 The API serializes an attribute `explicit` which tells the client if the album contains strong language. This has been implemented as a boolean field, however the API developer decided to stringify the boolean, so instead of returning `false`, they return `"false"`.
 
+### Performant
+
+As the project grows the user base will also grow, therefore increasing the amount of requests sent to your server. Without a fast and optimized API the response times will sky-rocket and the user experience will plummet, which might cause users deleting their accounts and abandoning your product.
+
+There are many ways to improve the performance of an API, from caching to database sharding, but please be aware that the amount of information fetched from the database and wrapped in an API response should be as low as it can be, therefore increasing the speed of the SQL queries and avoiding any [performance issues](https://infinum.com/handbook/books/devproc/general-coding-practices/api-design#performance-issues).
+
+### Robust
+
+A strong, healthy and flexible API is a delight to work with. This goes for the producers as well as the consumers of the API.
+To have a robust API, you'll need to ensure:
+
+- a nice interface: existing behaviour is easily applicable throughout the system (eg: new filter or sort option)
+- bad requests don't cause problems for subsequent usages
+- integration tests that go through every endpoint and supported behaviour before deploying new builds
+
 ### Debuggable
 
-# TODO: explain that when errors happen they have to help the user resolve them, i.e. they shouldn't be vague
+Delivering a feature usually contains many steps that have to be resolved before shipping to production. When the project is split into *backend* and *frontend*, it often results in time spent communicating how an API is working. This time increases especially if the consumer of the API doesn't understand something and wastes time debugging a certain endpoint or collection of endpoints.
+
+Decreasing the debugging time can be achieved by using appropriate HTTP status codes and providing descriptive error messages in API responses.
+
+Common HTTP statuses for client-related errors are:
+
+- _Bad Request (400)_ - user must use valid and supported format in API communication
+- _Unauthorized (401)_ - user needs to be logged in in order to use an endpoint
+- _Forbidden (403)_ - user needs to be permitted to perform a certain action
+- _Not Found (404)_ - user can only fetch a resource that exists
+- _Unprocessable entity (422)_ - user tries to create/update a resource, but provided incomplete or invalid data
+
+The HTTP status codes help the consumer distinguish if the error is *data-related* (for which access to the database is needed, providing valid credentials, updating permissions, finding a resource to work with), or if it's *request related* (for which the HTTP request itself would need further investigation)
+
+Request related errors can be improved so that the frontend developer has a painless experience figuring out the problem. Imagine an endpoint where a user can update a song. The *Song* model validates that the _name_ attribute is always present, meaning that a song can't exist in the database without its name. Attempting to update a song with an invalid name would look like this:
+
+```JSON
+PATCH api/v1/songs/123
+{
+  "name": "",
+  "artist": "David Bowie",
+  "album": "Let's Dance"
+}
+```
+
+A good error structure should consist of:
+
+- title - short categorization of the error, usually the name of the HTTP status code
+- detail - coherent and explicit description of the error (eg: _"The name of a song must be present"_)
+- code - usually HTTP status code, but if you have a requirement for errors to be categorized in one way or another, this can be a good attribute to place the values from the error legend
+- source - object that tells the API consumer what the *name* of the parameter with the error is and its *path* in the prior request
+
+```JSON
+{
+  "errors": [
+    {
+      "title": "Unprocessable entity",
+      "detail": "Song must contain a name",
+      "code": 422,
+      "source": {
+        "parameter": "name",
+        "pointer": "/name"
+      }
+    }
+  ]
+}
+```
 
 ### Documented
 
-# TODO: explain the need for documentation and point to Documentation chapter
+Transparency is key to not losing any data or information that might be beneficial for anyone on the project. Human beings are faulty and we don't have the capacity to keep everything on the forefront of our minds. Over time, some insights might get lost or forgotten and spending time debugging and reminding ourselves is costly.
 
-### Performant
-
-# TODO: link to Jakas article about not including everything
+An API should always live alongside its documentation. Read more in the [API Documentation](Documentation) chapter.

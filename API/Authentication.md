@@ -54,7 +54,7 @@ However, there are other concerns when using query strings to transmit sensitive
 - URLs are saved in browser history (when used in navigation)
 - you have to include the key/token in every request, but normally you want to reserve the query string for other parameters (like filters, pagination, sorting, etc.)
 - XSS attacks
-- length constraints (if you want to ensure your apps work on most modern browsers, exceeding 2047 characters isn't suggested.)
+- length constraints (if you want to ensure your apps work on most modern browsers, exceeding 2047 characters isn't suggested)
 
 Consider using query strings for authentication only when other methods are unavailable.
 
@@ -79,15 +79,39 @@ One option for generating API keys is [`SecureRandom`](https://ruby-doc.org/stdl
 
 ### Access and refresh tokens
 
-# TODO: explain
+Access tokens and refresh tokens are artifacts used in the OAuth 2.0 authorization protocol. This protocol enables a user to grant permissions for accessing resources from a 3rd party application. It is most widely used for features like Single Sign On (SSO) via a variety of social media platforms (eg: Facebook, Instagram, LinkedIn)
 
-### Server-side session
+Once the user logs into the authorization server and grants access to the personal data an `access token` is returned to the client server. This token can be used for subsequent communication with the server on behalf of the user. For that reason, it's critical to have security strategies that minimize the risk of compromising access tokens, for example creating access tokens with a short lifespan. The downside of short-lived access tokens is the fact that the client application must prompt the user to log in again, which makes for bad UX. A better solution would be to use `refresh tokens`.
 
-# TODO: explain
+Refresh tokens are artifacts that let the client application refresh an access token without asking the user to log in. They are usually living longer than access tokens, but that also means if the refresh token is stolen, the malicious user has the power to create new access tokens, so additional security techniques need to be in place, like refresh token rotation or automatic reuse detection.
 
 ### JWT
 
-# TODO: explain
+The JSON Web Token standard is a method for creating the mentioned access tokens or any other artifact used for transmitting information between 2 servers. You can read more about it on [jwt.io](https://jwt.io/introduction).
+
+### Server-side session
+
+Believe it or not, cookies aren't the answer sometimes. Here are some usual arguments against them:
+
+- file size (only about 4kb of data can be saved into a cookie)
+- sent with every request making the requests slower if the cookies are bigger
+- storing wrong data inside a cookie can be insecure ([replay attacks](https://guides.rubyonrails.org/security.html#replay-attacks-for-cookiestore-sessions))
+
+When you can't store your session data inside a cookie, Rails has other options that are easily configurable:
+
+_config/initializers/session_store.rb_
+
+```ruby
+Rails.application.config.session_store :cookie_store
+```
+
+Two of the most widely used alternatives for storing session data are:
+
+- `redis_store` - toggle storage to be backed by Redis
+- `active_record_store` - toggle storage to be backed by ActiveRecord
+
+Both solutions come out of the box with their corresponding dependencies: [redis-rails](https://github.com/redis-store/redis-rails) & [activerecord-session_store](https://github.com/rails/activerecord-session_store).
+
 
 ## On reinventing authentication
 
@@ -96,7 +120,9 @@ For whatever reasons, you may feel like building your own authentication solutio
 Authentication is a complex beast encompassing many aspects, most of which you won't be aware until you start building your own solution, and some of which you'll only learn about when someone bypasses its security.
 
 There are megapopular public libraries available for all common authentication methods, which come with the assurance:
+
 - that they have been tested in real, production environments by thousands if not millions of users,
 - that they had their implementation examined by security experts,
 - that they had suffered and fixed serious security breaches.
+
 If you think your custom solution will live up to those expectations in the time you have to implement it, then feel free to build it. However, there are better and more productive ways to use your time, solving problems which haven't been solved already.

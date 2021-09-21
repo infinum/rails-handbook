@@ -4,9 +4,9 @@ In technical terms, API versioning is a strategy for serving the same resource i
 
 ## To version, or not to version
 
-### No breaking change
+### No breaking changes
 
-To give an example of a non-breaking change, imagine you serve an endpoint which returns country data:
+To give an example of a non-breaking change, imagine you are serving an endpoint which returns country data:
 
 ```json
 // GET api/v1/countries/hr
@@ -32,7 +32,7 @@ If the answer to that question is affirmative, and you know that some clients de
 
 *Side note*: notice that if the key for alpha-2 code was named `alpha_2_code` from the start, a change like the mentioned one wouldn't be necessary. That is, the only change would be the addition of a new key `alpha_3_code`, which is not breaking anything. This is one of the reasons why it's important to carefully think about API design and naming in particular.
 
-### Breaking change
+### Breaking changes
 
 Let's continue using the same example with countries, but this time we'll introduce a breaking change. If you take a closer look at the response, you might notice we lack a way to paginate the resources.
 
@@ -72,10 +72,10 @@ The problem is that we can't introduce this modification to the existing endpoin
 
 In short, here are the usual operations upon an existing endpoint and whether they are breaking or not:
 
-- adding new attribute - no break
-- renaming attribute - break
-- removing attribute - break
-- change type of value for attribute - break
+- adding a new attribute - no break
+- renaming an attribute - break
+- removing an attribute - break
+- changing the value type for an attribute - break
 - changing the format or structure (eg: JSON to GraphQL) - break
 
 ## How to version
@@ -84,7 +84,7 @@ There are a number of strategies for API versioning. This is still a widely disc
 
 We version APIs by adding a version number in the URL (prefixed with `v`). For example, an API for retrieving countries might have endpoints `/api/v1/countries` and `/api/v2/countries`.
 
-We include the version in APIs *from the beginning*, starting with `v1`. This choice is a pragmatic one even if you'll never have to release a second version. The cost of adding a version to the URL initially is imperceptible and once it's set up you don't have to think about it anymore. Adding new versions is also easy because you won't have to change/refactor code from version `v1` in order to support the new version.
+We include the version in APIs *from the beginning*, starting with `v1`. This choice is a pragmatic one even if you'll never have to release a second version. The cost of adding a version to the URL initially is imperceptible and once it's set up, you don't have to think about it anymore. Adding new versions is also easy because you won't have to change/refactor code from version `v1` in order to support the new version.
 
 In Rails, this kind of versioning has the following structure in routes:
 
@@ -101,4 +101,4 @@ namespace :api do
 end
 ```
 
-Controllers are then also namespaced under API version: `Api::V1::CountriesController` for `/api/v1/countries`, and `Api::V2::CountriesController` for `/api/v2/countries`. Keep this consistency on other abstractions as well: serializers, policies, specs, documentation or any custom made constructs.
+Controllers are then also namespaced under the API version: `Api::V1::CountriesController` for `/api/v1/countries`, and `Api::V2::CountriesController` for `/api/v2/countries`. Maintain this consistency with other abstractions as well: serializers, policies, specs, documentation or any custom-made constructs.

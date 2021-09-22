@@ -44,7 +44,7 @@ This type is also popular because it's easy to implement using SQL's `OFFSET` cl
 
 ### Cursor-based
 
-Cursor-based pagination uses a cursor which points to a specific record in the dataset and returns a number of records before or after it.
+Cursor-based pagination, also called keyset pagination, uses a cursor which points to a specific record in the dataset and returns a number of records before or after it.
 
 ![cursor-based-pagination](/img/cursor-based-pagination.png)
 

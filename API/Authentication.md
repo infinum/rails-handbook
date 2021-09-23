@@ -1,5 +1,3 @@
-# Authentication
-
 Authentication is the process of verifying someone's identity. There are many ways to verify identities over HTTP APIs, the most popular of which will be described below.
 
 When we talk about API authentication, it's important to distinguish its two components:

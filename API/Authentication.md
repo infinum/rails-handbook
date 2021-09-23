@@ -36,7 +36,7 @@ When the server generates a token, it should make it opaque (meaning they can't 
 
 The `Authorization` header is the preferred mechanism if your API is to be used by platforms other than the browser (browsers using it are susceptible to XSS attacks). It's easier to control than cookies outside of browsers, and it doesn't come with security concerns around using query strings (described below).
 
-### Basic auth
+#### Basic auth
 
 Basic auth is the simplest authentication method. It's a type of `Authorization` header authentication, where the "type" value is `Basic`.
 

@@ -1,8 +1,8 @@
 ## Incentive
 
-All apps use some secret keys, access keys, passwords and other configuration that should be hidden from the world. Until now we put those secrets directly in git repositories because all of our repositories were private and no one had access to them. This is a *huge* security issue and something that needs to be rectified. Here is good [read](https://www.humankode.com/security/how-a-bug-in-visual-studio-2015-exposed-my-source-code-on-github-and-cost-me-6500-in-a-few-hours) of what might happen if we don't.
+All apps use some secret keys, access keys, passwords and other configuration that should be hidden from the world. Until now we put those secrets directly in git repositories because all of our repositories were private and no one had access to them. This is a *huge* security issue and something that needs to be rectified. Here is a good [read](https://www.humankode.com/security/how-a-bug-in-visual-studio-2015-exposed-my-source-code-on-github-and-cost-me-6500-in-a-few-hours) of what might happen if we don't.
 
-To battle that issue we are storing those secrets in [vault](https://vaultproject.io). Vault, among other things, is a secure secrets storage which stores encrypted data in the backend of your choosing. So even if someone brakes the database, he would have access to only encrypted data.  
+To battle that issue we are storing those secrets in [vault](https://vaultproject.io). Vault, among other things, is a secure secrets storage which stores encrypted data in the backend of your choosing. So even if someone breaks the database, he would have access to only encrypted data.
 
 To make things easier we will write all our secrets to one file and then store the whole file to vault. For that job we are using [figaro](https://github.com/laserlemon/figaro).
 
@@ -30,7 +30,7 @@ Create a new token on [https://github.com/settings/tokens](https://github.com/se
 
 Create 3 new environment variables:
 
-    export VAULT_ADDR=https://vault.infinum.co:8200
+    export VAULT_ADDR=https://vault.byinfinum.co:8200
     export VAULT_AUTH_METHOD=github
     export VAULT_AUTH_TOKEN={your_github_token}
 
@@ -66,7 +66,7 @@ Separate you staging and production secrets into separate files. [See examples](
     :secrets_file: config/application.yml
     :secrets_storage_key: rails/web_tvornica_snova/
 
-Command will guide you though setting up `.secrets` config file.
+Command will guide you through setting up `.secrets` config file.
 
 **Secrets Repo Naming Convention**
 

@@ -1,12 +1,12 @@
 APIs are sets of defined protocols enabling applications to communicate with other systems, that can also be applications. In the context of the Web, APIs are a way for Web clients (browsers, mobile apps, terminals, servers, and other platforms) to communicate with Web servers.
 
-Our APIs use the HTTP protocol and are usually in JSON format, but if necessary we might implement file uploads, XML or something else the project requires.
+Our APIs use the HTTP protocol and are usually in JSON format, but if necessary, we might implement file uploads, XML or something else the project requires.
 
 The following chapters provide information on our practices regarding JSON APIs. Although some gems are mentioned throughout, primary focus is on aspects surrounding API design and delivery.
 
 ## API design principles
 
-Before talking about specific topics like authentication and pagination, we should outline a set of principles all APIs should follow. Since it's challenging to understand generic definitions, all of the principles will be introduced with an example showing what happens when they're *not* followed, to try to illustrate the importance of following it.
+Before talking about specific topics like authentication and pagination, we should outline a set of principles all APIs should follow. Since it's challenging to understand generic definitions, all of the principles will be introduced with an example showing what happens when they're *not* followed to try to illustrate the importance of following them.
 
 *Note*: all of the examples below are inspired by situations developers have been in when dealing with terrible APIs.
 
@@ -38,7 +38,7 @@ There is nothing wrong here, the endpoint returns data which you use in your app
 
 The API developer decided that instead of serializing artist and album names, they want to return their IDs. Technically, this is not a bad decision, it's quite a common change actually. However, what they failed to do is communicate this change to their clients in advance, so that clients can update their code to support the new response.
 
-Clients have expectations about APIs. If you tell clients that an endpoint returns data in a particular format, they will start to build their code around it. An API changed without prior notice breaks those assumptions and client application which depend on them.
+Clients have expectations about APIs. If you tell clients that an endpoint returns data in a particular format, they will start to build their code around it. An API changed without prior notice breaks those assumptions and client applications which depend on them.
 
 Fortunately, the remedy is simple: communicate with your clients. Anticipate that a change might break client applications and tell them about it in advance.
 
@@ -77,28 +77,28 @@ Here is an example of an endpoint which returns album data:
 }
 ```
 
-The API serializes an attribute `explicit` which tells the client if the album contains strong language. This has been implemented as a boolean field, however the API developer decided to stringify the boolean, so instead of returning `false`, they return `"false"`.
+The API serializes the attribute `explicit` which tells the client if the album contains strong language. This has been implemented as a boolean field, however the API developer decided to stringify the boolean, so instead of returning `false`, they return `"false"`.
 
 ### Performant
 
-As the project grows the user base will also grow, therefore increasing the amount of requests sent to your server. Without a fast and optimized API the response times will sky-rocket and the user experience will plummet, which might cause users deleting their accounts and abandoning your product.
+As the project grows, the user base will also grow, thus increasing the amount of requests sent to your server. Without a fast and optimized API, the response times will sky-rocket and the user experience will plummet, which might cause users to delete their accounts and abandon your product.
 
-There are many ways to improve the performance of an API, from caching to database sharding, but please be aware that the amount of information fetched from the database and wrapped in an API response should be as low as it can be, therefore increasing the speed of the SQL queries and avoiding any [performance issues](https://infinum.com/handbook/books/devproc/general-coding-practices/api-design#performance-issues).
+There are many ways to improve the performance of an API, from caching to database sharding, but please be aware that the amount of information fetched from the database and wrapped in an API response should be as small as it can be, so increasing the speed of SQL queries and avoiding any [performance issues](https://infinum.com/handbook/books/devproc/general-coding-practices/api-design#performance-issues) are crucial measures that should always be undertaken.
 
 ### Robust
 
 A strong, healthy and flexible API is a delight to work with. This goes for the producers as well as the consumers of the API.
 To have a robust API, you'll need to ensure:
 
-- a nice interface: existing behaviour is easily applicable throughout the system (eg: new filter or sort option)
+- a nice interface: existing behaviour is easily applicable throughout the system (e.g.: new filter or sort option)
 - bad requests don't cause problems for subsequent usages
 - integration tests that go through every endpoint and supported behaviour before deploying new builds
 
 ### Debuggable
 
-Delivering a feature usually contains many steps that have to be resolved before shipping to production. When the project is split into *backend* and *frontend*, it often results in time spent communicating how an API is working. This time increases especially if the consumer of the API doesn't understand something and wastes time debugging a certain endpoint or collection of endpoints.
+Delivering a feature usually entails many steps that have to be resolved before shipping to production. When the project is split into *backend* and *frontend*, it often results in time spent communicating how an API is working. This time increases especially if the consumer of the API doesn't understand something and wastes time debugging a certain endpoint or collection of endpoints.
 
-Decreasing the debugging time can be achieved by using appropriate HTTP status codes and providing descriptive error messages in API responses.
+The debugging time can be decreased by using appropriate HTTP status codes and providing descriptive error messages in API responses.
 
 Common HTTP statuses for client-related errors are:
 
@@ -106,11 +106,11 @@ Common HTTP statuses for client-related errors are:
 - _Unauthorized (401)_ - user needs to be logged in in order to use an endpoint
 - _Forbidden (403)_ - user needs to be permitted to perform a certain action
 - _Not Found (404)_ - user can only fetch a resource that exists
-- _Unprocessable entity (422)_ - user tries to create/update a resource, but provided incomplete or invalid data
+- _Unprocessable entity (422)_ - user tries to create/update a resource, but has provided incomplete or invalid data
 
-The HTTP status codes help the consumer distinguish if the error is *data-related* (for which access to the database is needed, providing valid credentials, updating permissions, finding a resource to work with), or if it's *request related* (for which the HTTP request itself would need further investigation)
+The HTTP status codes help the consumer distinguish if the error is *data-related* (for which access to the database is needed, providing valid credentials, updating permissions, finding a resource to work with), or if it's *request-related* (for which the HTTP request itself would need further investigation).
 
-Request related errors can be improved so that the frontend developer has a painless experience figuring out the problem. Imagine an endpoint where a user can update a song. The *Song* model validates that the _name_ attribute is always present, meaning that a song can't exist in the database without its name. Attempting to update a song with an invalid name would look like this:
+Request-related errors can be improved so that the frontend developer has a painless experience figuring out the problem. Imagine an endpoint where a user can update a song. The *Song* model validates that the _name_ attribute is always present, meaning that a song can't exist in the database without its name. Attempting to update a song with an invalid name would look like this:
 
 ```JSON
 PATCH api/v1/songs/123
@@ -124,7 +124,7 @@ PATCH api/v1/songs/123
 A good error structure should consist of:
 
 - title - short categorization of the error, usually the name of the HTTP status code
-- detail - coherent and explicit description of the error (eg: _"The name of a song must be present"_)
+- detail - coherent and explicit description of the error (e.g.: _"The name of the song must be present."_)
 - code - usually HTTP status code, but if you have a requirement for errors to be categorized in one way or another, this can be a good attribute to place the values from the error legend
 - source - object that tells the API consumer what the *name* of the parameter with the error is and its *path* in the prior request
 
@@ -146,6 +146,6 @@ A good error structure should consist of:
 
 ### Documented
 
-Transparency is key to not losing any data or information that might be beneficial for anyone on the project. Human beings are faulty and we don't have the capacity to keep everything on the forefront of our minds. Over time, some insights might get lost or forgotten and spending time debugging and reminding ourselves is costly.
+Transparency is key to not losing any data or information that might be beneficial to anyone on the project. Human beings are faulty and we don't have the capacity to keep everything on the forefront of our minds. Over time, some insights might get lost or forgotten and spending time debugging and reminding ourselves is costly.
 
 An API should always live alongside its documentation. Read more in the [API Documentation](Documentation) chapter.

@@ -34,7 +34,7 @@ HTTP supports sending a standard `Authorization` header in requests. The header 
 > A security token with the property that any party in possession of the token (a "bearer") can use the token in any way that any other party in possession of it can.
 When the server generates a token, it should make it opaque (meaning they can't be interpreted by anyone other than the server).
 
-The `Authorization` header is the preferred mechanism if your API is to be used by platforms other than the browser (browsers using it are susceptible to XSS attacks). It's easier to control than cookies outside of browsers, and it doesn't come with security concerns around using query strings (described below).
+The `Authorization` header is the preferred mechanism if your API is to be used by platforms other than the browser (browsers using it are susceptible to XSS attacks). It's easier to control than cookies outside of browsers, and it doesn't come with security concerns around using query strings (described below).  If your API will be consumed by both browsers and mobile platforms, you should provide for both cookies and the `Authorization` header as cookies can complicate the implementation on mobile platforms, and JS clients can't store/exchange authorization information securely with the server, other than through a cookie.
 
 #### Basic auth
 

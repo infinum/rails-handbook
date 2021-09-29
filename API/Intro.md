@@ -8,11 +8,11 @@ The following chapters provide information on our practices regarding JSON APIs.
 
 Before talking about specific topics like authentication and pagination, we should outline a set of principles all APIs should follow. Since it's challenging to understand generic definitions, all of the principles will be introduced with an example showing what happens when they're *not* followed to try to illustrate the importance of following them.
 
-*Note*: all of the examples below are inspired by situations developers have been in when dealing with terrible APIs.
+*Note*: all the examples below are inspired by situations developers have been in when dealing with terrible APIs.
 
 ### Predictable
 
-When we call an API "predictable", what we mean is that it never aims to surprise the client. As an example, let's take an imaginary API endpoint for retrieving song details:
+What we mean by "predictable API" is that it never aims to surprise the client. As an example, let's take an imaginary API endpoint for retrieving song details:
 
 ```json
 // GET api/songs/123
@@ -73,7 +73,7 @@ Here is an example of an endpoint which returns album data:
 // GET api/albums/123
 {
   "name": "Elephant",
-  "explicit": "false",
+  "explicit": "false"
 }
 ```
 
@@ -83,11 +83,11 @@ The API serializes the attribute `explicit` which tells the client if the album 
 
 As the project grows, the user base will also grow, thus increasing the amount of requests sent to your server. Without a fast and optimized API, the response times will sky-rocket and the user experience will plummet, which might cause users to delete their accounts and abandon your product.
 
-There are many ways to improve the performance of an API, from caching to database sharding, but please be aware that the amount of information fetched from the database and wrapped in an API response should be as small as it can be, so increasing the speed of SQL queries and avoiding any [performance issues](https://infinum.com/handbook/books/devproc/general-coding-practices/api-design#performance-issues) are crucial measures that should always be undertaken.
+There are many ways to improve the performance of an API, from caching to database sharding, but please be aware that the amount of information fetched from the database and wrapped in an API response should be as small as it can be. Increasing the speed of SQL queries and avoiding any [performance issues](https://infinum.com/handbook/books/devproc/general-coding-practices/api-design#performance-issues) are crucial measures that should always be undertaken.
 
 ### Robust
 
-A strong, healthy and flexible API is a delight to work with. This goes for the producers as well as the consumers of the API.
+A strong, healthy, and flexible API is a delight to work with. This goes for the producers as well as the consumers of the API.
 To have a robust API, you'll need to ensure:
 
 - a nice interface: existing behaviour is easily applicable throughout the system (e.g.: new filter or sort option)
@@ -96,7 +96,7 @@ To have a robust API, you'll need to ensure:
 
 ### Debuggable
 
-Delivering a feature usually entails many steps that have to be resolved before shipping to production. When the project is split into *backend* and *frontend*, it often results in time spent communicating how an API is working. This time increases especially if the consumer of the API doesn't understand something and wastes time debugging a certain endpoint or collection of endpoints.
+Delivering a feature usually entails many steps that have to be resolved before shipping to production. When the project is split into *backend* and *frontend*, it often results in time spent communicating how an API is working. This time increases, especially if the API's consumer doesn't understand something and wastes time debugging a certain endpoint or a collection of endpoints.
 
 The debugging time can be decreased by using appropriate HTTP status codes and providing descriptive error messages in API responses.
 
@@ -146,6 +146,6 @@ A good error structure should consist of:
 
 ### Documented
 
-Transparency is key to not losing any data or information that might be beneficial to anyone on the project. Human beings are faulty and we don't have the capacity to keep everything on the forefront of our minds. Over time, some insights might get lost or forgotten and spending time debugging and reminding ourselves is costly.
+Transparency is key to not losing any data or information that might be beneficial to anyone on the project. Human beings are faulty, and we're not capable of keeping everything at the forefront of our minds. Over time, some insights might get lost or forgotten and spending time debugging and reminding ourselves is costly.
 
 An API should always live alongside its documentation. Read more in the [API Documentation](Documentation) chapter.

@@ -1,14 +1,14 @@
 Some API endpoints are designed to return a list of resources. We call those *list* or *index* endpoints.
 
-Servers can in practice have thousands of resources and in theory return all of them when asked to, but this can be costly, slow and impractical. It's costly and slow for the server to fetch everything from the database and serialize it, and for the client to download it and parse the response. It is also impractical because in most cases users don't care about all resources and instead only want to see top results (e.g. if the endpoint is used for search).
+Servers can, in practice, have thousands of resources, and in theory, return all of them when asked to, but this can be costly, slow, and impractical. It's costly and slow for the server to fetch everything from the database, serialize it, and for the client to download and parse the response. It is also impractical because in most cases users don't care about all resources but instead only want to see top results (e.g. if the endpoint is used for search).
 
 Rather than showing everything at once, we can limit the number of resources returned in a request and provide a way to fetch the rest. In other words, we can page through resources.
 
-There are different ways to enable pagination and to paginate resources, however the following paragraphs are limited to our most commonly used methods. That is not to say these are the only methods available, you are encouraged to use something else if it benefits your project.
+There are different ways to enable pagination and paginate resources. The following paragraphs are limited to our most commonly used methods. That is not to say these are the only methods available. You are encouraged to use something else if it benefits your project.
 
 ## Enabling pagination
 
-In most cases, pagination is enabled through the query string. The query string makes it possible for clients to pass additional parameters which are not suitable for sending in headers or the body. A URL with pagination applied might look like this: `/api/v1/countries?page=5`. In the example, we're fetching countries and requesting the 5th page of the results. The query string is the preferred way to enable pagination and you should also keep it enabled by default, so a request without the pagination query string would be handled as `page=1`.
+In most cases, pagination is enabled through the query string. The query string enables clients to pass additional parameters, which are unsuitable for sending in headers or the body. A URL with pagination applied might look like this: `/api/v1/countries?page=5`. In the example, we're fetching countries and requesting the 5th page of the results. The query string is the preferred way to enable pagination, and you should also keep it enabled by default, so a request without the pagination query string would be handled as `page=1`.
 
 ## Types
 

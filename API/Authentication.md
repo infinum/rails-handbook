@@ -92,7 +92,7 @@ The JSON Web Token standard is a method for creating the mentioned access tokens
 Believe it or not, cookies aren't the answer sometimes. Here are some usual arguments against them:
 
 - file size (only about 4kb of data can be saved into a cookie)
-- they are sent with every request making the requests slower if the cookies are bigger
+- they are sent with every request, making it slower
 - storing wrong data inside a cookie can be insecure ([replay attacks](https://guides.rubyonrails.org/security.html#replay-attacks-for-cookiestore-sessions))
 
 When you can't store your session data inside a cookie, Rails has other options that are easily configurable:

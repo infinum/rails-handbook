@@ -1,13 +1,13 @@
 ## N-queries
 
-You should avoid multiple DB queries from the application, if you can fetch needed data in a single query. Always check what queries are executed in your (Rails) log.
+You should avoid multiple DB queries from the application if you can fetch needed data in a single query. Always check what queries are executed in your (Rails) log.
 
-Also, when you work on a complex SQL calculation, avoid pulling of intermediate reusults to your application, which will be used in for the next step in your query. It can be a very resource-intensive operation.
+Also, when you work on a complex SQL calculation, avoid pulling intermediate results to your application, which will be used for the next step in your query. It can be a very resource-intensive operation.
 
 
 ## UNION (ALL)
 
-When you use `UNION` operator for combining result sets of two or more query statements, double check if you whould use `UNION` or `UNION ALL`.
+When you use `UNION` operator for combining result sets of two or more query statements, double-check if you would use `UNION` or `UNION ALL`.
 
 The `UNION` operator is *less performant* because it **removes all duplicate rows** from the combined data set.
 To retain the duplicate rows, you use the `UNION ALL` instead.
@@ -22,18 +22,18 @@ Database `VIEW` is a pretty useful SQL mechanism. You can use it for:
 
 Plain `VIEW` contains only a definition - that means the query would be executed each time you fetch data from the view.
 
-The results can be "cached" by using `MATERIALIZED VIEW`. Basically, `MATERIALIZED VIEW` acts like a read-only plain table. To update data in materialized views, use `REFRESH` statement.
+The results can be "cached" by using `MATERIALIZED VIEW`. Basically, `MATERIALIZED VIEW` acts as a read-only plain table. To update data in materialized views, use `REFRESH` statement.
 
 `REFRESH` completely replaces the content of a materialized view. That means the table is locked when the refresh process is running. To refresh a materialized view without locking, use `REFRESH MATERIALIZED VIEW CONCURRENTLY`.
 
-> You can add indexes to a materialized views!
+> You can add indexes to materialized views!
 
 
 ## PostGIS
 
 When you want to work with geographical data, most likely you'll end up using [PostGIS](https://postgis.net/). PostGIS is an extension for the PostgreSQL database.
 
-In the official [documentation](https://postgis.net/docs/), you can find more information about data types, functions and operators.
+In the official [documentation](https://postgis.net/docs/), you can find more information about data types, functions, and operators.
 Here's the list of some useful functions and geometry constructors, which can be your starting point when you'll start playing with PostGIS:
   * `ST_Point`
 	* `ST_ClosestPoint`

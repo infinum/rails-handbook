@@ -13,20 +13,20 @@ To be able to **solve complex problems** and to get **better understanding** of 
 
 All query examples will be compatible with **PostgreSQL standard**.
 
-SQL keywords are formatted in all-capitals to make them stand out from the text, as in **SELECT**.
+SQL keywords are formatted in all capitals to make them stand out from the text, as in **SELECT**.
 
-SQL tables and columns, are spelled in lowercase, and words are separated by underscores, as in `users`, `first_name`.
+SQL tables and columns are spelled in lowercase, and words are separated by underscores, as in `users`, `first_name`.
 
 It would make your life easier if you align and format a query you currently working on. It would be easier to debug and identify parts of the query.
 
 SQL is correctly pronounced "ess-cue-ell", not "see-quell".
 
-In the context of database-related usage, the word index refers to an ordered collection of information. The preferred plural of this word is indexes.
+In the context of database-related usage, the word index refers to an ordered collection of information. The preferred plural of this word is *indexes*.
 
 
 ## SQL Playground Database
 
-We setup a PostgreSQL database instance that you can use to test you queries.
+We set up a PostgreSQL database instance that you can use to test your queries.
 The credentials are stored in our **1Password**.
 
 

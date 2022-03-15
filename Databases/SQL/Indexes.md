@@ -17,15 +17,15 @@ Possible situations:
 
 ## Composite Index
 
-It is possible to define index on 2 or more columns - that kind of an index is called **composite** (or **concatenated**) index.
+It is possible to define an index on two or more columns - that kind of an index is called **composite** (or **concatenated**) index.
 
 **Order matters** - the most important thing is how to choose the column order so the index can be used as often as possible! We as developers should have a feeling for the data (business domain) and choose properly columns for an index.
 
 
-## Function Based Index
+## Function-Based Index
 
 When you have an index whose definition contains a function or an expression, you have a **function-based index**.
-Instead of copying the column data directly into the index, the database applies function on the column and stores the result into the index.
+Instead of copying the column data directly into the index, the database applies a function on the column and stores the result into the index.
 
 Example:
 
@@ -41,7 +41,7 @@ CREATE INDEX idx_users_email ON users(LOWER(email))
 
 ## Partial Index
 
-In some situations, where we would query only part of the table, it makes sense to index only specific partition of the table.
+In some situations, where we would query only part of the table, it makes sense to index only a specific partition of the table.
 For example, we don't want to index posts that are deleted (`deleted_at IS NOT NULL`). So, we will create a partial index:
 
 ```sql
@@ -49,7 +49,7 @@ For example, we don't want to index posts that are deleted (`deleted_at IS NOT N
 CREATE INDEX idx_posts_undeleted ON posts(published_at) WHERE deleted_at IS NULL
 ```
 
-The main benefits of partial indexes is the smaller size of an index.
+The main benefit of partial indexes is the smaller size of an index.
 
 The index size is reduced vertically and horizontally:
   * reduced number of rows - only posts that are not deleted (deleted_at IS NULL)

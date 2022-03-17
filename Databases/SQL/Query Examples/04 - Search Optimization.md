@@ -57,6 +57,6 @@ CREATE INDEX idx_users
 
 ## Keywords
 
-*	[defining index on expression (concatenation of first name and last name)](https://www.postgresql.org/docs/current/sql-createindex.html)
-*	[extension `pg_trgm`](https://www.postgresql.org/docs/current/pgtrgm.html)
+* [defining index on expression (concatenation of first name and last name)](https://www.postgresql.org/docs/current/sql-createindex.html)
+* [extension `pg_trgm`](https://www.postgresql.org/docs/current/pgtrgm.html)
 * [`GIN` index](https://www.postgresql.org/docs/current/textsearch-indexes.html)

@@ -61,4 +61,4 @@ CSV HEADER;
 
 ## Keywords
 
-*	[`COPY`](https://www.postgresql.org/docs/current/sql-copy.html)
+* [`COPY`](https://www.postgresql.org/docs/current/sql-copy.html)

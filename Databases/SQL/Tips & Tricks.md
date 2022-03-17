@@ -36,13 +36,13 @@ When you want to work with geographical data, most likely you'll end up using [P
 In the official [documentation](https://postgis.net/docs/), you can find more information about data types, functions, and operators.
 Here's the list of some useful functions and geometry constructors, which can be your starting point when you'll start playing with PostGIS:
 
-  * `ST_Point`
-	* `ST_ClosestPoint`
-  * `ST_Contains`
-  * `ST_Covers`
-  * `ST_Collect`
-  * `ST_Centroid`
-	* `ST_DWithin`
-  * `ST_ClusterDBSCAN`
+    * `ST_Point`
+    * `ST_ClosestPoint`
+    * `ST_Contains`
+    * `ST_Covers`
+    * `ST_Collect`
+    * `ST_Centroid`
+    * `ST_DWithin`
+    * `ST_ClusterDBSCAN`
 
 But, sometimes, PostGIS might be overkill for your use case - read more here [why you (probably) don't need PostGIS](https://blog.rebased.pl/2020/04/07/why-you-probably-dont-need-postgis.html).

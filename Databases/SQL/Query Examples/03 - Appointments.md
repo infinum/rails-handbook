@@ -91,9 +91,9 @@ FROM generated_appointments AS g
 
 ## Keywords
 
-*	`LEFT JOIN`
-*	`NULL` checking
-*	`SWITCH CASE`
-*	`DATETIME` manipulation
-*	`INTERVAL`
-*	`CTE` (or `WITH` clause)
+*	[`LEFT JOIN`](https://www.postgresql.org/docs/current/queries-table-expressions.html#QUERIES-JOIN)
+*	[`NULL` checking](https://www.postgresql.org/docs/current/functions-comparison.html#FUNCTIONS-COMPARISON-PRED-TABLE)
+*	[`SWITCH CASE`](https://www.postgresql.org/docs/current/functions-conditional.html#FUNCTIONS-CASE)
+*	[`DATETIME` manipulation](https://www.postgresql.org/docs/current/functions-datetime.html)
+*	[`INTERVAL`](https://www.postgresql.org/docs/current/datatype-datetime.html#DATATYPE-DATETIME)
+*	[`CTE` - Common Table Expressions (or `WITH` clause)](https://www.postgresql.org/docs/current/queries-with.html)

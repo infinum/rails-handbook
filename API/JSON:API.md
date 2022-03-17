@@ -9,6 +9,6 @@ If your work consists of building or working with JSON:API APIs, read the [speci
 
 Developers at Infinum have implemented dozens of APIs and the [JSON:API query builder](https://github.com/infinum/jsonapi-query_builder) is a collection of the most required features a modern API has to offer.
 
-The gem allows a developer to use a nice DSL for the so-called *query classes*, which are classes that contain JSON:API related logic for resource manipulation (filtering, sorting, pagination etc...).
+The gem allows a developer to use a nice DSL for the so-called *query classes*, which are classes that contain JSON:API-related logic for resource manipulation (filtering, sorting, pagination, etc...).
 
 If you're just starting a new project, install the gem and make your life easier.

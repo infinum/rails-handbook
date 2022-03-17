@@ -13,15 +13,15 @@ As mentioned above, a mechanism is a medium utilized by the authentication proto
 
 ### Cookies
 
-Cookies are pieces of data exchanged between the client and the server through headers. The server sends one or more cookies via a `Set-Cookie` response header and then the browser saves them and includes them in subsequent requests to the server in a `Cookie` header. The browser can also send cookies to the server without receiving any first.
+Cookies are pieces of data exchanged between the client and the server through headers. The server sends one or more cookies via a `Set-Cookie` response header and then the browser saves them and includes them in subsequent requests to the server in a `Cookie` header. The browser can also send cookies to the server without receiving any first. The goal here is to somehow hold the state between server and client, meaning that the server will have a way to maintain a session with the stateless client.
 
 When setting cookies, the server can apply one or more restrictions, like expiration date and domains where they're supposed to be used. You can learn more about how cookies work on [MDN](https://developer.mozilla.org/en-US/docs/Web/HTTP/Cookies).
 
 There are two important cookie attributes you should know about:
 - `Secure` — When set, the cookie will only be sent to the server and saved in the browser if the protocol through which they're sent/received is `https`. Insecure `http` protocol can't access cookies with that attribute. If you're communicating over `https`, make sure to set this attribute.
-- `HttpOnly` - These cookies cannot be accessed by JavaScript code. They are exchanged only between the browser and the server. If the cookie is used to store a server-side session (a method described below), this attribute should be enabled because the cookie should be saved and used only by the browser, not read or changed by the user through JS. Note that this attribute doesn't prevent the tampering of cookies as users can still edit them manually (for example, in a developer console).
+- `HttpOnly` - These cookies cannot be accessed by JavaScript code. They are exchanged only between the browser and the server. If the cookie is used to store a server-side session (a method described below), this attribute should be enabled because the cookie is supposed to be saved and used only by the browser, not read or changed by the user through JS. Note that this attribute doesn't prevent the tampering of cookies as users can still edit them manually (for example, in a developer console).
 
-_Note_: A cookie with the `HttpOnly` flag is the safest option for storing sensitive information in a browser, so if you have a JS-based frontend application that will consume your APIs, and you need to keep the secrets really secret, consider using this technique.
+_Note_: If you have a cookie based authentication using the `HttpOnly` flag is among the safest option for storing sensitive information in a browser, so if you have a JS-based frontend application that will consume your APIs, and you need to keep the secrets really secret, consider using this technique.
 
 ### Authorization header
 
@@ -92,7 +92,7 @@ The JSON Web Token standard is a method for creating the mentioned access tokens
 Believe it or not, cookies aren't the answer sometimes. Here are some usual arguments against them:
 
 - file size (only about 4kb of data can be saved into a cookie)
-- they are sent with every request making the requests slower if the cookies are bigger
+- they are sent with every request, making it slower
 - storing wrong data inside a cookie can be insecure ([replay attacks](https://guides.rubyonrails.org/security.html#replay-attacks-for-cookiestore-sessions))
 
 When you can't store your session data inside a cookie, Rails has other options that are easily configurable:

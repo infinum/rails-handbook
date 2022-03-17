@@ -52,5 +52,10 @@ CREATE INDEX idx_posts_undeleted ON posts(published_at) WHERE deleted_at IS NULL
 The main benefit of partial indexes is the smaller size of an index.
 
 The index size is reduced vertically and horizontally:
-  * reduced number of rows - only posts that are not deleted (deleted_at IS NULL)
+
+  * reduced number of rows - only posts that are not deleted (`deleted_at IS NULL`)
   * reduced number of columns - you can skip `deleted_at` column from the index definition
+
+Resources:
+
+  * [PostgreSQL Documentation](https://www.postgresql.org/docs/current/indexes-partial.html)

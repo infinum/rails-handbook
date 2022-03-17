@@ -81,5 +81,5 @@ LIMIT
 
 ## Keywords
 
-* circular sort
-* custom order with `CASE`
+* circular [order](https://www.postgresql.org/docs/current/queries-order.html)
+* custom order with [`CASE`](https://www.postgresql.org/docs/current/functions-conditional.html#FUNCTIONS-CASE)

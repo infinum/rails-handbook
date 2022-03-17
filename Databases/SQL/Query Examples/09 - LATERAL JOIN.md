@@ -272,7 +272,7 @@ ORDER BY
 
 ## Keywords
 
-* `LATERAL` join
-* `CROSS` join
-* subqueries
-* `COALESCE`
+* [`LATERAL` join](https://www.postgresql.org/docs/current/queries-table-expressions.html#QUERIES-LATERAL)
+* [`CROSS` join](https://www.postgresql.org/docs/current/queries-table-expressions.html#id-1.5.6.6.5.6.4.2.1.1)
+* [subqueries](https://www.postgresql.org/docs/current/queries-table-expressions.html#QUERIES-SUBQUERIES)
+* [`COALESCE`](https://www.postgresql.org/docs/current/functions-conditional.html#FUNCTIONS-COALESCE-NVL-IFNULL)

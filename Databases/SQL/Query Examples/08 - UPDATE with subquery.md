@@ -105,5 +105,5 @@ WHERE
 
 ## Keywords
 
-* `UPDATE` with `FROM`
+* [`UPDATE` with `FROM`](https://www.postgresql.org/docs/current/sql-update.html)
   * using `FROM` as `JOIN` within `UPDATE` statement

@@ -75,6 +75,6 @@ WHERE rn = 1;
 
 ## Keywords
 
-* `DISTINCT ON` (PostgreSQL specific)
-* basic usage of `WINDOW` functions
-  * `ROW_NUMBER()`
+* [`DISTINCT ON` (PostgreSQL specific)](https://www.postgresql.org/docs/current/sql-select.html#SQL-DISTINCT)
+* basic usage of [`WINDOW` functions](https://www.postgresql.org/docs/current/functions-window.html)
+  * [`ROW_NUMBER()`](https://www.postgresql.org/docs/current/functions-window.html#FUNCTIONS-WINDOW-TABLE)

@@ -87,7 +87,7 @@ WHERE rn <= 3;
 
 ## Keywords
 
-* basic usage of `WINDOW` functions
-  * partitions and frames
-  * `ROW_NUMBER()`
-  * subqueries
+* basic usage of [`WINDOW` functions](https://www.postgresql.org/docs/current/functions-window.html)
+  * [partitions and frames](https://www.postgresql.org/docs/current/sql-expressions.html#SYNTAX-WINDOW-FUNCTIONS)
+  * [`ROW_NUMBER()`](https://www.postgresql.org/docs/current/functions-window.html#FUNCTIONS-WINDOW-TABLE)
+  * [subqueries](https://www.postgresql.org/docs/current/queries-table-expressions.html#QUERIES-SUBQUERIES)

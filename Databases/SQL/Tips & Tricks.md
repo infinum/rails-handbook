@@ -1,6 +1,6 @@
 ## N-queries
 
-You should avoid multiple DB queries from the application if you can fetch needed data in a single query. Always check what queries are executed in your (Rails) log.
+You should avoid making (generating) multiple DB queries from the application if you can fetch the needed data in a single query. Always check what queries are executed in your (Rails) log.
 
 Also, when you work on a complex SQL calculation, avoid pulling intermediate results to your application, which will be used for the next step in your query. It can be a very resource-intensive operation.
 

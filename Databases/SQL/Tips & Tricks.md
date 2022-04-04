@@ -26,7 +26,7 @@ The results can be "cached" by using a `MATERIALIZED VIEW`. Basically, a `MATERI
 
 `REFRESH` completely replaces the content of a materialized view. During the refresh process, the view is locked. To refresh a materialized view without locking, use `REFRESH MATERIALIZED VIEW CONCURRENTLY`.
 
-> You can add indexes to materialized views!
+> You can add indexes to materialized views, but not plain database views.
 
 
 ## PostGIS
@@ -34,7 +34,7 @@ The results can be "cached" by using a `MATERIALIZED VIEW`. Basically, a `MATERI
 When you want to work with geographical data, most likely you'll end up using [PostGIS](https://postgis.net/). PostGIS is an extension for the PostgreSQL database.
 
 In the official [documentation](https://postgis.net/docs/), you can find more information about data types, functions, and operators.
-Here's the list of some useful functions and geometry constructors, which can be your starting point when you'll start playing with PostGIS:
+Here's the list of some useful functions and geometry constructors, which can be your starting point when you start playing with PostGIS:
 
   * [`ST_Point`](https://postgis.net/docs/ST_Point.html)
   * [`ST_ClosestPoint`](https://postgis.net/docs/ST_ClosestPoint.html)
@@ -45,4 +45,4 @@ Here's the list of some useful functions and geometry constructors, which can be
   * [`ST_DWithin`](https://postgis.net/docs/ST_DWithin.html)
   * [`ST_ClusterDBSCAN`](https://postgis.net/docs/ST_ClusterDBSCAN.html)
 
-But, sometimes, PostGIS might be overkill for your use case - read more here [why you (probably) don't need PostGIS](https://blog.rebased.pl/2020/04/07/why-you-probably-dont-need-postgis.html).
+PostGIS might be overkill in some scenarios - read more here [why you (probably) don't need PostGIS](https://blog.rebased.pl/2020/04/07/why-you-probably-dont-need-postgis.html).

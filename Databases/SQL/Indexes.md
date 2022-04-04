@@ -42,7 +42,7 @@ CREATE INDEX idx_users_email ON users(LOWER(email))
 
 ## Partial Index
 
-In some situations, where we would query only part of the table, it makes sense to index only a specific partition of the table.
+In some situations, where we query only a part of the table, it makes sense to index only a specific partition of the table.
 For example, we don't want to index posts that are deleted (`deleted_at IS NOT NULL`). So, we will create a partial index:
 
 ```sql
@@ -50,7 +50,7 @@ For example, we don't want to index posts that are deleted (`deleted_at IS NOT N
 CREATE INDEX idx_posts_undeleted ON posts(published_at) WHERE deleted_at IS NULL
 ```
 
-The main benefit of partial indexes is the smaller size of an index.
+The main benefit of partial indexes is the smaller size of the index.
 
 The index size is reduced vertically and horizontally:
 

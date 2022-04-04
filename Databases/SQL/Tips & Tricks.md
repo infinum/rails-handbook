@@ -26,7 +26,37 @@ The results can be "cached" by using a `MATERIALIZED VIEW`. Basically, a `MATERI
 
 `REFRESH` completely replaces the content of a materialized view. During the refresh process, the view is locked. To refresh a materialized view without locking, use `REFRESH MATERIALIZED VIEW CONCURRENTLY`.
 
+
+### Plain or materialized views?
+
+So, the rule of thumb when you have to choose between plain or materialized VIEW is the frequency of data updates.
+`VIEWs` are generally used when data is to be accessed infrequently and data in the table get updated frequently.
+On the other hand, `MATERIALIZED VIEWs` are used when data is to be accessed frequently and data in the table does not get updated frequently.
+
+
 > You can add indexes to materialized views!
+
+
+### Handling views from Rails
+
+When using Rails and `ActiveRecord`, views behave like a plain models:
+
+```ruby
+class Report < ApplicationRecord
+  belongs_to :property
+
+  def readonly?
+    true
+  end
+end
+
+Report.where(property: property)
+      .group(:date)
+      .sum(:revenue)
+```
+
+Also, for managing (materialized) views in your Rails application, it's recommended to use [Scenic gem](https://github.com/scenic-views/scenic).
+The gem adds methods for easier management (create, delete, update, and refresh) of database views.
 
 
 ## PostGIS

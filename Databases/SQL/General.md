@@ -17,7 +17,7 @@ SQL keywords are formatted in all capitals to make them stand out from the text,
 
 SQL tables and columns are spelled in lowercase, and words are separated by underscores, as in `users`, `first_name`.
 
-It would make your life easier if you align and format a query you are currently working on. It would be easier to debug and identify parts of the query.
+It would make your life easier if you align and format a query you are currently working on. It makes it easier to debug and identify parts of the query.
 
 SQL is correctly pronounced "ess-cue-ell", not "see-quell".
 

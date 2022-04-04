@@ -62,3 +62,19 @@ Additional Resources:
   * [PGTune](https://pgtune.leopard.in.ua/)
   * [PG Wiki - Don't Do This](https://wiki.postgresql.org/wiki/Don't_Do_This)
   * [How the PostgreSQL Query Optimizer Works](https://www.cybertec-postgresql.com/en/how-the-postgresql-query-optimizer-works/)
+
+
+## Ruby & Rails Database Related Gems
+
+* [active_record_extended](https://github.com/georgekaraszi/ActiveRecordExtended)
+* [rollup](https://github.com/ankane/rollup)
+* [groupdate](https://github.com/ankane/groupdate)
+* [hightop](https://github.com/ankane/hightop)
+* [active_median](https://github.com/ankane/active_median)
+* [jsonb_accessor](https://github.com/madeintandem/jsonb_accessor)
+* [fx](https://github.com/teoljungberg/fx)
+* [activerecord-postgres_enum](https://github.com/bibendi/activerecord-postgres_enum)
+* [active_record_doctor](https://github.com/gregnavis/active_record_doctor)
+* [hairtrigger](https://github.com/jenseng/hair_trigger
+* [strong_migrations](https://github.com/ankane/strong_migrations)
+* [database_consistency](https://github.com/djezzzl/database_consistency)

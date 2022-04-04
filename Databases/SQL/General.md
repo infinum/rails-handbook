@@ -26,7 +26,7 @@ In the context of database-related usage, the word index refers to an ordered co
 
 ## SQL Playground Database
 
-We set up a PostgreSQL database instance that you can use to test your queries.
+We have set up a PostgreSQL database instance that you can use to test your queries.
 The credentials are stored in our **1Password**.
 
 
@@ -34,7 +34,7 @@ The credentials are stored in our **1Password**.
 
 There are plenty of GUI tools for interacting with PostgreSQL. Here is the list of the most popular GUI clients - feel free to choose the one you like:
 
-  * [Postico](https://eggerapps.at/postico/) (only for Mac - we have a full version license)
+  * [Postico](https://eggerapps.at/postico/) (only for Mac - we have a full version license that you can acquire from your team lead)
   * [TablePlus](https://tableplus.com/)
   * [Azure DataStudio](https://docs.microsoft.com/en-us/sql/azure-data-studio)
   * [ArcType](https://arctype.com/)

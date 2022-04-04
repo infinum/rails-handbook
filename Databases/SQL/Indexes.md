@@ -4,10 +4,11 @@
 
 The data structure that is used for indexes is a **B-tree** (balanced tree). That's because the tree depth is equal for all nodes (the distance between root and leaf nodes).
 
-## Why a query does not use an index?
+## Why is a query not using an index?
 
 The execution plan of a query can show that the database does not use the index, and uses **sequential scan**.
 Possible situations:
+  
   * majority of rows are getting fetched as part of the SQL query
     * although the database reads more data, it might need to execute fewer read operations
   * there is no index available for specified columns
@@ -19,7 +20,7 @@ Possible situations:
 
 It is possible to define an index on two or more columns - that kind of an index is called **composite** (or **concatenated**) index.
 
-**Order matters** - the most important thing is how to choose the column order so the index can be used as often as possible! We as developers should have a feeling for the data (business domain) and choose properly columns for an index.
+**Order matters** - the most important thing is how to choose the column order so the index can be used as often as possible! We as developers should have a feeling for the data (business domain) and properly choose columns for an index.
 
 
 ## Function-Based Index

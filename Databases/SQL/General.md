@@ -29,6 +29,7 @@ In the context of database-related usage, the word index refers to an ordered co
 We have set up a PostgreSQL database instance that you can use to test your queries.
 The credentials are stored in our **1Password**.
 
+![db-er-diagram](https://user-images.githubusercontent.com/10612221/161582654-63ce291d-c6e7-4b67-b37d-8d858a591cd5.svg)
 
 ## DB GUI Clients
 

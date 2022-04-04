@@ -76,6 +76,6 @@ Additional Resources:
   * [fx](https://github.com/teoljungberg/fx)
   * [activerecord-postgres_enum](https://github.com/bibendi/activerecord-postgres_enum)
   * [active_record_doctor](https://github.com/gregnavis/active_record_doctor)
-  * [hairtrigger](https://github.com/jenseng/hair_trigger
+  * [hairtrigger](https://github.com/jenseng/hair_trigger)
   * [strong_migrations](https://github.com/ankane/strong_migrations)
   * [database_consistency](https://github.com/djezzzl/database_consistency)

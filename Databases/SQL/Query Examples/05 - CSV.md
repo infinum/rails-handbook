@@ -1,11 +1,11 @@
 ## Problem (1)
 
-You have to export users with surname “Smith” to CSV.
+You have to export users with the surname “Smith” to CSV.
 
 
 ## Problem (2)
 
-You have to import new users from large CSV file.
+You have to import new users from a large CSV file.
 
 
 ## Input Data

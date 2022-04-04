@@ -7,7 +7,7 @@ Also, when you work on a complex SQL calculation, avoid pulling intermediate res
 
 ## UNION (ALL)
 
-When you use `UNION` operator for combining result sets of two or more query statements, double-check if you would use `UNION` or `UNION ALL`.
+When you use the `UNION` operator for combining result sets of two or more query statements, double-check if you should use `UNION` or `UNION ALL`.
 
 The `UNION` operator is *less performant* because it **removes all duplicate rows** from the combined data set.
 To retain the duplicate rows, you use the `UNION ALL` instead.
@@ -15,16 +15,16 @@ To retain the duplicate rows, you use the `UNION ALL` instead.
 
 ## VIEWs
 
-Database `VIEW` is a pretty useful SQL mechanism. You can use it for:
-  * hiding complexity of queries
+A database `VIEW` is a pretty useful SQL mechanism. You can use it for:
+  * hiding the complexity of queries
   * reducing complexity by naming a part of the complex query
-  * exposing data subset to the outer world
+  * exposing a data subset to the outer world
 
-Plain `VIEW` contains only a definition - that means the query would be executed each time you fetch data from the view.
+A plain `VIEW` contains only a definition - that means the query will be executed each time you fetch data from the view.
 
-The results can be "cached" by using `MATERIALIZED VIEW`. Basically, `MATERIALIZED VIEW` acts as a read-only plain table. To update data in materialized views, use `REFRESH` statement.
+The results can be "cached" by using a `MATERIALIZED VIEW`. Basically, a `MATERIALIZED VIEW` acts as a read-only plain table. To update data in materialized views, use the `REFRESH` statement.
 
-`REFRESH` completely replaces the content of a materialized view. That means the table is locked when the refresh process is running. To refresh a materialized view without locking, use `REFRESH MATERIALIZED VIEW CONCURRENTLY`.
+`REFRESH` completely replaces the content of a materialized view. During the refresh process, the view is locked. To refresh a materialized view without locking, use `REFRESH MATERIALIZED VIEW CONCURRENTLY`.
 
 > You can add indexes to materialized views!
 

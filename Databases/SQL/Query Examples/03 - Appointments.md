@@ -1,6 +1,6 @@
 ## Problem
 
-Write a query that will generate appointment slots of 30 minutes (consultations with content editor), between 08:00 and 16:00 for current date and for a **content editor with ID = 1**. For each slot, you need to put status *BUSY* if there is scheduled appointment for the slot, otherwise *FREE*.
+Write a query that will generate appointment slots of 30 minutes (consultations with the content editor), between 08:00 and 16:00 for the current date and for the **content editor with ID = 1**. For each slot, you need to put status *BUSY* if there is a scheduled appointment for the slot, otherwise *FREE*.
 
 
 ## Input Data

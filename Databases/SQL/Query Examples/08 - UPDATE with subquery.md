@@ -1,7 +1,7 @@
 ## Problem
 
 For the posts table, we want to separate category to its own table and then reference category by the foreign key.
-Write a query that will update current posts table data to the suggested structure.
+Write a query that will update the current posts table data to the suggested structure.
 
 
 ## Input Data

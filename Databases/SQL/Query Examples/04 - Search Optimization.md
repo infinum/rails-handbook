@@ -52,7 +52,7 @@ CREATE INDEX idx_users
   ON users USING GIN ((first_name || ' ' || last_name) gin_trgm_ops);
 ```
 
-> Go ahead and check the performance benefits (you can use `EXPLAIN` to check execution plan)
+> Go ahead and check the performance benefits (you can use `EXPLAIN` to check the execution plan)
 
 
 ## Keywords

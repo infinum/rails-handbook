@@ -8,7 +8,7 @@ The data structure that is used for indexes is a **B-tree** (balanced tree). Tha
 
 The execution plan of a query can show that the database does not use the index, and uses **sequential scan**.
 Possible situations:
-  
+
   * majority of rows are getting fetched as part of the SQL query
     * although the database reads more data, it might need to execute fewer read operations
   * there is no index available for specified columns
@@ -18,9 +18,23 @@ Possible situations:
 
 ## Composite Index
 
-It is possible to define an index on two or more columns - that kind of an index is called **composite** (or **concatenated**) index.
+It is possible to define an index on two or more columns - that kind of an index is called **composite** (or **concatenated**, **combined**) index.
 
 **Order matters** - the most important thing is how to choose the column order so the index can be used as often as possible! We as developers should have a feeling for the data (business domain) and properly choose columns for an index.
+
+Example:
+
+```sql
+CREATE INDEX idx_employee_department_1 ON employees(employee_id, department_id);
+
+-- different approach
+
+CREATE INDEX idx_employee_department_2 ON employees(department_id, employee_id);
+```
+
+What index would you create, depends on data usage from the domain perspective. If queries will mostly use the `department_id` column in the `WHERE` part of a query, then it's recommended to use the `idx_employee_department_2` index. Otherwise, if `employee_id` will be used repeatedly, it would probably be more performant to use the `idx_employee_department_1` index.
+
+When both of the columns would be used on a similar frequency, use the column with more scattered data, on the most left position of an index (in our example it would be `emplyee_id`).
 
 
 ## Function-Based Index

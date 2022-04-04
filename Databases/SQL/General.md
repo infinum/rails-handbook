@@ -1,6 +1,6 @@
 ## Intro
 
-When you work on backend systems, you will always have some kind of data storage where you will persist the application data.
+Working on backend systems almost always necessitates the use of a database where application data can be stored.
 The majority of our applications, use a relational database as a data storage solution.
 
 To be able to communicate with your database, you need to use SQL.

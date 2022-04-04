@@ -1,23 +1,23 @@
 ## Intro
 
-When you work on backend systems, you will always have some kind of data storage where you will persist the application data.
-The majority of our applications, use a relational database as a data storage solution.
+Working on backend systems almost always necessitates the use of a database where application data can be stored.
+The majority of our applications use a relational database as a data storage solution.
 
-To be able to communicate with your database, you need to use SQL.
-We usually leave that communication to our ORM (`ActiveRecord`). But sometimes, ORM is not powerful enough for a specific problem and you must write raw SQL.
+SQL (structured query language) is the tool for communicating with the database.
+We usually communicate with the database through the ORM (`ActiveRecord`). But sometimes, the ORM is not powerful enough for a specific problem and you must write raw SQL.
 
-To be able to **solve complex problems** and to get **better understanding** of how the ORM works, here are some query examples and advice to help you with that!
+To be able to **solve complex problems** and to get a **better understanding** of how the ORM works, here are some query examples and advice to help you with that!
 
 
 ## Convention
 
-All query examples will be compatible with **PostgreSQL standard**.
+All query examples will be compatible with the **PostgreSQL standard**.
 
 SQL keywords are formatted in all capitals to make them stand out from the text, as in **SELECT**.
 
 SQL tables and columns are spelled in lowercase, and words are separated by underscores, as in `users`, `first_name`.
 
-It would make your life easier if you align and format a query you currently working on. It would be easier to debug and identify parts of the query.
+It would make your life easier if you align and format a query you are currently working on. It would be easier to debug and identify parts of the query.
 
 SQL is correctly pronounced "ess-cue-ell", not "see-quell".
 
@@ -26,7 +26,7 @@ In the context of database-related usage, the word index refers to an ordered co
 
 ## SQL Playground Database
 
-We set up a PostgreSQL database instance that you can use to test your queries.
+We have set up a PostgreSQL database instance that you can use to test your queries.
 The credentials are stored in our **1Password**.
 
 
@@ -34,7 +34,7 @@ The credentials are stored in our **1Password**.
 
 There are plenty of GUI tools for interacting with PostgreSQL. Here is the list of the most popular GUI clients - feel free to choose the one you like:
 
-  * [Postico](https://eggerapps.at/postico/) (only for Mac - we have a full version license)
+  * [Postico](https://eggerapps.at/postico/) (only for Mac - we have a full version license that you can acquire from your team lead)
   * [TablePlus](https://tableplus.com/)
   * [Azure DataStudio](https://docs.microsoft.com/en-us/sql/azure-data-studio)
   * [ArcType](https://arctype.com/)

@@ -3,10 +3,10 @@
 Working on backend systems almost always necessitates the use of a database where application data can be stored.
 The majority of our applications use a relational database as a data storage solution.
 
-To be able to communicate with your database, you need to use SQL.
-We usually leave that communication to our ORM (`ActiveRecord`). But sometimes, ORM is not powerful enough for a specific problem and you must write raw SQL.
+SQL (structured query language) is the tool for communicating with the database.
+We usually communicate with the database through the ORM (`ActiveRecord`). But sometimes, the ORM is not powerful enough for a specific problem and you must write raw SQL.
 
-To be able to **solve complex problems** and to get **better understanding** of how the ORM works, here are some query examples and advice to help you with that!
+To be able to **solve complex problems** and to get a **better understanding** of how the ORM works, here are some query examples and advice to help you with that!
 
 
 ## Convention

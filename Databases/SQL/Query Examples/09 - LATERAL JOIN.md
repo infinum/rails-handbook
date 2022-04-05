@@ -2,6 +2,7 @@
 
 Prepare a database view which will hold the data for similar posts.
 For calculating the similarity score, use the following formula:
+
   * if post is in the same category - `2 points`
   * for common keywords - `1 point` for each common keyword
 

@@ -68,7 +68,8 @@ To use this gem, you need to define at least one file with the required step def
 multiple step definition files, each for the synchronization of different environment pairs.
 
 An example of the step definitions file:
-```yml
+
+```yaml
 steps:
   download_remote_db_dump:
     s3_credentials:

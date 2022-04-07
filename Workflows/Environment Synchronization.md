@@ -2,6 +2,7 @@
 A synchronization of environments, or more precisely, a synchronization of the data used in different environments,
 is usually necessary when you need to work in an environment that is as production-like as possible, but you don't have
 access to production itself, for example:
+
 * when you need to debug a more complex issue occuring in production
 * when you need data that is as close to production as possible (both when it comes to type, relationships,
 value distribution and amount) for development and/or testing purposes
@@ -94,7 +95,7 @@ i.e. not by downloading it from the S3 bucket, or you may not want to delete the
 The option of adding a final custom command can be used to run a rake task for 
 file synchronization or any other shell command.
 
-This gem has also been added to the JSONAPI Example App.
+This gem has also been added to the [JSONAPI Example App](https://github.com/infinum/rails-jsonapi-example-app).
 
 ### File synchronization
 File synchronization is an optional step that not everyone may need when syncing environments,
@@ -121,6 +122,6 @@ the final step to the data sync step definitions required by the copy_bot gem or
 The proposed solution uses the remont gem DSL to iterate over records for which you want to copy files from one bucket
 to another. For each record the `EnvSync::FileSync::Processor` is called, and this processor calls
 the `EnvSync::FileSync::Synchronizer`. You will notice that in the `EnvSync::FileSync::Synchronizer`
-we are just copying one file from one bucket to another. However, you can use this example and adjust it to you needs
-by simply changing the code in the `copy_file`method or by adding a completely different method, just be sure
+we are just copying one file from one bucket to another. However, you can use this example and adjust it to your needs
+by simply changing the code in the `copy_file` method or by adding a completely different method, just be sure
 to update the `EnvSync::FileSync::Processor` if necessary.

@@ -12,6 +12,7 @@ The same should be ensured once this data is copied to another environment. In o
 of developers who have access to raw production data, it would be best if that data was anonymized by someone
 from the DevOps team before it is given to the developer. To achieve this, the Rails team has agreed with
 the DevOps team that the synchronization process should look like this:
+
 1. a completely new environment is set up
 2. the production database is copied to this new environment
 3. anonymization is run on the copied production database

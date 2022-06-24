@@ -18,6 +18,7 @@ Cookies are pieces of data exchanged between the client and the server through h
 When setting cookies, the server can apply one or more restrictions, like expiration date and domains where they're supposed to be used. You can learn more about how cookies work on [MDN](https://developer.mozilla.org/en-US/docs/Web/HTTP/Cookies).
 
 There are two important cookie attributes you should know about:
+
 - `Secure` — When set, the cookie will only be sent to the server and saved in the browser if the protocol through which they're sent/received is `https`. Insecure `http` protocol can't access cookies with that attribute. If you're communicating over `https`, make sure to set this attribute.
 - `HttpOnly` - These cookies cannot be accessed by JavaScript code. They are exchanged only between the browser and the server. If the cookie is used to store a server-side session (a method described below), this attribute should be enabled because the cookie is supposed to be saved and used only by the browser, not read or changed by the user through JS. Note that this attribute doesn't prevent the tampering of cookies as users can still edit them manually (for example, in a developer console).
 

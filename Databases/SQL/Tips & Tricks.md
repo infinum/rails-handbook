@@ -16,6 +16,7 @@ To retain the duplicate rows, you use the `UNION ALL` instead.
 ## VIEWs
 
 A database `VIEW` is a pretty useful SQL mechanism. You can use it for:
+
   * hiding the complexity of queries
   * reducing complexity by naming a part of the complex query
   * exposing a data subset to the outer world

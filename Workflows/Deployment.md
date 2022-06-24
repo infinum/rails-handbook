@@ -111,7 +111,6 @@ mina init # creates config/deploy.rb -- Also works with ['Minafile', '.deploy.rb
 Least code for mina to work:
 
 ```ruby
-
 # config/deploy.rb
 
 require 'mina/default'

@@ -19,7 +19,7 @@ When setting cookies, the server can apply one or more restrictions, like expira
 
 There are two important cookie attributes you should know about:
 
-- `Secure` — When set, the cookie will only be sent to the server and saved in the browser if the protocol through which they're sent/received is `https`. Insecure `http` protocol can't access cookies with that attribute. If you're communicating over `https`, make sure to set this attribute.
+- `Secure` - When set, the cookie will only be sent to the server and saved in the browser if the protocol through which they're sent/received is `https`. Insecure `http` protocol can't access cookies with that attribute. If you're communicating over `https`, make sure to set this attribute.
 - `HttpOnly` - These cookies cannot be accessed by JavaScript code. They are exchanged only between the browser and the server. If the cookie is used to store a server-side session (a method described below), this attribute should be enabled because the cookie is supposed to be saved and used only by the browser, not read or changed by the user through JS. Note that this attribute doesn't prevent the tampering of cookies as users can still edit them manually (for example, in a developer console).
 
 _Note_: If you have a cookie based authentication using the `HttpOnly` flag is among the safest option for storing sensitive information in a browser, so if you have a JS-based frontend application that will consume your APIs, and you need to keep the secrets really secret, consider using this technique.

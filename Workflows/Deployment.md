@@ -109,8 +109,10 @@ mina init # creates config/deploy.rb -- Also works with ['Minafile', '.deploy.rb
 ```
 
 Least code for mina to work:
+
 ```ruby
 # config/deploy.rb
+
 require 'mina/default'
 
 task :deploy do
@@ -269,4 +271,3 @@ and https://github.com/mina-deploy/mina/blob/master/data/deploy.sh.erb
 * bundler
 * rails
 * managers (rbenv, ry, rvm, chruby)
-

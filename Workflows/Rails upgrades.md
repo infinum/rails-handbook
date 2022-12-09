@@ -10,6 +10,7 @@ Planning a Rails upgrade strategy is trivial on well maintained projects where w
 
 #### Assessing the current state of the project
 The prerequisite for creating a roadmap is knowing your current location. You should make note of these properties before commencing a Rails upgrade cycle:
+
 - Ruby version
   - how many minor/major versions away from the latest version is it
   - is it [EOL](https://endoflife.date/ruby)
@@ -142,16 +143,19 @@ Gems declare their dependency version constraints in the `gemspec` file, but tha
 All project dependencies and their dependency requirements are listed in the `Gemfile.lock` file. Some gems constrict their dependency requirements quite conservatively while others keep an open mind. Relaxing these dependencies (usually by upgrading them) is the first step towards enabling you to upgrade to the next Rails version.
 
 In the following case we present a situation where a project is using Rails 6.1, but is blocked by one of the dependencies (`delayed_job`) to versions betwen 3.0 and 6.0.x.
+
 ```
 delayed_job (4.1.8)
   activesupport (>= 3.0, < 6.1)
 ```
+
 An upgrade of the Rails gem (`bundle update rails --conservative`) will fail in this case.
 
 Finding all of the gems that explicitly require upgrades will likely require a repetitive process and some of your time.
 - running `bundle update rails --conservative`
 - checking the output `Bundler attempted to update rails but its version stayed the same`
 - checking `Gemfile.lock` and bundler output for dependencies which might be blocking the upgrade
+
 ```
 delayed_job (4.1.8)
   activesupport (>= 3.0, < 6.1)
@@ -161,6 +165,7 @@ delayed_job_active_record (4.1.4)
 audited (4.9.0)
   activerecord (>= 4.2, < 6.1)
 ```
+
 - adding the dependency to the upgrade list and retrying the upgrade `bundle update rails --conservative delayed_job delayed_job_active_record audited`
 
 Once the `bundle update` command passes successfully you'll have a list of the exact **explicit** dependencies which are blocking the Rails upgrades.
@@ -189,6 +194,7 @@ In these types of cases the [gem changelog](https://github.com/flyerhzm/bullet/b
 >* Ensure HABTM associations are not incorrectly labeled n+1
 
 In case the changelog is empty, you still have some options:
+
 - check the gem readme for mentions of compatibility
 - chech the gem (open and closed) issues for mentions of compatiblity
 - check with the Rails team if any projects with that dependency have already upgraded Rails
@@ -207,6 +213,7 @@ Your primary source of information for minor and major upgrades should be the [R
 Minor version upgrades have their changelogs linked on the [Rails release page](https://rubyonrails.org/2022/9/9/Rails-7-0-4-6-1-7-6-0-6-have-been-released).
 
 There are two levels of changelogs to go through:
+
 - changelogs for each individual Rails gem (e.g. [ActiveRecord](https://github.com/rails/rails/blob/v6.0.6/activerecord/CHANGELOG.md))
 - [condensed changelog summary](https://github.com/rails/rails/releases/tag/v6.0.6) for that specific Rails version.
 

@@ -190,6 +190,7 @@ In these types of cases the [gem changelog](https://github.com/flyerhzm/bullet/b
 > * Support **rails 7**
 > * Fix Mongoid 7 view iteration
 >* Move CI from Travis to Github Actions
+
 > #### 6.1.5 (08/16/2021)
 >* Rename whitelist to safelist
 >* Fix onload called twice

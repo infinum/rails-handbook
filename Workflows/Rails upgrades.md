@@ -222,7 +222,7 @@ Going through changelogs of all dependencies is painstaking work so focus on the
 #### Gem upgrades
 Once you've identified the suite of gems that are incompatible with the Rails upgrade, you should update them and deploy them to production **before** upgrading Rails.
 
-In some cases dependency upgrades can be grouped together to reduce the amount of QA effort and overhead. We advocate for this with tightly coupled gems (e.g. `devise` and `devise_invitable`) since they support the same functionality and can be tested together. Development and test dependencies (e.g. puma, rspec, factory_bot) are also a good candidate since they don't require a formal QA step.
+In some cases dependency upgrades can be grouped together to reduce the amount of QA effort and overhead. We advocate for this with tightly coupled gems (e.g. `devise` and `devise_invitable`) since they support the same functionality and can be tested together. Development and test dependencies (e.g. `puma`, `rspec`, `factory_bot`) are also a good candidate since they don't require a formal QA step.
 
 ### 2. Rails X upgrade
 Your primary source of information for minor and major upgrades should be the [Rails upgrade docs](https://guides.rubyonrails.org/upgrading_ruby_on_rails.html). **Read about the relevant changes once, then read again.** An ounce of prevention is worth a pound of cure. Don't start playing error whack-a-mole without fully understanding the framework changes introduced by a new version.

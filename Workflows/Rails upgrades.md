@@ -36,7 +36,7 @@ The prerequisite for creating a roadmap is knowing your current location. You sh
   - do we have established deployment slots (e.g. scheduled, manually approved)
 
 ### Determining upgrade steps
-You should **always** update one minor version of Rails at a time. Each new minor version increment can introduce **important deprecation warnings** to warn you of changes in the next minor/major release. Skipping minor versions can lead to unexpected, hard to diagnose errors. It may seem like you're going slower one minor version at a time, but you'll be faster (and safer) in the long run. Minimizing the complexity and risk of code changes is always the better option.
+You should **always** update one minor version of Rails or Ruby at a time. Each new minor version increment can introduce **important deprecation warnings** to warn you of changes in the next minor/major release. Skipping minor versions can lead to unexpected, hard to diagnose errors. It may seem like you're going slower one minor version at a time, but you'll be faster (and safer) in the long run. Minimizing the complexity and risk of code changes is always the better option.
 
 Our goal is to follow the [Ruby](https://www.ruby-lang.org/en/downloads/releases/) and [Rails](https://rubyonrails.org/category/releases) release cycles closely and be as aligned with new releases as we can be.
 
@@ -55,6 +55,7 @@ Here is an example of a roadmap for a very outdated project where we want to upg
 - Upgrading gems for Rails 6 support
 - Rails 5.2.8.1 -> Rails 6.0.6
   - add zeitwerk autoloader support
+- Rails 6 enable defaults
 - Rails 6.0.6 -> Rails 6.1.7
 - Rails 6.1 enable defaults
 - Ruby 2.5.5 -> Ruby 2.6.9
@@ -117,7 +118,8 @@ Projects in bad health will require extra care in the estimation phase. The foll
 - poor codebase health
 - lack of functional specification
 - forked dependencies
-- unmaintained dependencies (e.g. paperclip)
+- unmaintained dependencies (e.g. paperclip) that may need to be replaced
+- dependencies which haven't received support for the next version of Rails that may need to be replaced
 - the app is not bootable locally
 - there is no staging environment
 
@@ -134,17 +136,28 @@ The upgrade process can be split into multiple smaller phases. Splitting the wor
 
 The phases noted below should each contain their own task, acceptance criteria and verification steps (e.g. partial or full smoke test). They should be deployed to the production environment **individually** and there should be some grace period between them when required.
 
-All rules have exceptions so please check in with a fellow TL/LE if you won't be following these guidelines due to project specific constraints. Bundling the upgrade steps together does introduce extra risk so we should be explicit and communicate the tradeoffs to stakeholders.
+### Exceptions
+Please check in with a fellow TL/LE if you won't be following these guidelines due to project specific constraints. Bundling the upgrade steps together does introduce extra risk so we should be explicit and communicate the tradeoffs to stakeholders. You should still follow the upgrade procedure order locally and keep a representative commit history, even in cases where certain upgrade steps will be deployed together.
+
+We strongly discourage bundled Ruby and Rails upgrades, but gem upgrades, minor Rails version upgrades and enabling defaults can be combined into one step in cases when [application](#application-level-backwards-compatibility-with-previous-versions-of-rails) or [framework](#framework-level-backwards-compatibility-with-previous-versions-of-rails) level compatibility layers are not needed.
 
 ### 1. Upgrading gems for Rails X support
 Rails has a strong gravitational pull towards the general gem ecosystem, so it is very likely that most Rails upgrades will require some auxiliary dependencies to be upgraded as well. Compiling a list of gems that need to be upgraded to support the next Rails version will allow you to split the upgrade into multiple parts and deploy smaller, safer changes.
 
-Gems declare their dependency version constraints in the `gemspec` file, but that is not a solid guarantee that a dependency supports the next version of Rails.
+Gems declare their runtime (`add_runtime_dependency` or `add_dependency`) dependency version constraints in the `gemspec` file, but that is not a solid guarantee that a dependency supports the next version of Ruby or Rails.
+
+```
+s.required_ruby_version = '>= 2.3'
+s.add_runtime_dependency 'activesupport', '>= 3.0.0'
+s.add_runtime_dependency 'uniform_notifier', '~> 1.11'
+```
+
+Gem development dependencies (`add_development_dependency`) are not relevant for your application upgrade so you can ignore them.
 
 #### Explicit dependency Rails support
 All project dependencies and their dependency requirements are listed in the `Gemfile.lock` file. Some gems constrict their dependency requirements quite conservatively while others keep an open mind. Relaxing these dependencies (usually by upgrading them) is the first step towards enabling you to upgrade to the next Rails version.
 
-In the following case we present a situation where a project is using Rails 6.1, but is blocked by one of the dependencies (`delayed_job`) to versions betwen 3.0 and 6.0.x.
+In the following case we present a situation where a project is trying to upgrade to Rails 6.1, but is blocked by one of the dependencies (`delayed_job`) to Rails versions betwen 3.0 and 6.0.x.
 
 ```
 delayed_job (4.1.8)
@@ -209,7 +222,7 @@ Going through changelogs of all dependencies is painstaking work so focus on the
 #### Gem upgrades
 Once you've identified the suite of gems that are incompatible with the Rails upgrade, you should update them and deploy them to production **before** upgrading Rails.
 
-In some cases dependency upgrades can be grouped together to reduce the amount of QA effort and overhead. We advocate for this with tightly coupled gems (e.g. devise and devise_invitable) since they support the same functionality and can be tested together or development dependencies (e.g. puma, rspec, factory_bot) since they don't require a formal QA step.
+In some cases dependency upgrades can be grouped together to reduce the amount of QA effort and overhead. We advocate for this with tightly coupled gems (e.g. `devise` and `devise_invitable`) since they support the same functionality and can be tested together. Development and test dependencies (e.g. puma, rspec, factory_bot) are also a good candidate since they don't require a formal QA step.
 
 ### 2. Rails X upgrade
 Your primary source of information for minor and major upgrades should be the [Rails upgrade docs](https://guides.rubyonrails.org/upgrading_ruby_on_rails.html). **Read about the relevant changes once, then read again.** An ounce of prevention is worth a pound of cure. Don't start playing error whack-a-mole without fully understanding the framework changes introduced by a new version.

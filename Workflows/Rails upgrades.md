@@ -77,6 +77,8 @@ Here is an example of a roadmap for a very outdated project where we want to upg
 
 Each top level item should have **its own task** (with specific acceptance criteria, estimate and test steps for QA) and **should be deployed individually**.
 
+You can find 4 more comprehensive examples in our [project upgrade plan folder](https://drive.google.com/drive/folders/1JIVRJRS_RD2wGSmUEiIqGUEyWTItaxH6?usp=share_link).
+
 #### Priorities
 If a project is in bad shape, you may be required to combine upgrade efforts with patching security vulnerabilities. The budget and technical constraints might vary by project, but in general you should prioritize the high-priority low-hanging security patches first.
 

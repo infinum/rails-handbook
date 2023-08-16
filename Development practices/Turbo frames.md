@@ -49,6 +49,8 @@ It can also be installed manually:
 3. Run `./bin/rails turbo:install`
 4. Add `import '@hotwired/turbo-rails'` to the Javascript entrypoint file, which is usually located in `app/javascript/application.js` or `app/webpack/packs/application.js` for apps using webpacker if it hasn't been automatically added in the previous step.
 
+See `turbo-rails` documentation for detailed [installation instructions](https://github.com/hotwired/turbo-rails#installation).
+
 If you installed turbo to an existing application, it might be a good idea to disable it globally, and only enable it when needed.
 
 To disable turbo, add the following to one of the js files:
@@ -172,7 +174,7 @@ def update
 end
 ```
 
-NOTE: If you are using slim, make sure to name the views like `'index.html.slim'` instead of just `'index.slim'` because otherwise the form submissions won't work correctly!
+NOTE: If you are using slim, make sure to name the views like `'index.html.slim'` instead of just `'index.slim'` because otherwise the [form submissions won't work correctly](https://github.com/hotwired/turbo-rails/issues/168)!
 
 ## Targeting navigation into or out of a frame
 Sometimes we may want the most links to operate within the frame context, but not all of them.
@@ -182,7 +184,7 @@ Let's say that we also want to be able to add a new author on the index page, wi
 This time we don't want to replace anything that's visible on the index page.
 We actually want to "append" the form for creating a new author to the page.
 
-If we used the same approach as for the inline editing, we would replace the link for creating a new user with the form. Maybe we don't want to do this because we don't want the form to appear at the same position where the button is, but somewhere else on the page. Luckily it is also done very easily with turbo frames.
+If we used the same approach as for the inline editing, we would replace the link for creating a new user with the form. Maybe we don't want to do this because we don't want the form to appear at the same position where the button is, but somewhere else on the page. Luckily it is also done very easily with frame targeting.
 
 Index page:
 ```ruby
@@ -203,7 +205,7 @@ h2 = 'Authors'
 
 The first change to our index page is the link to the new_author_path. This link is different to the one for the edit_author_path, because `data: { 'turbo-frame': dom_id(Author.new) }` was added to it.
 
-The `data-turbo-frame` attribute can be added on non-frame elements to control from which frame was the link clicked or the form submitted.
+The `data-turbo-frame` attribute can be added on non-frame elements to control which part of the page should be updated by user interaction with the element.
 
 In our example, we want the link to act as if it was clicked inside of a turbo-frame with the `new_author` id.
 
@@ -241,7 +243,7 @@ def create
 end
 ```
 
-So we click on the link to add a new author, it acts as if it was clicked inside of a frame with the `new_author` id because of the `data-turbo-frame` attribute. The response provided by the #new action will have its turbo-frame segment extracted and the form for creating a new author will replace the empty frame with the same id from the index page.
+When the user clicks on the link to add a new author, the button sets the turbo frame target to `new_author`. Upon receiving the response, provided by the #new action, the `new_author` turbo-frame segment is extracted and the empty frame placeholder is replaced with the form content.
 
 However, there is one issue when we try to submit the form with the valid attributes.
 The author gets created in the database, but it is not visible on the index page until we refresh the page.
@@ -294,22 +296,63 @@ Now the newly created author should be visible in the authors list.
 Another way of achieving this behaviour is by using [Turbo streams](https://turbo.hotwired.dev/handbook/streams).
 
 ### target
-The documentation for the turbo frames describes the `target` attribute like this:
+Another way of controlling which part of the page should be updated by user interaction with the element is by using the `target` attribute.
 
-*By default, navigation within a frame will target just that frame. This is true for both following links and submitting forms. But navigation can drive the entire page instead of the enclosing frame by setting the target to _top. Or it can drive another named frame by setting the target to the ID of that frame.*
+The difference with the `data-turbo-frame` attribute is that the `target` attribute is added on frame elements.
 
-Setting the target to `_top` does actually drive the entire page:
+By using the `target` attribute, the previous example can be rewritten like this:
+```ruby
+# index.html.slim
+
+= turbo_frame_tag 'main'
+  h2 = 'Authors'
+  = link_to 'Add author', new_author_path, data: { 'turbo-frame': dom_id(Author.new) }
+
+  = turbo_frame_tag Author.new, target: 'main'
+  - @authors.each do |author|
+    = turbo_frame_tag "edit_author_#{author.id}"
+      .row
+        .col
+          = author.first_name
+        .col
+          = author.last_name
+        .col
+          = link_to 'Edit', edit_author_path(author.id)
+```
+
+There is no need for the `data-turbo-frame` attribute in the view for the #new action anymore:
+```ruby
+# new.html.slim
+
+= turbo_frame_tag Author.new
+  = simple_form_for @author do |f|
+    .row
+      .col
+        = f.input :first_name
+      .col
+        = f.input :last_name
+      .col
+        = f.button :submit
+```
+
+Notice how we set the target attribute on an empty frame on the `index` page but not on the `new` page.
+That is because the `index` page is the starting point and the frame itself doesn't get replaced, only the content inside of it.
+
+The target can also be set to `_top` to drive the entire page:
 ```Html
 <turbo-frame id='authors' target='_top'>
   <a href='/authors/1'>
-    Following link will replace the whole page, not just this frame.
+    Following this link will replace the whole page, not just this frame.
   </a>
 </turbo-frame>
 ```
 
-However, the second part (*Or it can drive another named frame by setting the target to the ID of that frame.*) doesn't seem to work in development without using turbo streams ([discussion](https://discuss.hotwired.dev/t/target-attribute-on-turbo-frame-tags/1959)) and `data-turbo-frame` attribute can be used to achieve the required functionality.
-
 ## Useful links:
-- [rails-infinum-hotwire-example](https://github.com/infinum/rails-infinum-hotwire-example)
 - [turbo handbook](https://turbo.hotwired.dev/handbook/introduction)
 - [hotwire discussion](https://discuss.hotwired.dev/)
+
+There is also a [dummy application](https://github.com/infinum/rails-infinum-hotwire-example) with some examples.
+
+To set it up:
+- clone the repo
+- run `bin/setup`

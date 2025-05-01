@@ -53,12 +53,12 @@ The description is a good place to include questions that came up during develop
 This is also a good place to talk about the performance and security considerations if there are any.
 
 ## Default pull request reviewers
-It's a bit tedious to add the same reviewers to pull requests over and over again. Github allows us to set a
+It's a bit tedious to add the same reviewers to pull requests over and over again. GitHub allows us to set a
 list of default PR reviewers.
 
 A new rails project created with the [Infinum rails template](https://github.com/infinum/default_rails_template)
 includes a list of default pull request reviewers known as [Code Owners](https://help.github.com/en/articles/about-code-owners)).
 The list is defined in the `rails_project/.github/CODEOWNERS` file.
 
-When `rails new` command is run, a developer is prompted to enter a list of Github username handles
+When `rails new` command is run, a developer is prompted to enter a list of GitHub username handles
 that are automatically added to the file as code owners.

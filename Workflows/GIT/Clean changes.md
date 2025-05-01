@@ -1,7 +1,7 @@
 After a while you'll get notifications about comments on your pull requests from your reviewers. Oftentimes you'll need to change something before the branch is ready.
 
 ## Solving change requests
-Change requests should be applied in separate _fixup_ or _squash_ commits. Rebasing the branch during an ongoing review is not appreciated unless there is a good reason for it, like pulling in some new and necessary changes from `master`, because it makes it harder for the reviewers to know what the new changes are and what they have already reviewed.
+Change requests should be applied in separate _fixup_ or _squash_ commits. Rebasing the branch during an ongoing review is not appreciated unless there is a good reason for it, like pulling in some new and necessary changes from the `main` branch, because it makes it harder for the reviewers to know what the new changes are and what they have already reviewed.
 
 These commits should be merged into `staging` as well when they are done.
 
@@ -35,7 +35,7 @@ git cherry-pick -n {BASE-OF-BRANCH}..{branch-name}
 
 _Note_: BASE-OF-BRANCH is one commit prior to the first commit of the branch.
 
-Cherry picking usually produces less merge conflicts once `master` and `staging` diverge.
+Cherry picking usually produces less merge conflicts once the `main` branch and `staging` diverge.
 
 The commit message should be in the following format.
 
@@ -51,9 +51,9 @@ Including the pull request link in the message results with a reference in the p
 Make sure that everything is OK by running the specs, then push.
 
 #### Keep it clean
-After a while the `staging` branch history can become quite different than that of the `master` branch, because of the different branch merges. You'll sometimes even find yourself pushing a couple of _fixup_ commits to `staging` if you're fixing something and then applying the changes to the `fix/branch`.
+After a while the `staging` branch history can become quite different than that of the `main` branch, because of the different branch merges. You'll sometimes even find yourself pushing a couple of _fixup_ commits to `staging` if you're fixing something and then applying the changes to the `fix/branch`.
 
-The `staging` branch is reset to `master` after each sprint, or more frequently as we see fit:
+The `staging` branch is reset to the `main` branch after each sprint, or more frequently as we see fit:
 
 ```bash
 git switch staging
@@ -61,14 +61,14 @@ git reset --hard origin/master
 git push origin staging --force
 ```
 
-### Master
+### Main branch
 Once the PR has at least one approval, the branch has been successfully deployed to `staging` and tested, and
-there are no failing specs, it can be merged into `master`.
+there are no failing specs, it can be merged into the `main` branch.
 
 We perform non-fast-forward merges to group commits of a single feature together in a meaningful
-way. Before merging we also rebase the feature branch onto the latest `master`, so that the git
+way. Before merging we also rebase the feature branch onto the latest `main` branch, so that the git
 history is nice and clean, and that the latest code can be run on CI before actually merging into
-`master`. We also squash the review comments corrections here, so make sure the `--autosquash`
+the `main` branch. We also squash the review comments corrections here, so make sure the `--autosquash`
 option is on by default or add that flag to the rebase command.
 
 While on feature branch:
@@ -149,7 +149,7 @@ Next, force push to update remote's history:
 git push --force-with-lease
 ```
 
-Then, check once again that everything is squashed correctly and continue on to the `master` branch:
+Then, check once again that everything is squashed correctly and continue on to the `main` branch:
 
 ```bash
 git fetch origin master

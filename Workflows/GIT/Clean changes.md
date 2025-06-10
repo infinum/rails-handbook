@@ -12,7 +12,20 @@ Once the PR is opened, the branch can be integrated into `staging`, unless it co
 logic in the migrations, in which case the reviewers should prioritize reviewing the migrations,
 and giving a thumbs up before integration.
 
-We use cherry picking methodology on staging:
+There are two ways of integrating branches to `staging`:
+
+1. Merge & squash
+2. Cherry-picking a commit range
+
+#### Merge squash
+
+```bash
+git switch staging
+git fetch origin staging && git pull --rebase
+git merge --squash {branch-name}
+```
+
+#### Cherry-picking
 
 ```bash
 git switch staging
@@ -22,18 +35,18 @@ git cherry-pick -n {BASE-OF-BRANCH}..{branch-name}
 
 _Note_: BASE-OF-BRANCH is one commit prior to the first commit of the branch.
 
-The commit message should be in the following format:
+Cherry picking usually produces less integration conflicts once the `main` branch and `staging` diverge.
+
+The commit message should be in the following format.
 
 ```
 Merge-squash {branch-name}
 
 (pull request {pull-request-link})
-(cherry picked from {commit-sha})
+[optionally](cherry picked from {commit-sha})
 ```
 
 Including the pull request link in the message results with a reference in the pull request feed, which is helpful because we'll know when the branch was deployed to `staging`.
-
-You can use this [script](https://app.productive.io/1-infinum/docs/doc/113800?filter=MjQ3Nzgw&page=148751) to generate commit message.
 
 Make sure that everything is OK by running the specs, then push.
 
@@ -52,14 +65,11 @@ git push origin staging --force
 Once the PR has at least one approval, the branch has been successfully deployed to `staging` and tested, and
 there are no failing specs, it can be integrated into the `main` branch.
 
-We use one of these two methods to integrate branches to the main branch:
-
-1. Squash and merge
-2. Merge without squashing
-
-Before merging we also rebase the feature branch onto the latest `main` branch, so that the git
+We perform non-fast-forward merges to group commits of a single feature together in a meaningful
+way. Before merging we also rebase the feature branch onto the latest `main` branch, so that the git
 history is nice and clean, and that the latest code can be run on CI before actually merging into
-the `main` branch.
+the `main` branch. We also squash the review comments corrections here, so make sure the `--autosquash`
+option is on by default or add that flag to the rebase command.
 
 While on feature branch:
 
@@ -113,28 +123,39 @@ pick fa20af3 Finish up
 # Note that empty commits are commented out
 ```
 
-Save and close the editor to finish the rebase and then force push to update remote's history:
+At this point you'll want to change all commands to `squash` or even `fixup`. The difference between `squash` and `fixup` is that `fixup` will discard log for that commit. This is how the commit list looks after the change:
+
+```bash
+pick 07c5abd First commit
+squash de9b1eb Add controller
+squash 3e7ee36 Remove controller
+squash fa20af3 Finish up
+```
+
+Or you can even use shorthand flag for the command, for instance `s` instead of `squash`
+
+```bash
+pick 07c5abd First commit
+s de9b1eb Add controller
+s 3e7ee36 Remove controller
+s fa20af3 Finish up
+```
+
+You should rename your squashed commit message into something more meaningful, so pick `reword` for the first commit. Edit commit message, save and close editor to finish the rebase.
+
+Next, force push to update remote's history:
 
 ```bash
 git push --force-with-lease
 ```
 
-#### Squash and merge
-
-After there are no conflicts, select the Squash and merge option on the pull request.
-This will combine all commits into a single one and merge it into the master branch.
-
-#### Merge without squashing
-
-If you want to keep all commits from your pull request on the main branch, use the merge without squashing method:
+Then, check once again that everything is squashed correctly and continue on to the `main` branch:
 
 ```bash
 git fetch origin master
 git switch master && git pull
 git merge --no-ff --no-edit {branch-name}
 ```
-
-We perform non-fast-forward merges to group commits of a single feature together in a meaningful way.
 
 Make sure the history graph is nice and clean by entering the following command or similar. No lines should "cross over".
 

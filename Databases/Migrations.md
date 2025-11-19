@@ -2,7 +2,7 @@
 
 The [Rails Migrations Guide](https://edgeguides.rubyonrails.org/active_record_migrations.html) does a very good job at explaining how schema migrations work in Rails.
 
-Not many people know this, but you can [pass modifiers](https://edgeguides.rubyonrails.org/active_record_migrations.html#passing-modifiers) when you are generating migrations from the command line.
+Not many people know this, but you can [pass modifiers](https://edgeguides.rubyonrails.org/active_record_migrations.html#passing-modifiers) when you are generating migrations from the command line. 
 
 Whenever possible, **write reversible migrations**. If a migration can't be reversed, then make sure you raise `ActiveRecord::IrreversibleMigration` exception.
 
@@ -14,7 +14,7 @@ Whenever possible, **write reversible migrations**. If a migration can't be reve
 
 Here is where things get a bit complicated. As your project grows and evolves, so does your data. At some point, you might realize you forgot to add a default to a field. Or that you want to change an enumeration. Or manipulate the existing data in your database in any way.
 
-There are two ways of dealing with these problems, and both have its use cases:
+There are two ways of dealing with these problems, and both have its use cases: 
 
 1. Write a rake task
 2. Write a data migration
@@ -29,7 +29,7 @@ Writing a data migration is a bit trickier. You start of by writing a schema mig
 
 __Write raw sql queries inside of your data migrations.__
 
-Example:
+Example:  
 
 ``` ruby
 def change
@@ -77,5 +77,3 @@ def down
   )
 end
 ```
-### This is a test.
-Ignore me pls.

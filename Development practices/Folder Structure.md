@@ -1,7 +1,7 @@
 > The first concern of the architect is to make sure that the house is usable; it is not to ensure that the house is made of brick. 
 > — Uncle Bob
 
-# What it looks like now
+## What it looks like now
 Ruby on Rails is an opinionated framework and forces developers into a specific folder structure. 
 Most gems also follow the Rails guidelines of how the folder structure should look like.
 On smaller projects this can be fine, but on bigger monoliths the files can get out of hand and it becomes too difficult to find the right class.
@@ -192,7 +192,7 @@ At some point this folder became a dumpall folder without rhyme or reason.
 There is also an issue of boundaries: there are none. Each class is used from anywhere in the application and that can
 cause headaches.
 
-# Desired structure
+## Desired structure
 
 Here is a folder structure we should strive for
 
@@ -215,11 +215,11 @@ The `controllers` folder is there because of the way Rails finds controller name
 `models` is a folder where we put all our ActiveRecord models. It is technically not necessary but we will talk about it in the [Further Improvements](#further-improvements) chapter.
 
 
-# `domains` vs `web` folder
+## `domains` vs `web` folder
 `web` is for classes used in controller actions: forms, policies, serializers, queries and similar.
 `domains` is for business logic.
 
-## `web` folder
+### `web` folder
 The `web` folder structure should follow your routes. Having these routes:
 
 ```ruby
@@ -256,7 +256,7 @@ web
 │   │   └── decorator.rb
 ```
 
-## `domains` folder
+### `domains` folder
 The `domains` folder should be organized into domains. 
 
 The main idea is to create cohesive groups of domain objects that are involved in the same business use case(s). The same way we try to build classes that are loosely coupled but highly cohesive we should build our domains as well.

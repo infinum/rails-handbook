@@ -62,9 +62,9 @@ HipChat](https://infinum.co/the-capsized-eight/articles/a-ruby-on-rails-continou
 
 
 
-# Mina Workshop
+## Mina Workshop
 
-## 1. Mina is just a wrapper around rake
+### 1. Mina is just a wrapper around rake
 
 ```ruby
 task :hello do
@@ -92,7 +92,7 @@ rake hello question # chainging invocation
 rake answer         # dependencies
 rake db:migrate     # namespaces
 ```
-## 2. Installing mina
+### 2. Installing mina
 
 ```bash
 gem install mina
@@ -100,9 +100,9 @@ gem install mina
 
 or add it to your Gemfile with require: false
 
-## 3. Using mina
+### 3. Using mina
 
-### 3.1 initializing
+#### 3.1 initializing
 
 ```bash
 mina init # creates config/deploy.rb -- Also works with ['Minafile', '.deploy.rb', 'deploy.rb', 'config/deploy.rb', minafile]
@@ -120,7 +120,7 @@ task :deploy do
 end
 ```
 
-### 3.2 variables
+#### 3.2 variables
 
 ```ruby
 require 'mina/default'
@@ -142,7 +142,7 @@ Can override varibles with ENV
 hello=buja mina write
 ```
 
-### 3.3 commands
+#### 3.3 commands
 
 ```ruby
 require 'mina/default'
@@ -161,7 +161,7 @@ task :predeploy do
 end
 
 ```
-### 3.4 options
+#### 3.4 options
 
 ```bash
 mina -AT # list tasks
@@ -170,7 +170,7 @@ mina -v  # verbose mode
 mina -s  # simulate
 ```
 
-### 3.5 running on remote
+#### 3.5 running on remote
 
 ```ruby
 require 'mina/default'
@@ -190,7 +190,7 @@ task :predeploy do
 end
 ```
 
-## 4. Deploying with mina
+### 4. Deploying with mina
 
 ```ruby
 # config/deploy.rb
@@ -264,7 +264,7 @@ tree ../4_www
 more info at https://github.com/mina-deploy/mina/blob/master/docs/deploying.md
 and https://github.com/mina-deploy/mina/blob/master/data/deploy.sh.erb
 
-## 5. Avaliable plugins
+### 5. Avaliable plugins
 
 * deploy
 * git

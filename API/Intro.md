@@ -83,7 +83,7 @@ The API serializes the attribute `explicit` which tells the client if the album 
 
 As the project grows, the user base will also grow, thus increasing the amount of requests sent to your server. Without a fast and optimized API, the response times will sky-rocket and the user experience will plummet, which might cause users to delete their accounts and abandon your product.
 
-There are many ways to improve the performance of an API, from caching to database sharding, but please be aware that the amount of information fetched from the database and wrapped in an API response should be as small as it can be. Increasing the speed of SQL queries and avoiding any [performance issues](https://infinum.com/handbook/books/devproc/general-coding-practices/api-design#performance-issues) are crucial measures that should always be undertaken.
+There are many ways to improve the performance of an API, from caching to database sharding, but please be aware that the amount of information fetched from the database and wrapped in an API response should be as small as it can be. Increasing the speed of SQL queries and avoiding any [performance issues](/devproc/general-coding-practices/api-design#performance-issues) are crucial measures that should always be undertaken.
 
 ### Robust
 

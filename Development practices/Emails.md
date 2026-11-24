@@ -13,7 +13,7 @@ Emails should be sent asynchronously from a background job:
 * so they don't block the current HTTP request longer than needed
 * if the email server is temporarily unavailable, the background job will fail and re-try again (check your retry options!).
 
-See the [Background jobs chapter](/books/rails/development-practices/background-and-scheduled-jobs) on how to configure those.
+See the [Background jobs chapter](/rails/development-practices/background-and-scheduled-jobs) on how to configure those.
 
 If you're using Devise, don't forget to configure it for ActiveJob as described [here](https://github.com/heartcombo/devise#activejob-integration).
 
@@ -51,7 +51,7 @@ A better solution would be to just build the necessary objects with all attribut
 
 In production/staging/uat we mainly use [Mailgun](https://mailgun.com) to send emails from our apps.
 
-Someone from the DevOps team should open a Mailgun account and set up everything for production/staging and store credentials in [Vault](/books/rails/development-practices/secrets).
+Someone from the DevOps team should open a Mailgun account and set up everything for production/staging and store credentials in Vault.
 
 To set up Mailgun in the app, add the official [mailgun-ruby](https://github.com/mailgun/mailgun-ruby#rails) gem and set it up per environment as described in the gem's Readme.
 

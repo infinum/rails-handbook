@@ -41,4 +41,3 @@ If you're adding a *hack* or some method is implemented in a non-standard way, i
   ```
   developers = %w(Lucas John Tommy Herman\ Zvonimir)
   ```
-
